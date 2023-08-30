@@ -1,0 +1,11 @@
+.trooper{
+    text-decoration: none;
+    color: black;
+    margin-bottom: 40px;
+}
+
+.trooper-img{
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
