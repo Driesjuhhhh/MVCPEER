@@ -1,0 +1,91 @@
+html {
+    height: 100%;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+    height: 900px;
+}
+
+.opvallend-want-belangrijk{
+    color: red
+}
+
+/* Coloring */
+
+.text-color {
+    color: black;
+}
+
+.title-color {
+    color: black;
+}
+
+.primary-background-color {
+    background-color: #132bca
+}
+
+.secondary-background-color {
+    background-color: #22b3e0;
+}
+
+.accent-color {
+    background-color: #49739c;
+    color: #49739c;
+}
+
+/* Text alignment */
+
+.text-align-center {
+    text-align: center;
+}
+
+/* Page title */
+
+.page-title {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-size: 50pt;
+}
+
+/* Page centering */
+
+.centered {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Big parts */
+
+.big-part {
+    background-color: #70e2e2;
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+/* Card */
+
+.card {
+    display: inline-block;
+    position: relative;
+    border-radius: 10px;
+    border-radius: 15px;
+    text-align: center;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    width: 32%;
+    border: #49739c 2px solid
+}
+
+.card-text {
+    font-size: 25pt;
+}
+
+/* Card image scaling */
+
+.card img {
+    width: 80%;
+    margin-bottom: 15px;
+}
