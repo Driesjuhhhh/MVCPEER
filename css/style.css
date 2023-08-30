@@ -46,6 +46,7 @@ html {
 .page-title {
     font-family: "M PLUS Rounded 1c", sans-serif;
     font-size: 50pt;
+    padding-top: 40px;
 }
 
 /* Page centering */
@@ -55,12 +56,57 @@ html {
     margin-right: auto;
 }
 
+/* Header */
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    right: 0px;
+    color: black;
+    height: 70px;
+    z-index: 7;
+}
+
+header h1 {
+    float: right;
+    font-size: 20px;
+    position: fixed;
+    margin-left: 85%;
+    top: 10px;
+}
+
+header img {
+    position: fixed;
+    margin-top: 6px;
+    margin-left: 8%;
+    width: 60px;
+}
+
+header nav {
+    position: relative;
+    margin-top: 10px;
+    horiz-align: center;
+    text-align: center;
+}
+
+header nav a {
+    text-decoration: none;
+    color: white;
+    display: inline-block;
+    margin: 20px;
+}
+
+header nav a:hover{
+    transition: 0.5s;
+    color: black
+}
+
 /* Big parts */
 
 .big-part {
-    background-color: #70e2e2;
     width: 100%;
-    padding-top: 50px;
+    padding-top: 10px;
     padding-bottom: 50px;
 }
 
@@ -88,4 +134,16 @@ html {
 .card img {
     width: 80%;
     margin-bottom: 15px;
+}
+
+/* responsive */
+
+@media screen and (max-width: 800px) {
+    header{
+        display: none;
+    }
+
+    .page-title{
+        margin-top: auto;
+    }
 }
