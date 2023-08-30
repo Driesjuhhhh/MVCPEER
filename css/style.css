@@ -122,7 +122,8 @@ header nav a:hover{
     margin-right: auto;
     margin-left: auto;
     width: 32%;
-    border: #49739c 2px solid
+    border: #49739c 2px solid;
+    margin-top: 50px;
 }
 
 .card-text {
