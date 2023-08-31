@@ -105,9 +105,9 @@ header nav a:hover{
 /* Big parts */
 
 .big-part {
-    width: 100%;
-    padding-top: 10px;
-    padding-bottom: 50px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Card */
@@ -123,11 +123,15 @@ header nav a:hover{
     margin-left: auto;
     width: 32%;
     border: #49739c 2px solid;
-    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .card-text {
     font-size: 25pt;
+}
+
+.card-img{
+    max-height: 290px;
 }
 
 /* Card image scaling */
