@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     var darkmode = localStorage.getItem('darkmode')
 
-    if (darkmode != 'true'){
+    if (darkmode === 'true'){
         document.body.classList.toggle('dark-mode-variables');
     }
 

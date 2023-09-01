@@ -207,6 +207,14 @@ header nav a:hover {
 
 /* responsive */
 
+@media screen and (max-width: 1200px) {
+    main .card {
+        box-sizing: border-box;
+        width: 48%;
+        margin: 1%;
+    }
+}
+
 @media screen and (max-width: 800px) {
     header {
         display: none;
@@ -215,15 +223,18 @@ header nav a:hover {
     .page-title {
         margin-top: auto;
     }
+
+    main .card{
+        width: 100%;
+    }
+
+    .card.visibility-disabled {
+        display: none;
+    }
+
 }
 
-@media screen and (max-width: 1200px) {
-    main .card {
-        box-sizing: border-box;
-        width: 48%;
-        margin: 1%;
-    }
-}
+
 
 /* Animations */
 
