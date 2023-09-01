@@ -19,3 +19,7 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.card-height {
+    height: 550px;
+}

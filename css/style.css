@@ -119,17 +119,16 @@ header nav a:hover {
 /* Card */
 
 .card {
-    display: inline-block;
-    position: relative;
-    border-radius: 10px;
-    border-radius: 15px;
-    text-align: center;
-    justify-content: center;
-    margin-right: auto;
-    margin-left: auto;
-    width: 32%;
+   float: left;
     border: #49739c 2px solid;
-    margin-bottom: 50px;
+    border-radius: 15px;
+    width: 28%;
+    margin: 1%;
+    margin-left: 1.5%;
+    margin-top: 20px;
+    padding: 15px;
+    position: relative;
+    text-align: center;
 }
 
 .card-text {
@@ -162,5 +161,13 @@ header nav a:hover {
 
     .page-title {
         margin-top: auto;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    main .card {
+        box-sizing: border-box;
+        width: 48%;
+        margin: 1%;
     }
 }
