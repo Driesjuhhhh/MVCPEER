@@ -207,19 +207,17 @@ header nav a:hover {
 
 /* responsive */
 
-@media screen and (max-width: 1200px) {
-    main .card {
-        box-sizing: border-box;
-        width: 48%;
-        margin: 1%;
-    }
-}
+
 
 @media screen and (max-width: 800px) {
-    header {
+    header img{
         display: none;
     }
 
+    header .darkmode-button{
+        display: none;
+    }
+    
     .page-title {
         margin-top: auto;
     }

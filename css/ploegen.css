@@ -23,3 +23,20 @@
 .card-height {
     height: 550px;
 }
+
+@media screen and (max-width: 1200px) {
+    main .card {
+        box-sizing: border-box;
+        width: 48%;
+        margin: 1%;
+        height: 600px;
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+    main .card{
+        height: 650px;
+    }
+
+}
