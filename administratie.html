@@ -18,17 +18,15 @@
         />
         <link href="css/administratie.css" rel="stylesheet" />
         <link href="css/style.css" rel="stylesheet" />
+        <script src="js/scripts.js"></script>
         <script
             src="https://kit.fontawesome.com/c2e4631732.js"
             crossorigin="anonymous"
         ></script>
     </head>
     <body>
-        <header class="secondary-background-color">
+        <header>
             <img src="assets/logo.png" alt="logo" />
-            <div>
-                <h1>MVC PEER</h1>
-            </div>
             <nav>
                 <a href="index.html">Home</a>
                 <a href="ploegen.html">Ploegen</a>
@@ -37,6 +35,13 @@
                 <a href="steun.html">Steun</a>
                 <a href="contact.html">Contact</a>
             </nav>
+            <div class="darkmode-switch">
+                <div class="dark-mode">
+                    <button id="darkmode-button" class="darkmode-button">
+                        <i class="fa-solid fa-circle-half-stroke"></i>
+                    </button>
+                </div>
+            </div>
         </header>
         <main class="text-align-center">
             <article class="page-title">
@@ -51,7 +56,7 @@
                     class="card standard-card-width card-height card-background-color"
                 >
                     <h1 class="text-color card-text">Aansluiting club</h1>
-                    <a class="text" href="aansluiting.html"
+                    <a class="text card-text-2" href="aansluiting.html"
                         >Wil jij graag komen volleyballen bij MVC Peer? Vind
                         hier hoe je de aansluiting volledig zelf in orde kan
                         maken.</a
@@ -61,7 +66,7 @@
                     class="card standard-card-width card-height card-background-color"
                 >
                     <h1 class="text-color card-text">Privacyverklaring</h1>
-                    <a class="text" href="privacyverklaring.html"
+                    <a class="text card-text-2" href="privacyverklaring.html"
                         >Klik hier om te weten te komen wat er precies gebeurt
                         met alle gegevens die MVC heeft</a
                     >
@@ -70,7 +75,7 @@
                     class="card standard-card-width card-height card-background-color"
                 >
                     <h1 class="text-color card-text">Tegemoedkoming</h1>
-                    <a class="text" href="tegemoedkoming.html"
+                    <a class="text card-text-2" href="tegemoedkoming.html"
                         >Bij de ziekenfonds kan je jaarlijks een tegemoetkoming
                         vragen. Zij betalen een bedrag van het inschrijvingsgeld
                         terug.</a
@@ -81,7 +86,7 @@
                 >
                     <h1 class="text-color card-text">Vertrouwenspersoon</h1>
                     <a
-                        class="text"
+                        class="text card-text-2"
                         href="https://volleyvlaanderen.be/Gezondheid-en-ethiek/Federatie-API"
                         >Klik hier</a
                     >
@@ -93,7 +98,7 @@
                         Kantine en scheidsrechters lijst
                     </h1>
                     <a
-                        class="text"
+                        class="text card-text-2"
                         href="https://docs.google.com/document/d/13UbRZQdofZ5uW9JhhLyqGxbmzd_QA03Y/edit?usp=sharing&ouid=106841927531066735266&rtpof=true&sd=true"
                         >Klik hier</a
                     >
@@ -102,7 +107,7 @@
                     class="card standard-card-width card-height card-background-color"
                 >
                     <h1 class="text-color card-text">Gedragscode</h1>
-                    <a class="text" href="">Klik hier</a>
+                    <a class="text card-text-2" href="">Klik hier</a>
                 </article>
                 <article
                     class="card standard-card-width card-height card-background-color visibility-disabled"
@@ -111,7 +116,7 @@
                     class="card standard-card-width card-height card-background-color"
                 >
                     <h1 class="text-color card-text">Verzekeringsformulier</h1>
-                    <a class="text" href="verwekering.html"
+                    <a class="text card-text-2" href="verwekering.html"
                         >Een blessure opgelopen tijdens het sporten? Vind hier
                         welke stappen je moet ondernemen en hopelijk zien we je
                         snel terug op het volleybalveld.

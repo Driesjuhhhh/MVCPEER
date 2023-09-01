@@ -18,16 +18,15 @@
         />
         <link href="css/steun.css" rel="stylesheet" />
         <link href="css/style.css" rel="stylesheet" />
+        <script src="js/scripts.js"></script>
         <script
             src="https://kit.fontawesome.com/c2e4631732.js"
             crossorigin="anonymous"
         ></script>
     </head>
     <body>
-        <header class="secondary-background-color">
-            <img src="assets/logo.png" alt="Logo">
-                <h1>MVC PEER</h1>
-            </div>
+        <header>
+            <img src="assets/logo.png" alt="logo" />
             <nav>
                 <a href="index.html">Home</a>
                 <a href="ploegen.html">Ploegen</a>
@@ -36,6 +35,11 @@
                 <a href="steun.html">Steun</a>
                 <a href="contact.html">Contact</a>
             </nav>
+            <div class="darkmode-switch">
+                <div class="dark-mode">
+                    <button id="darkmode-button" class="darkmode-button"><i class="fa-solid fa-circle-half-stroke"></i></button>
+                </div> 
+            </div>
         </header>
         <main class="text-align-center">
             <article class="page-title">
@@ -48,12 +52,12 @@
                 <article class="card steun-card card-height card-background-color">
                     <h1 class="text-color card-text">Webshop</h1>
                     </br>
-                    <a class="trooper" href="webshop.html">Via hier kan je naar onze webshop gaan</a>
+                    <a class="trooper card-text-2" href="webshop.html">Via hier kan je naar onze webshop gaan</a>
                 </article>
                 <article class="card steun-card card-height card-background-color">
                     <h1 class="text-color card-text">Trooper</h1>
                     </br>
-                    <a class="trooper" href="trooper.html">Klik hier voor naar de trooper pagina te gaan</a>
+                    <a class="trooper card-text-2" href="trooper.html">Klik hier voor naar de trooper pagina te gaan</a>
                 </article>
             </article>
             <article class="big-part">

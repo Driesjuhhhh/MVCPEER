@@ -18,16 +18,15 @@
         />
         <link href="css/ploegen.css" rel="stylesheet" />
         <link href="css/style.css" rel="stylesheet" />
+        <script src="js/scripts.js"></script>
         <script
             src="https://kit.fontawesome.com/c2e4631732.js"
             crossorigin="anonymous"
         ></script>
     </head>
     <body>
-        <header class="secondary-background-color">
-            <img src="assets/logo.png" alt="Logo">
-                <h1>MVC PEER</h1>
-            </div>
+        <header>
+            <img src="assets/logo.png" alt="logo" />
             <nav>
                 <a href="index.html">Home</a>
                 <a href="ploegen.html">Ploegen</a>
@@ -36,6 +35,13 @@
                 <a href="steun.html">Steun</a>
                 <a href="contact.html">Contact</a>
             </nav>
+            <div class="darkmode-switch">
+                <div class="dark-mode">
+                    <button id="darkmode-button" class="darkmode-button">
+                        <i class="fa-solid fa-circle-half-stroke"></i>
+                    </button>
+                </div>
+            </div>
         </header>
         <main class="text-align-center">
             <article class="page-title">
@@ -45,248 +51,636 @@
             </article>
             <article class="big-part">
                 <h1 class="article-title title-color">Jeugdploegen</h1>
-                <article class="card standard-card-width card-height card-background-color">
+                <article
+                    class="card standard-card-width card-height card-background-color"
+                >
                     <h1 class="text-color card-text">Volleyspeeltuin</h1>
-                    <img class="card-img" src="assets/Ploegen.webp" alt="Ploegen"
+                    <img
+                        class="card-img"
+                        src="assets/Ploegen.webp"
+                        alt="Ploegen"
                     />
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Training data: </p>
-                        <p class=" text-align-left ploegen-card-text">Woensdag: 18:00 - 19:00 </p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Training data:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Woensdag: 18:00 - 19:00
+                        </p>
                     </article>
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Trainer: </p>
-                        <p class="text-align-left ploegen-card-text">Lore ???</p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Trainer:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Lore ???
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
                     </article>
                 </article>
-                <article class="card standard-card-width card-height card-background-color">
+                <article
+                    class="card standard-card-width card-height card-background-color"
+                >
                     <h1 class="text-color card-text">Benjaminies</h1>
-                    <img class="card-img" src="assets/Ploegen.webp" alt="Ploegen"
+                    <img
+                        class="card-img"
+                        src="assets/Ploegen.webp"
+                        alt="Ploegen"
                     />
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Training data: </p>
-                        <p class=" text-align-left ploegen-card-text">Maandag: 18:00 - 19:30 </p>
-                        <p class=" text-align-left ploegen-card-text">Woensdag: 18:00 - 19:30</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Training data:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Maandag: 18:00 - 19:30
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Woensdag: 18:00 - 19:30
+                        </p>
                     </article>
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Trainer: </p>
-                        <p class="text-align-left ploegen-card-text">Lieve Creemers </p>
-                        <p class="text-align-left ploegen-card-text">Wendy Vrijsen </p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Trainer:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Lieve Creemers
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Wendy Vrijsen
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
                     </article>
                 </article>
-                <article class="card standard-card-width card-height card-background-color">
+                <article
+                    class="card standard-card-width card-height card-background-color"
+                >
                     <h1 class="text-color card-text">U11 2v2</h1>
-                    <img class="card-img" src="assets/Ploegen.webp" alt="Ploegen"
+                    <img
+                        class="card-img"
+                        src="assets/Ploegen.webp"
+                        alt="Ploegen"
                     />
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Training data: </p>
-                        <p class=" text-align-left ploegen-card-text">Maandag: 18:00 - 19:30 </p>
-                        <p class=" text-align-left ploegen-card-text">Donderdag: 18:00 - 19:30</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Training data:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Maandag: 18:00 - 19:30
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Donderdag: 18:00 - 19:30
+                        </p>
                     </article>
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Trainer: </p>
-                        <p class="text-align-left ploegen-card-text">Lieve Creemers </p>
-                        <p class="text-align-left ploegen-card-text">Anne Haex </p>
-                        <p class="text-align-left ploegen-card-text">Charlotte Bielen </p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Trainer:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Lieve Creemers
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Anne Haex
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Charlotte Bielen
+                        </p>
                     </article>
                 </article>
-                <article class="card standard-card-width card-height card-background-color">
+                <article
+                    class="card standard-card-width card-height card-background-color"
+                >
                     <h1 class="text-color card-text">U11 3v3 A</h1>
-                    <img class="card-img" src="assets/Ploegen.webp" alt="Ploegen"
+                    <img
+                        class="card-img"
+                        src="assets/Ploegen.webp"
+                        alt="Ploegen"
                     />
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Training data: </p>
-                        <p class=" text-align-left ploegen-card-text">Dinsdag: 18:00 - 19:30 </p>
-                        <p class=" text-align-left ploegen-card-text">Donderdag: 18:00 - 19:30</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Training data:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Dinsdag: 18:00 - 19:30
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Donderdag: 18:00 - 19:30
+                        </p>
                     </article>
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Trainer: </p>
-                        <p class="text-align-left ploegen-card-text">Femke Leurs </p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Trainer:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Femke Leurs
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
                     </article>
                 </article>
-                <article class="card standard-card-width card-height card-background-color">
+                <article
+                    class="card standard-card-width card-height card-background-color"
+                >
                     <h1 class="text-color card-text">U11 3v3 B</h1>
-                    <img class="card-img" src="assets/Ploegen.webp" alt="Ploegen"
+                    <img
+                        class="card-img"
+                        src="assets/Ploegen.webp"
+                        alt="Ploegen"
                     />
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Training data: </p>
-                        <p class=" text-align-left ploegen-card-text">Dinsdag: 18:00 - 19:30 </p>
-                        <p class=" text-align-left ploegen-card-text">Donderdag: 18:00 - 19:30</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Training data:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Dinsdag: 18:00 - 19:30
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Donderdag: 18:00 - 19:30
+                        </p>
                     </article>
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Trainer: </p>
-                        <p class="text-align-left ploegen-card-text">Charlotte Bielen </p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Trainer:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Charlotte Bielen
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
                     </article>
                 </article>
-                <article class="card standard-card-width card-height card-background-color">
+                <article
+                    class="card standard-card-width card-height card-background-color"
+                >
                     <h1 class="text-color card-text">U11 3v3 C</h1>
-                    <img class="card-img" src="assets/Ploegen.webp" alt="Ploegen"
+                    <img
+                        class="card-img"
+                        src="assets/Ploegen.webp"
+                        alt="Ploegen"
                     />
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Training data: </p>
-                        <p class=" text-align-left ploegen-card-text">Dinsdag: 18:00 - 19:30 </p>
-                        <p class=" text-align-left ploegen-card-text">Donderdag: 18:00 - 19:30</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Training data:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Dinsdag: 18:00 - 19:30
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Donderdag: 18:00 - 19:30
+                        </p>
                     </article>
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Trainer: </p>
-                        <p class="text-align-left ploegen-card-text">Brenda Loos </p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Trainer:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Brenda Loos
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
                     </article>
                 </article>
-                <article class="card standard-card-width card-height card-background-color">
+                <article
+                    class="card standard-card-width card-height card-background-color"
+                >
                     <h1 class="text-color card-text">U13 A</h1>
-                    <img class="card-img" src="assets/Ploegen.webp" alt="Ploegen"
+                    <img
+                        class="card-img"
+                        src="assets/Ploegen.webp"
+                        alt="Ploegen"
                     />
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Training data: </p>
-                        <p class=" text-align-left ploegen-card-text">Dinsdag: 18:00 - 19:30 </p>
-                        <p class=" text-align-left ploegen-card-text">Vrijdag: 18:00 - 19:30</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Training data:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Dinsdag: 18:00 - 19:30
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Vrijdag: 18:00 - 19:30
+                        </p>
                     </article>
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Trainer: </p>
-                        <p class="text-align-left ploegen-card-text">Marissa Meyen </p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Trainer:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Marissa Meyen
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
                     </article>
                 </article>
-                <article class="card standard-card-width card-height card-background-color">
+                <article
+                    class="card standard-card-width card-height card-background-color"
+                >
                     <h1 class="text-color card-text">U13 B</h1>
-                    <img class="card-img" src="assets/Ploegen.webp" alt="Ploegen"
+                    <img
+                        class="card-img"
+                        src="assets/Ploegen.webp"
+                        alt="Ploegen"
                     />
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Training data: </p>
-                        <p class=" text-align-left ploegen-card-text">Dinsdag: 18:00 - 19:30 </p>
-                        <p class=" text-align-left ploegen-card-text">Vrijdag: 18:00 - 19:30</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Training data:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Dinsdag: 18:00 - 19:30
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Vrijdag: 18:00 - 19:30
+                        </p>
                     </article>
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Trainer: </p>
-                        <p class="text-align-left ploegen-card-text">Marissa Meyen </p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Trainer:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Marissa Meyen
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
                     </article>
                 </article>
-                <article class="card standard-card-width card-height card-background-color">
+                <article
+                    class="card standard-card-width card-height card-background-color"
+                >
                     <h1 class="text-color card-text">U13 C</h1>
-                    <img class="card-img" src="assets/Ploegen.webp" alt="Ploegen"
+                    <img
+                        class="card-img"
+                        src="assets/Ploegen.webp"
+                        alt="Ploegen"
                     />
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Training data: </p>
-                        <p class=" text-align-left ploegen-card-text">Maandag: 18:00 - 19:30 </p>
-                        <p class=" text-align-left ploegen-card-text">Donderdag: 18:00 - 19:30</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Training data:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Maandag: 18:00 - 19:30
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Donderdag: 18:00 - 19:30
+                        </p>
                     </article>
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Trainer: </p>
-                        <p class="text-align-left ploegen-card-text">Lieve Creemers</p>
-                        <p class="text-align-left ploegen-card-text">Wendy Vrijsen</p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Trainer:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Lieve Creemers
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Wendy Vrijsen
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
                     </article>
                 </article>
-                <article class="card standard-card-width card-height card-background-color">
+                <article
+                    class="card standard-card-width card-height card-background-color"
+                >
                     <h1 class="text-color card-text">U15 A</h1>
-                    <img class="card-img" src="assets/Ploegen.webp" alt="Ploegen"
+                    <img
+                        class="card-img"
+                        src="assets/Ploegen.webp"
+                        alt="Ploegen"
                     />
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Training data: </p>
-                        <p class=" text-align-left ploegen-card-text">Woensdag: 18:00 - 19:30 </p>
-                        <p class=" text-align-left ploegen-card-text">Vrijdag: 18:00 - 19:30</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Training data:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Woensdag: 18:00 - 19:30
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Vrijdag: 18:00 - 19:30
+                        </p>
                     </article>
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Trainer: </p>
-                        <p class="text-align-left ploegen-card-text">Gunter Visterin</p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
-                        
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Trainer:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Gunter Visterin
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
                     </article>
                 </article>
-                <article class="card standard-card-width card-height card-background-color">
+                <article
+                    class="card standard-card-width card-height card-background-color"
+                >
                     <h1 class="text-color card-text">U15 B</h1>
-                    <img class="card-img" src="assets/Ploegen.webp" alt="Ploegen"
+                    <img
+                        class="card-img"
+                        src="assets/Ploegen.webp"
+                        alt="Ploegen"
                     />
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Training data: </p>
-                        <p class=" text-align-left ploegen-card-text">Woensdag: 18:00 - 19:30 </p>
-                        <p class=" text-align-left ploegen-card-text">Vrijdag: 18:00 - 19:30</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Training data:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Woensdag: 18:00 - 19:30
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Vrijdag: 18:00 - 19:30
+                        </p>
                     </article>
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Trainer: </p>
-                        <p class="text-align-left ploegen-card-text">Rosi Fransen</p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
-                        
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Trainer:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Rosi Fransen
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
                     </article>
                 </article>
-                <article class="card standard-card-width card-height card-background-color">
+                <article
+                    class="card standard-card-width card-height card-background-color"
+                >
                     <h1 class="text-color card-text">U17</h1>
-                    <img class="card-img" src="assets/Ploegen.webp" alt="Ploegen"
+                    <img
+                        class="card-img"
+                        src="assets/Ploegen.webp"
+                        alt="Ploegen"
                     />
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Training data: </p>
-                        <p class=" text-align-left ploegen-card-text">Woensdag: 19:30 - 21:00 </p>
-                        <p class=" text-align-left ploegen-card-text">Vrijdag: 19:30 - 21:00</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Training data:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Woensdag: 19:30 - 21:00
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Vrijdag: 19:30 - 21:00
+                        </p>
                     </article>
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Trainer: </p>
-                        <p class="text-align-left ploegen-card-text">Gunter Visterin</p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
-                        
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Trainer:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Gunter Visterin
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
                     </article>
                 </article>
             </article>
             <article class="big-part">
                 <h1 class="article-title title-color">Dames ploegen</h1>
-                <article class="card standard-card-width card-height card-background-color">
+                <article
+                    class="card standard-card-width card-height card-background-color"
+                >
                     <h1 class="text-color card-text">Promo 3</h1>
-                    <img class="card-img" src="assets/Ploegen.webp" alt="Ploegen"
+                    <img
+                        class="card-img"
+                        src="assets/Ploegen.webp"
+                        alt="Ploegen"
                     />
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Training data: </p>
-                        <p class=" text-align-left ploegen-card-text">Dinsdag: 19:30 - 21:00 </p>
-                        <p class=" text-align-left ploegen-card-text">Vrijdag: 19:30 - 21:00</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Training data:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Dinsdag: 19:30 - 21:00
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Vrijdag: 19:30 - 21:00
+                        </p>
                     </article>
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Trainer: </p>
-                        <p class="text-align-left ploegen-card-text">Luc Mertens </p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Trainer:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Luc Mertens
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
                     </article>
                 </article>
-                <article class="card standard-card-width card-height card-background-color">
+                <article
+                    class="card standard-card-width card-height card-background-color"
+                >
                     <h1 class="text-color card-text">Promo 1</h1>
-                    <img class="card-img" src="assets/Ploegen.webp" alt="Ploegen"
+                    <img
+                        class="card-img"
+                        src="assets/Ploegen.webp"
+                        alt="Ploegen"
                     />
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Training data: </p>
-                        <p class=" text-align-left ploegen-card-text">Dinsdag: 19:30 - 21:00 </p>
-                        <p class=" text-align-left ploegen-card-text">Vrijdag: 19:30 - 21:00</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Training data:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Dinsdag: 19:30 - 21:00
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Vrijdag: 19:30 - 21:00
+                        </p>
                     </article>
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Trainer: </p>
-                        <p class="text-align-left ploegen-card-text">Etienne Willekens</p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Trainer:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Etienne Willekens
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
                     </article>
                 </article>
-                <article class="card standard-card-width card-height card-background-color">
+                <article
+                    class="card standard-card-width card-height card-background-color"
+                >
                     <h1 class="text-color card-text">Recreatie</h1>
-                    <img class="card-img" src="assets/Ploegen.webp" alt="Ploegen"
+                    <img
+                        class="card-img"
+                        src="assets/Ploegen.webp"
+                        alt="Ploegen"
                     />
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Training data: </p>
-                        <p class=" text-align-left ploegen-card-text">Dinsdag: 19:30 - 21:00 </p>
-                        <p class=" text-align-left ploegen-card-text">Vrijdag: 19:30 - 21:00</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Training data:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Dinsdag: 19:30 - 21:00
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            Vrijdag: 19:30 - 21:00
+                        </p>
                     </article>
                     <article class="ploegen-card">
-                        <p class="special-text text-align-left ploegen-card-text">Trainer: </p>
-                        <p class="text-align-left ploegen-card-text">André Willekens</p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
-                        <p class=" text-align-left ploegen-card-text visibility-disabled">Hoi</p>
+                        <p
+                            class="special-text text-align-left ploegen-card-text"
+                        >
+                            Trainer:
+                        </p>
+                        <p class="text-align-left ploegen-card-text">
+                            André Willekens
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
+                        <p
+                            class="text-align-left ploegen-card-text visibility-disabled"
+                        >
+                            Hoi
+                        </p>
                     </article>
                 </article>
             </article>
