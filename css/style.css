@@ -110,7 +110,6 @@ header img {
 header nav {
     position: relative;
     margin-top: 10px;
-    horiz-align: center;
     text-align: center;
 }
 
@@ -208,6 +207,13 @@ header nav a:hover {
 /* responsive */
 
 @media screen and (max-width: 800px) {
+    header nav a {
+        text-decoration: none;
+        color: var(--header-text-color);
+        display: inline-block;
+        margin: 2px
+    }
+    
     header img {
         display: none;
     }
@@ -226,6 +232,15 @@ header nav a:hover {
 
     .card.visibility-disabled {
         display: none;
+    }
+
+    .page-title {
+        font-size: 20pt;
+        padding-top: 40px;
+    }
+
+    .card-text{
+        font-size: 20pt;
     }
 }
 

@@ -22,3 +22,23 @@ a {
     color: black;
     text-decoration: none;
 }
+
+@media screen and (max-width: 1200px) {
+    main .card {
+        width: 90%;
+    }
+
+    .card-width {
+        width: 90%;
+    }
+
+    @media screen and (max-width: 600px) {
+        main .card {
+            box-sizing: border-box;
+            margin: 1%;
+        }
+        .sponsor-card {
+            height: 350px;
+        }
+    }
+}
