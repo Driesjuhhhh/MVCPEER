@@ -8,8 +8,8 @@ html {
     height: 900px;
 }
 
-.opvallend-want-belangrijk{
-    color: red
+.opvallend-want-belangrijk {
+    color: red;
 }
 
 /* Coloring */
@@ -23,7 +23,7 @@ html {
 }
 
 .primary-background-color {
-    background-color: #132bca
+    background-color: #132bca;
 }
 
 .secondary-background-color {
@@ -41,11 +41,17 @@ html {
     text-align: center;
 }
 
-/* Page title */
+/* Titles */
 
 .page-title {
     font-family: "M PLUS Rounded 1c", sans-serif;
     font-size: 50pt;
+    padding-top: 40px;
+}
+
+.article-title {
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-size: 25pt;
     padding-top: 40px;
 }
 
@@ -97,9 +103,9 @@ header nav a {
     margin: 20px;
 }
 
-header nav a:hover{
+header nav a:hover {
     transition: 0.5s;
-    color: black
+    color: black;
 }
 
 /* Big parts */
@@ -130,7 +136,7 @@ header nav a:hover{
     font-size: 25pt;
 }
 
-.card-img{
+.card-img {
     max-height: 290px;
 }
 
@@ -141,14 +147,20 @@ header nav a:hover{
     margin-bottom: 15px;
 }
 
+/* Handig */
+
+.visibility-disabled {
+    visibility: hidden;
+}
+
 /* responsive */
 
 @media screen and (max-width: 800px) {
-    header{
+    header {
         display: none;
     }
 
-    .page-title{
+    .page-title {
         margin-top: auto;
     }
 }
