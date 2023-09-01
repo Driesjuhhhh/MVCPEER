@@ -207,32 +207,27 @@ header nav a:hover {
 
 /* responsive */
 
-
-
 @media screen and (max-width: 800px) {
-    header img{
+    header img {
         display: none;
     }
 
-    header .darkmode-button{
+    header .darkmode-button {
         display: none;
     }
-    
+
     .page-title {
         margin-top: auto;
     }
 
-    main .card{
+    main .card {
         width: 100%;
     }
 
     .card.visibility-disabled {
         display: none;
     }
-
 }
-
-
 
 /* Animations */
 

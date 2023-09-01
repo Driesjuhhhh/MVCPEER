@@ -6,7 +6,7 @@
     width: 90%;
 }
 
-.card-mail-height{
+.card-mail-height {
     height: 40px;
 }
 
@@ -41,39 +41,36 @@ iframe {
     .card-height {
         height: 580px;
     }
-    
+
     .card-width {
         width: 90%;
     }
-    
+
     iframe {
         width: 90%;
         height: 550px;
     }
 
-    .card-mail-height{
+    .card-mail-height {
         height: 70px;
     }
-
 }
-
 
 @media screen and (max-width: 800px) {
     .card-height {
         height: 580px;
     }
-    
+
     .card-width {
         width: 90%;
     }
-    
+
     iframe {
         width: 90%;
         height: 550px;
     }
 
-    .card-mail-height{
+    .card-mail-height {
         height: 70px;
     }
-
 }
