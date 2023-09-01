@@ -1,11 +1,11 @@
 /* Text layouting */
 
-.special-text{
+.special-text {
     font-size: 20px;
     text-decoration: underline;
 }
 
-.text-align-left{
+.text-align-left {
     text-align: left;
 }
 
@@ -13,7 +13,7 @@
     margin-left: 15px;
 }
 
-.ploegen-card{
+.ploegen-card {
     display: inline-block;
     width: 35%;
     margin-left: auto;

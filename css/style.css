@@ -120,7 +120,7 @@ header nav a:hover {
 /* Card */
 
 .card {
-   float: left;
+    float: left;
     border: #49739c 2px solid;
     border-radius: 15px;
     margin: 1%;
@@ -132,7 +132,7 @@ header nav a:hover {
     margin-bottom: 50px;
 }
 
-.standard-card-width{
+.standard-card-width {
     width: 28%;
 }
 
@@ -181,9 +181,9 @@ header nav a:hover {
 
 @keyframes slideInAnimation {
     0% {
-      transform: translateY(-100%);
+        transform: translateY(-100%);
     }
     100% {
-      transform: translateY(0);
+        transform: translateY(0);
     }
 }
