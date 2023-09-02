@@ -7,18 +7,22 @@
     height: 200px;
 }
 
-@media screen and (max-width: 600px) {
-    .card-text{
-        font-size: 1pt;
+@media screen and (max-width: 1520px) {
+    main .card {
+        box-sizing: border-box;
+        width: 48%;
+        margin: 1%;
+        height: 300px;
     }
-    
+}
+
+@media screen and (max-width: 768px) {
     main .card {
         height: 300px;
     }
 
-    main .card {
-        box-sizing: border-box;
-        width: 90%;
-        margin: 1%;
+    main .card img{
+        width: 100%;
     }
 }
+
