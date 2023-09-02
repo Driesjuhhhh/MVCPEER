@@ -1,6 +1,10 @@
 'use strict'
 
 document.addEventListener("DOMContentLoaded", () => {
+    console.log("Leuk dat je de code van deze website bekijkt!");
+    console.log("Deze code is geschreven door Dries Bielen");
+    console.log("https://www.driesbielen.be");
+    console.log("Have a good time in inspector land");
     setCurrentYear();
     var darkmode = localStorage.getItem("darkmode");
 
