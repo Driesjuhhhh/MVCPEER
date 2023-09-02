@@ -8,7 +8,7 @@
     --color-primary: #6c9bcf;
     --border-radius-1: 0.4rem;
     --color-light: rgba(132, 139, 200, 0.18);
-    --footer-color: rgba(0, 0, 0, 0.1);
+    --footer-color: rgba(0, 0, 0, 0.3);
 }
 
 .dark-mode-variables {
@@ -18,7 +18,7 @@
     --header-background-color: #132bca;
     --header-hover-color: pink;
     --header-text-color: white;
-    --footer-color: rgba(255, 255, 255, 0.1);
+    --footer-color: rgba(255, 255, 255, 0.3);
 }
 
 html {
