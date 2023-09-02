@@ -9,8 +9,6 @@
         margin: 1%;
         height: 500px;
     }
-
-    
 }
 
 @media screen and (max-width: 768px) {
@@ -18,7 +16,7 @@
         height: 450px;
     }
 
-    main .card img{
+    main .card img {
         width: 100%;
     }
 }
