@@ -2,10 +2,6 @@
     height: 550px;
 }
 
-.card-width {
-    width: 90%;
-}
-
 .card-mail-height {
     height: 40px;
 }
@@ -34,16 +30,8 @@ iframe {
 }
 
 @media screen and (max-width: 1200px) {
-    main .card {
-        width: 90%;
-    }
-
     .card-height {
         height: 580px;
-    }
-
-    .card-width {
-        width: 90%;
     }
 
     iframe {
