@@ -1,4 +1,7 @@
+'use strict'
+
 document.addEventListener("DOMContentLoaded", () => {
+    setCurrentYear();
     var darkmode = localStorage.getItem("darkmode");
 
     if (darkmode === "true") {
@@ -21,4 +24,13 @@ function handleDarkModeButtonClick() {
 
     darkMode.querySelector("span:nth-child(1)").classList.toggle("active");
     darkMode.querySelector("span:nth-child(2)").classList.toggle("active");
+}
+
+
+function setCurrentYear() {
+    var currentYear = new Date().getFullYear();
+    var yearSpan = document.getElementById("year");
+    if (yearSpan) {
+        yearSpan.textContent = currentYear;
+    }
 }
