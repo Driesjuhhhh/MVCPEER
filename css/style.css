@@ -57,6 +57,14 @@ body {
 
 /* Text alignment */
 
+p{
+    font-size: 15pt;
+}
+
+li{
+    font-size: 15pt;
+}
+
 .text-align-center {
     text-align: center;
 }
@@ -211,6 +219,10 @@ footer {
 footer a {
     text-decoration: none;
     color: #555;
+}
+
+.footer-text-size{
+    font-size: 10pt;
 }
 
 /* Darkmode */
