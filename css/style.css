@@ -207,6 +207,10 @@ header nav a:hover {
 /* responsive */
 
 @media screen and (max-width: 800px) {
+    header{
+        height: 40px;
+    }
+
     header nav a {
         text-decoration: none;
         color: var(--header-text-color);
@@ -219,7 +223,8 @@ header nav a:hover {
     }
 
     header .darkmode-button {
-        display: none;
+        right: 5px;
+        top: 2px;
     }
 
     .page-title {
