@@ -1,0 +1,20 @@
+@media screen and (max-width: 1520px) {
+    main .card {
+        box-sizing: border-box;
+        width: 48%;
+        margin: 1%;
+        height: 500px;
+    }
+
+    
+}
+
+@media screen and (max-width: 768px) {
+    main .card {
+        height: 450px;
+    }
+
+    main .card img{
+        width: 100%;
+    }
+}
