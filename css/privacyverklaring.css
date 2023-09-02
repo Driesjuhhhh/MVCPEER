@@ -1,0 +1,10 @@
+main .card{
+    height: auto;
+}
+
+
+@media screen and (max-width: 768px) {
+    main .card img{
+        width: 90%;
+    }
+}
