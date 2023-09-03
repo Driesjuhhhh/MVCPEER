@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="nl">
+    <head>
+        <title>MVC | Home</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <link href="./assets/logo.png?" rel="shortcut icon" />
+        <meta charset="utf-8" />
+        <meta name="theme-color" content="#49739c" />
+        <meta name="og:url" content="https://mvcpeer.be" />
+        <meta name="og:title" content="MVC | Home" />
+        <meta
+            name="description"
+            content="Dit is de officiele website van MVC Peer"
+        />
+        <meta
+            name="og:description"
+            content="Dit is de officiele website van MVC Peer"
+        />
+        <link href="css/index.css" rel="stylesheet" />
+        <link href="css/style.css" rel="stylesheet" />
+        <script src="js/wedstrijden_fetch.js"></script>
+        <script src="js/scripts.js"></script>
+        <script
+            src="https://kit.fontawesome.com/c2e4631732.js"
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+        <header>
+            <img src="assets/logo.png" alt="logo" />
+            <nav>
+                <a href="ploegen.html">Ploegen</a>
+                <a href="team.html">Team</a>
+                <a href="administratie.html">Administratie</a>
+                <a href="steun.html">Steun</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="darkmode-switch">
+                <div class="dark-mode">
+                    <button id="darkmode-button" class="darkmode-button">
+                        <i class="fa-solid fa-circle-half-stroke"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <main class="text-align-center">
+            <article class="page-title">
+                <div>
+                    <h1 id="welcomeText" class="page-title title-color">
+                        Scores
+                    </h1>
+                </div>
+            </article>
+            <article class="big-part">
+                <select name="ploegen" id="ploegen">
+                    <option value="P1D">Promo 1 Dames</option>
+                    <option value="P3D-B">Promo 3 Dames</option>
+                    <option value="LMU17N2R1-E">U17 Meisjes Niveau 2</option>
+                    <option value="LMU15N1R1-A">U15 Meisjes A</option>
+                    <option value="LMU15N2R1-C">U15 Meisjes B</option>
+                    <option value="LMU13N2R1-E">U13 Meisjes A</option>
+                    <option value="LMU13N3R1-B">U13 Meisjes B</option>
+                    <option value="LMU13N3R1-C">U13 Meisjes C</option>
+                    <option value="LMJU11N3R1-A">U11 Jongens-Meisjes A</option>
+                    <option value="LMJU11N3R1-C">U11 Jongens-Meisjes B</option>
+                    <option value="LMJU11N3R1-D">U11 Jongens-Meisjes C</option>
+                    <option value="LMJU112-2(4.1)R1-B">U11 Jongens Meisjes 2v2</option>
+                    <option value="BVLPD C">Beker van Limburg Promo 1</option>
+                    <option value="BVLPD L">Beker van Limburg Promo 3</option>
+                  </select>
+                  <div id="table"></div>
+            </article>
+        </main>
+        <footer>
+            <p class="text-color footer-text-size">
+                &copy; MVC Peer <span class="text-color" id="year"></span
+                ><span class="text-color responsive-d-none"
+                    >| Design by
+                    <a class="text-color" href="https://www.driesbielen.be"
+                        >Dries Bielen</a
+                    ></span
+                >
+                |
+                <a
+                    href="https://www.instagram.com/mvcpeer/"
+                    class="instagram text-color"
+                    ><i class="fab fa-instagram"></i
+                ></a>
+                <a
+                    href="https://www.facebook.com/mvcpeervolley/?locale=nl_NL"
+                    class="facebook text-color"
+                    ><i class="fab fa-facebook"></i
+                ></a>
+            </p>
+        </footer>
+    </body>
+</html>
