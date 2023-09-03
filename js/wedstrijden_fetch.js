@@ -1,3 +1,7 @@
+const reeksCodeArray = ["P1D","P3D-B","LMU17N2R1-E","LMU15N1R1-A","LMU15N2R1-C","LMU13N2R1-E","LMU13N3R1-B","LMU13N3R1-C","LMJU11N3R1-A","LMJU11N3R1-C","LMJU11N3R1-D","LMJU112-2(4.1)R1-B","BVLPD C","BVLPD L"];
+const reeksNameArray = ["Promo 1 Dames", "Promo 3 Dames", "U17 Meisjes Niveau 2", "U15 Meisjes A", "U15 Meisjes B", "U13 Meisjes A", "U13 Meisjes B", "U13 Meisjes C", "U11 Jongens-Meisjes A", "U11 Jongens-Meisjes B", "U11 Jongens-Meisjes C", "U11 Jongens Meisjes 2v2", "Beker van Limburg Promo 1", "Beker van Limburg Promo 3"];
+ const tableDiv = document.getElementById('table');
+
 class VolleyAdmin2 {
     static API_URL = 'http://www.volleyadmin2.be/services';
 
@@ -38,11 +42,8 @@ class VolleyAdmin2 {
             // Fetch data
             const response = await fetch(endPoint, {
                 method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
                 timeout: 10000,
-            });
+              });
 
             // Handle response errors
             if (!response.ok) {
@@ -136,16 +137,41 @@ const volleyAdmin = new VolleyAdmin2();
 // Set the credentials
 const clubNumber = 'L-0923';
 const provinceId = 4;
-const seriesId = 'P3D-B';
+const seriesId = document.getElementById('ploegenSelect').value;
 
 // Example: Get matches
 volleyAdmin.getMatches(seriesId, provinceId, clubNumber)
     .then((matches) => {
-        console.log('Matches:', matches);
+        
+        if (tableDiv) {
+            const table = document.createElement('table');
+            table.innerHTML = '<tr><th>Ploeg</th><th>Datum</th></tr>';
+
+            matches.forEach(element => {
+                const ploegnummer = element.Reeks;
+                for (let i = 0; i < reeksCodeArray.length; i++) {
+                    if (reeksCodeArray[i] === ploegnummer){
+                        var ploeg = reeksNameArray[i]
+                    }
+                  }
+                const wedstrijdnummer = element.Wedstrijdnr;
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${ploeg}</td><td>${datum}</td>`;
+                
+                table.appendChild(row);
+            });
+
+            tableDiv.appendChild(table);
+        } else {
+            console.error('Error');
+        }
     })
     .catch((error) => {
+        table.innerHTML = `<p>Error: ${error.message} ${seriesId}<p>`;
         console.error('Error:', error.message);
     });
+
 
 // Example: Get series
 volleyAdmin.getSeries(provinceId)
@@ -153,7 +179,7 @@ volleyAdmin.getSeries(provinceId)
         console.log('Series:', series);
     })
     .catch((error) => {
-        console.error('Error:', error.message);
+        table.innerHTML = `<p>Error: ${error.message}<p>`;
     });
 
 // Example: Get standings
@@ -162,5 +188,5 @@ volleyAdmin.getStandings(seriesId, provinceId)
         console.log('Standings:', standings);
     })
     .catch((error) => {
-        console.error('Error:', error.message);
+        table.innerHTML = `<p>Error: ${error.message}<p>`;
     });

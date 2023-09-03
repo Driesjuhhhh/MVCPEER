@@ -1,3 +1,7 @@
+const reeksCodeArray = ["P1D","P3D-B","LMU17N2R1-E","LMU15N1R1-A","LMU15N2R1-C","LMU13N2R1-E","LMU13N3R1-B","LMU13N3R1-C","LMJU11N3R1-A","LMJU11N3R1-C","LMJU11N3R1-D","LMJU112-2(4.1)R1-B","BVLPD C","BVLPD L"];
+const reeksNameArray = ["Promo 1 Dames", "Promo 3 Dames", "U17 Meisjes Niveau 2", "U15 Meisjes A", "U15 Meisjes B", "U13 Meisjes A", "U13 Meisjes B", "U13 Meisjes C", "U11 Jongens-Meisjes A", "U11 Jongens-Meisjes B", "U11 Jongens-Meisjes C", "U11 Jongens Meisjes 2v2", "Beker van Limburg Promo 1", "Beker van Limburg Promo 3"];
+ const tableDiv = document.getElementById('table');
+
 class VolleyAdmin2 {
     static API_URL = 'http://www.volleyadmin2.be/services';
 
@@ -133,55 +137,38 @@ const volleyAdmin = new VolleyAdmin2();
 // Set the credentials
 const clubNumber = 'L-0923';
 const provinceId = 4;
-const seriesId = document.getElementById("ploegen").value;
+const seriesId = document.getElementById('ploegenSelect').value;
 
 // Example: Get matches
 volleyAdmin.getMatches(seriesId, provinceId, clubNumber)
-    .then(async (matches) => {
+    .then((matches) => {
+        
+        if (tableDiv) {
+            const table = document.createElement('table');
+            table.innerHTML = '<tr><th>Ploeg</th><th>Datum</th></tr>';
 
-        // Selecteer de tabeldiv
-        const tableDiv = document.getElementById('table');
+            matches.forEach(element => {
+                const ploegnummer = element.Reeks;
+                for (let i = 0; i < reeksCodeArray.length; i++) {
+                    if (reeksCodeArray[i] === ploegnummer){
+                        var ploeg = reeksNameArray[i]
+                    }
+                  }
+                const wedstrijdnummer = element.Wedstrijdnr;
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${ploeg}</td><td>${datum}</td>`;
+                
+                table.appendChild(row);
+            });
 
-        // Maak een nieuwe tabel aan
-        const table = document.createElement('table');
-
-        // Maak de tabelkop (header) aan
-        const headerRow = table.insertRow();
-        const header1 = document.createElement('th');
-        header1.textContent = 'Match ID';
-        const header2 = document.createElement('th');
-        header2.textContent = 'Wedstrijdnr';
-        const header3 = document.createElement('th');
-        header3.textContent = 'Match Info';
-        const header4 = document.createElement('th');
-        header4.textContent = 'Datum';
-        headerRow.appendChild(header1);
-        headerRow.appendChild(header2);
-        headerRow.appendChild(header3);
-        headerRow.appendChild(header4);
-
-        // Voeg elke match toe als een rij in de tabel
-        for (const match of matches) {
-            const row = table.insertRow();
-            
-            const seriesName = await volleyAdmin.getSeriesName(match.seriesId);
-            const matchInfo = await volleyAdmin.getMatchInfo(match.matchId);
-            const formattedDate = formatDate(match.date);
-
-            const cell1 = row.insertCell();
-            cell1.textContent = match.matchId;
-            const cell2 = row.insertCell();
-            cell2.textContent = seriesName;
-            const cell3 = row.insertCell();
-            cell3.textContent = matchInfo;
-            const cell4 = row.insertCell();
-            cell4.textContent = formattedDate;
+            tableDiv.appendChild(table);
+        } else {
+            console.error('Error');
         }
-
-        // Voeg de voltooide tabel toe aan de div
-        tableDiv.appendChild(table);
     })
     .catch((error) => {
+        table.innerHTML = `<p>Error: ${error.message} ${seriesId}<p>`;
         console.error('Error:', error.message);
     });
 
@@ -192,7 +179,7 @@ volleyAdmin.getSeries(provinceId)
         console.log('Series:', series);
     })
     .catch((error) => {
-        console.error('Error:', error.message);
+        table.innerHTML = `<p>Error: ${error.message}<p>`;
     });
 
 // Example: Get standings
@@ -201,5 +188,5 @@ volleyAdmin.getStandings(seriesId, provinceId)
         console.log('Standings:', standings);
     })
     .catch((error) => {
-        console.error('Error:', error.message);
+        table.innerHTML = `<p>Error: ${error.message}<p>`;
     });

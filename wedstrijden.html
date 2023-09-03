@@ -18,8 +18,8 @@
         />
         <link href="css/index.css" rel="stylesheet" />
         <link href="css/style.css" rel="stylesheet" />
-        <script src="js/wedstrijden_fetch_test.js"></script>
-        <script src="js/scripts.js"></script>
+        <script src="js/wedstrijden_fetch_test.js" defer></script>
+        <script src="js/scripts.js" defer></script>
         <script
             src="https://kit.fontawesome.com/c2e4631732.js"
             crossorigin="anonymous"
@@ -52,7 +52,7 @@
                 </div>
             </article>
             <article class="big-part">
-                <select name="ploegen" id="ploegen">
+                <select id="ploegenSelect">
                     <option value="P1D">Promo 1 Dames</option>
                     <option value="P3D-B">Promo 3 Dames</option>
                     <option value="LMU17N2R1-E">U17 Meisjes Niveau 2</option>
@@ -64,11 +64,13 @@
                     <option value="LMJU11N3R1-A">U11 Jongens-Meisjes A</option>
                     <option value="LMJU11N3R1-C">U11 Jongens-Meisjes B</option>
                     <option value="LMJU11N3R1-D">U11 Jongens-Meisjes C</option>
-                    <option value="LMJU112-2(4.1)R1-B">U11 Jongens Meisjes 2v2</option>
+                    <option value="LMJU112-2(4.1)R1-B">
+                        U11 Jongens Meisjes 2v2
+                    </option>
                     <option value="BVLPD C">Beker van Limburg Promo 1</option>
                     <option value="BVLPD L">Beker van Limburg Promo 3</option>
-                  </select>
-                  <div id="table"></div>
+                </select>
+                <div id="table"></div>
             </article>
         </main>
         <footer>
