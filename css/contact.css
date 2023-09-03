@@ -29,6 +29,23 @@ iframe {
     margin-bottom: 20px;
 }
 
+/* footer bottom spacing  */
+main {
+    margin-bottom: 900px;
+}
+
+@media screen and (max-width: 1200px) {
+    main {
+        margin-bottom: 900px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        margin-bottom: 1000px;
+    }
+}
+
 @media screen and (max-width: 1200px) {
     .card-height {
         height: 580px;
@@ -40,15 +57,7 @@ iframe {
     }
 
     .card-mail-height {
-        height: 70px;
-    }
-}
-
-@media screen and (max-width: 1200px) {
-    main .card {
-        box-sizing: border-box;
-        margin: 1%;
-        height: 600px;
+        height: 50px;
     }
 }
 
@@ -58,6 +67,6 @@ iframe {
     }
 
     main .card-mail-height {
-        height: 70px;
+        height: 50px;
     }
 }

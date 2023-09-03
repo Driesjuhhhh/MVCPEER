@@ -1,3 +1,22 @@
+/* footer bottom spacing  */
+main {
+    margin-bottom: 1300px;
+}
+
+@media screen and (max-width: 1520px) {
+    main {
+        margin-bottom: 1600px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        margin-bottom: 1600px;
+    }
+}
+
+
+
 main .card {
     height: auto;
 }

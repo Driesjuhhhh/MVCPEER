@@ -1,0 +1,17 @@
+/* footer bottom spacing  */
+main {
+    margin-bottom: 800px;
+}
+
+@media screen and (max-width: 1520px) {
+    main {
+        margin-bottom: 800px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        margin-bottom: 800px;
+    }
+}
+

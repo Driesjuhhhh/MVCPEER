@@ -23,7 +23,24 @@ a {
     text-decoration: none;
 }
 
-@media screen and (max-width: 1200px) {
+/* footer bottom spacing  */
+main {
+    margin-bottom: 1700px;
+}
+
+@media screen and (max-width: 1520px) {
+    main {
+        margin-bottom: 3800px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        margin-bottom: 3800px;
+    }
+}
+
+@media screen and (max-width: 1600px) {
     main .card {
         width: 90%;
     }
@@ -31,14 +48,17 @@ a {
     .card-width {
         width: 90%;
     }
+}
+@media screen and (max-width: 600px) {
+    main .card {
+        box-sizing: border-box;
+        margin: 1%;
+    }
+    .sponsor-card {
+        height: 350px;
+    }
 
-    @media screen and (max-width: 600px) {
-        main .card {
-            box-sizing: border-box;
-            margin: 1%;
-        }
-        .sponsor-card {
-            height: 350px;
-        }
+    .card img {
+        width: 50%;
     }
 }
