@@ -22,7 +22,7 @@
 }
 
 html {
-    animation: 0.5s ease-out 0s 1 startupAnimation;
+    animation: 1s ease-out 0s 1 startupAnimation;
 }
 
 body {
