@@ -134,9 +134,9 @@ class VolleyAdmin2 {
 const volleyAdmin = new VolleyAdmin2();
 
 // Set the credentials
-const clubNumber = 'W-1132';
-const provinceId = 9;
-const seriesId = '2 PDA'; // Tweede provinciale dames A
+const clubNumber = 'L-0923';
+const provinceId = 4;
+const seriesId = 'P3D-B';
 
 // Example: Get matches
 volleyAdmin.getMatches(seriesId, provinceId, clubNumber)
