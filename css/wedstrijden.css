@@ -12,6 +12,7 @@
 /* footer bottom spacing  */
 main {
     margin-bottom: 800px;
+    margin-top: 150px;
 }
 
 @media screen and (max-width: 1520px) {
