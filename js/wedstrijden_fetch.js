@@ -38,8 +38,11 @@ class VolleyAdmin2 {
             // Fetch data
             const response = await fetch(endPoint, {
                 method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
                 timeout: 10000,
-              });
+            });
 
             // Handle response errors
             if (!response.ok) {
@@ -131,62 +134,18 @@ class VolleyAdmin2 {
 const volleyAdmin = new VolleyAdmin2();
 
 // Set the credentials
-const clubNumber = 'L-0923';
-const provinceId = 4;
-const seriesId = 'P3D-B';
+const clubNumber = 'W-1132';
+const provinceId = 9;
+const seriesId = '2 PDA'; // Tweede provinciale dames A
 
 // Example: Get matches
 volleyAdmin.getMatches(seriesId, provinceId, clubNumber)
-    .then(async (matches) => {
-        
-        
-
-        // Selecteer de tabeldiv
-        const tableDiv = document.getElementById('table');
-
-        // Maak een nieuwe tabel aan
-        const table = document.createElement('table');
-
-        // Maak de tabelkop (header) aan
-        const headerRow = table.insertRow();
-        const header1 = document.createElement('th');
-        header1.textContent = 'Match ID';
-        const header2 = document.createElement('th');
-        header2.textContent = 'Series Name';
-        const header3 = document.createElement('th');
-        header3.textContent = 'Match Info';
-        const header4 = document.createElement('th');
-        header4.textContent = 'Datum';
-        headerRow.appendChild(header1);
-        headerRow.appendChild(header2);
-        headerRow.appendChild(header3);
-        headerRow.appendChild(header4);
-
-        // Voeg elke match toe als een rij in de tabel
-        for (const match of matches) {
-            const row = table.insertRow();
-            
-            const seriesName = await volleyAdmin.getSeriesName(match.seriesId);
-            const matchInfo = await volleyAdmin.getMatchInfo(match.matchId);
-            const formattedDate = formatDate(match.date);
-
-            const cell1 = row.insertCell();
-            cell1.textContent = match.matchId;
-            const cell2 = row.insertCell();
-            cell2.textContent = seriesName;
-            const cell3 = row.insertCell();
-            cell3.textContent = matchInfo;
-            const cell4 = row.insertCell();
-            cell4.textContent = formattedDate;
-        }
-
-        // Voeg de voltooide tabel toe aan de div
-        tableDiv.appendChild(table);
+    .then((matches) => {
+        console.log('Matches:', matches);
     })
     .catch((error) => {
         console.error('Error:', error.message);
     });
-
 
 // Example: Get series
 volleyAdmin.getSeries(provinceId)
