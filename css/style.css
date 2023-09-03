@@ -184,7 +184,6 @@ header nav a:hover {
 .card-text-2 {
     color: var(--color-text);
 }
-
 .card-img {
     max-height: 290px;
 }
@@ -281,6 +280,10 @@ footer a {
         display: none;
     }
 
+    .big-part {
+        width: 100%;
+    }
+
     .page-title {
         font-size: 20pt;
         padding-top: 40px;
@@ -293,6 +296,15 @@ footer a {
     .responsive-d-none {
         display: none;
     }
+
+    li {
+        font-size: 13pt;
+    }
+
+    .card-text-3 {
+        font-size: 13pt;
+    }
+    
 }
 
 /* Animations */

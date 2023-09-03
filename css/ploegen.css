@@ -11,7 +11,7 @@ main {
 
 @media screen and (max-width: 768px) {
     main {
-        margin-bottom: 1600px;
+        margin-bottom: 1800px;
     }
 }
 
@@ -55,6 +55,10 @@ main {
 
 @media screen and (max-width: 800px) {
     main .card {
-        height: 500px;
+        height: 550px;
+    }
+
+    main .ploegen-card-text {
+        font-size: 12pt;
     }
 }
