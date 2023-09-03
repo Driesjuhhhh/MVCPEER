@@ -22,7 +22,7 @@
 }
 
 html {
-    animation: 0.5s ease-out 0s 1 slideInAnimation;
+    animation: 0.5s ease-out 0s 1 startupAnimation;
 }
 
 body {
@@ -297,11 +297,11 @@ footer a {
 
 /* Animations */
 
-@keyframes slideInAnimation {
-    0% {
-        transform: translateY(-100%);
-    }
-    100% {
-        transform: translateY(0);
-    }
+@keyframes startupAnimation {
+      0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
