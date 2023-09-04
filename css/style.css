@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 :root {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     --color-background: white;
     --color-text: black;
     --color-hover: black;
@@ -61,11 +61,11 @@ body {
 
 /* Text alignment */
 
-p{
+p {
     font-size: 15pt;
 }
 
-li{
+li {
     font-size: 15pt;
 }
 
@@ -219,7 +219,7 @@ footer a {
     color: #555;
 }
 
-.footer-text-size{
+.footer-text-size {
     font-size: 12pt;
 }
 
@@ -306,16 +306,15 @@ footer a {
     .card-text-3 {
         font-size: 13pt;
     }
-    
 }
 
 /* Animations */
 
 @keyframes startupAnimation {
-      0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }

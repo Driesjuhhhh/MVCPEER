@@ -8,7 +8,6 @@
     --table-text-color: white;
 }
 
-
 /* footer bottom spacing  */
 main {
     margin-bottom: 800px;
@@ -27,7 +26,6 @@ main {
     }
 }
 
-
 /* Style for the entire table */
 table {
     width: 80%;
@@ -38,11 +36,11 @@ table {
 /* Style for table rows */
 tr {
     background-color: var(--table-color);
-    color: var(--table-text-color)
+    color: var(--table-text-color);
 }
 
 /* Style for table cells */
 td {
     padding: 10px;
-    border: 1px solid --table-color
+    border: 1px solid --table-color;
 }

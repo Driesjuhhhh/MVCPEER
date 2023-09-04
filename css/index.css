@@ -3,7 +3,7 @@ main {
     margin-bottom: 800px;
 }
 
-.groepsfoto-img{
+.groepsfoto-img {
     width: 60%;
 }
 
@@ -31,7 +31,7 @@ main {
         height: 500px;
     }
 
-    .groepsfoto-img{
+    .groepsfoto-img {
         width: 80%;
     }
 }
@@ -45,7 +45,7 @@ main {
         width: 100%;
     }
 
-    .groepsfoto-img{
+    .groepsfoto-img {
         width: 95%;
     }
 }
