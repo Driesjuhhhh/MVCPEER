@@ -3,7 +3,7 @@ const reeksNameArray = ["Promo 1 Dames", "Promo 3 Dames", "U17 Meisjes Niveau 2"
  const tableDiv = document.getElementById('table');
 
 class VolleyAdmin2 {
-    static API_URL = 'http://www.volleyadmin2.be/services';
+    static API_URL = 'https://www.volleyadmin2.be/services';
 
     // Possible methods
     static API_METHOD_STANDINGS = 'rangschikking';
