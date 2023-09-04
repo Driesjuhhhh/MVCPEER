@@ -3,6 +3,10 @@ main {
     margin-bottom: 800px;
 }
 
+.groepsfoto-img{
+    width: 60%;
+}
+
 @media screen and (max-width: 1520px) {
     main {
         margin-bottom: 1300px;
@@ -26,6 +30,10 @@ main {
         margin: 1%;
         height: 500px;
     }
+
+    .groepsfoto-img{
+        width: 80%;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -35,5 +43,9 @@ main {
 
     main .card img {
         width: 100%;
+    }
+
+    .groepsfoto-img{
+        width: 95%;
     }
 }
