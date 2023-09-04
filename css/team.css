@@ -1,17 +1,25 @@
+.groepsfoto-img{
+    width: 60%;
+}
+
+.card-height{
+    height: 150px;
+}
+
 /* footer bottom spacing  */
 main {
-    margin-bottom: 800px;
+    margin-bottom: 1500px;
 }
 
 @media screen and (max-width: 1520px) {
     main {
-        margin-bottom: 800px;
+        margin-bottom: 1500px;
     }
 }
 
 @media screen and (max-width: 768px) {
     main {
-        margin-bottom: 800px;
+        margin-bottom: 3000px;
     }
 }
 
