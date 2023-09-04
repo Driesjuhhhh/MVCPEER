@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 :root {
+    font-family: 'Roboto', sans-serif;
     --color-background: white;
     --color-text: black;
     --color-hover: black;
@@ -81,13 +84,11 @@ li{
 /* Titles */
 
 .page-title {
-    font-family: "M PLUS Rounded 1c", sans-serif;
     font-size: 50pt;
     padding-top: 40px;
 }
 
 .article-title {
-    font-family: "M PLUS Rounded 1c", sans-serif;
     font-size: 25pt;
     padding-top: 40px;
 }
@@ -178,7 +179,7 @@ header nav a:hover {
 }
 
 .card-text {
-    font-size: 25pt;
+    font-size: 23pt;
     color: var(--color-text);
 }
 
@@ -291,7 +292,7 @@ footer a {
     }
 
     .card-text {
-        font-size: 15pt;
+        font-size: 20pt;
     }
 
     .responsive-d-none {
