@@ -4,7 +4,7 @@ const tableDiv = document.getElementById('table');
 const select = document.getElementById('ploegenSelect');
 const button = document.getElementById('button')
 
-button.addEventListener("change", function (){
+button.addEventListener("click", function (){
     var seriesId = select.value;
     removeTable;
     getMatchesFunction();
