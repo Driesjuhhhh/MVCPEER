@@ -3,7 +3,7 @@
 }
 
 .card-height {
-    height: 150px;
+    height: 200px;
 }
 
 /* footer bottom spacing  */
@@ -13,12 +13,39 @@ main {
 
 @media screen and (max-width: 1520px) {
     main {
-        margin-bottom: 1500px;
+        margin-bottom: 2500px;
     }
 }
 
 @media screen and (max-width: 768px) {
     main {
-        margin-bottom: 3000px;
+        margin-bottom: 2000px;
+    }
+}
+
+/* Responsive design */
+
+@media screen and (max-width: 1200px) {
+    main .card {
+        width: 40%;
+    }
+
+    .card-width {
+        width: 90%;
+    }
+
+    .groepsfoto-img{
+        width: 80%
+    }
+}
+
+@media screen and (max-width: 600px) {
+    main .card {
+        box-sizing: border-box;
+        margin: 1%;
+    }
+
+    .groepsfoto-img {
+        width: 95%;
     }
 }
