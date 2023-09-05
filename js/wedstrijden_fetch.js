@@ -51,8 +51,8 @@ class VolleyAdmin2 {
             }
 
             // Parse response as JSON
-            const responseData = await response.json();
-
+            const responseData = await response.text();
+            console.log(responseData)
             return responseData;
         } catch (error) {
             throw new Error(`An error occurred while fetching data: ${error.message}`);
@@ -168,7 +168,7 @@ volleyAdmin.getMatches(seriesId, provinceId, clubNumber)
         }
     })
     .catch((error) => {
-        table.innerHTML = `<p>Error: ${error.message} ${seriesId}<p>`;
+        table.innerHTML = `<p>Error<p>`;
         console.error('Error:', error.message);
     });
 
@@ -179,7 +179,8 @@ volleyAdmin.getSeries(provinceId)
         console.log('Series:', series);
     })
     .catch((error) => {
-        table.innerHTML = `<p>Error: ${error.message}<p>`;
+        table.innerHTML = `<p>Error<p>`;
+        console.error('Error:', error.message);
     });
 
 // Example: Get standings
@@ -188,5 +189,6 @@ volleyAdmin.getStandings(seriesId, provinceId)
         console.log('Standings:', standings);
     })
     .catch((error) => {
-        table.innerHTML = `<p>Error: ${error.message}<p>`;
+        table.innerHTML = `<p>Error<p>`;
+        console.log(error)
     });
