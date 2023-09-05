@@ -2,12 +2,14 @@ const reeksCodeArray = ["P1D","P3D-B","LMU17N2R1-E","LMU15N1R1-A","LMU15N2R1-C",
 const reeksNameArray = ["Promo 1 Dames", "Promo 3 Dames", "U17 Meisjes Niveau 2", "U15 Meisjes A", "U15 Meisjes B", "U13 Meisjes A", "U13 Meisjes B", "U13 Meisjes C", "U11 Jongens-Meisjes A", "U11 Jongens-Meisjes B", "U11 Jongens-Meisjes C", "U11 Jongens Meisjes 2v2", "Beker van Limburg Promo 1", "Beker van Limburg Promo 3"];
 const tableDiv = document.getElementById('table');
 const select = document.getElementById('ploegenSelect');
+const table = document.createElement('table');
 const button = document.getElementById('button')
 
 button.addEventListener("click", function (){
-    var seriesId = select.value;
-    removeTable;
+    tableDiv.removeChild('table')
     getMatchesFunction();
+    
+   
 });
 
 // Set the credentials
@@ -150,7 +152,7 @@ const volleyAdmin = new VolleyAdmin2();
 
 // Example: Get matches
 function getMatchesFunction(){
-    volleyAdmin.getMatches(seriesId, provinceId, clubNumber)
+    volleyAdmin.getMatches(document.getElementById('ploegenSelect').value, provinceId, clubNumber)
     .then((matches) => {
         if (tableDiv) {
             const table = document.createElement('table');
