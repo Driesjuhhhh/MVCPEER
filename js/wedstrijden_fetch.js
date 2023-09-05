@@ -153,7 +153,7 @@ function getMatchesFunction(){
     volleyAdmin.getMatches(seriesId, provinceId, clubNumber)
     .then((matches) => {
         if (tableDiv) {
-            const table = document.createElement('table');
+            const table = tableDiv.createElement('table');
             table.innerHTML = '<tr><th>Ploeg</th><th>Datum</th></tr>';
 
             matches.forEach(element => {
