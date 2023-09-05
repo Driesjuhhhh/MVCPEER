@@ -4,7 +4,6 @@ Dit is de officiële website van de MVC Peer Volleybalclub. Deze website is bedo
 
 
 # Speciale dank aan:
-Het bestuur die me dit project liet maken
-Mezelf ofc
-Kevin van Kdg-projects voor de api acces
-Emir Kaan voor het helpen met sommige stukken code
+# Speciale dank aan:
+ - Kevin van Kdg-projects voor de api acces
+ - Bestuur MVC Peer
