@@ -6,7 +6,7 @@ const table = document.createElement('table');
 const button = document.getElementById('button');
 
 button.addEventListener("click", function (){
-    tableDiv.children.removeChild('table');
+    removeTable();
     getMatchesFunction();
     
    
@@ -209,8 +209,10 @@ volleyAdmin.getStandings(seriesId, provinceId)
 };
 
 function removeTable() {
-    if (table.parentNode) {
-        table.parentNode.removeChild(table);
+    if (table.childNodes) {
+        table.childNodes.removeChild(table);
+    } else {
+        console.log("kapot")
     }
 }
 
