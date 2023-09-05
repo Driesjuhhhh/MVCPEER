@@ -4,18 +4,10 @@ const tableDiv = document.getElementById('table');
 const select = document.getElementById('ploegenSelect');
 
 select.addEventListener("change", function (){
-    const select = document.getElementById('ploegenSelect');
-    var seriesId = select.value;
+    var seriesIdFromSelect = select.value;
     removeTable;
-    getMatchesFunction();
+    getMatchesFunction(seriesIdFromSelect);
 });
-
-document.addEventListener("load", function (){
-    const select = document.getElementById('ploegenSelect');
-    var seriesId = select.value;
-    removeTable;
-    getMatchesFunction();
-})
 
 // Set the credentials
 const clubNumber = 'L-0923';
@@ -156,7 +148,7 @@ class VolleyAdmin2 {
 const volleyAdmin = new VolleyAdmin2();
 
 // Example: Get matches
-function getMatchesFunction(){
+function getMatchesFunction(seriesId){
     volleyAdmin.getMatches(seriesId, provinceId, clubNumber)
     .then((matches) => {
         if (tableDiv) {
