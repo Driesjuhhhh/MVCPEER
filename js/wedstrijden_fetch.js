@@ -156,7 +156,7 @@ volleyAdmin.getMatches(seriesId, provinceId, clubNumber)
                 const wedstrijdnummer = element.Wedstrijdnr;
                 
                 const row = document.createElement('tr');
-                row.innerHTML = `<td>${ploeg}</td><td>${datum}</td>`;
+                row.innerHTML = `<td>${ploeg}</td><td>${element.datum}</td>`;
                 
                 table.appendChild(row);
             });
