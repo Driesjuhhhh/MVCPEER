@@ -25,9 +25,9 @@ main {
 
 /* Responsive design */
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1550px) {
     main .card {
-        width: 40%;
+        width: 42%;
     }
 
     .card-width {
