@@ -6,7 +6,7 @@ const table = document.createElement('table');
 const button = document.getElementById('button');
 
 button.addEventListener("click", function (){
-    tableDiv.childNodes.removeChild('table');
+    tableDiv.children.removeChild('table');
     getMatchesFunction();
     
    
