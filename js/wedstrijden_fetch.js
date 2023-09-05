@@ -9,6 +9,10 @@ select.addEventListener("change", function (){
     getMatchesFunction();
 });
 
+document.addEventListener("load", function (){
+    const seriesId = select.value;
+    getMatchesFunction();
+})
 
 // Set the credentials
 const clubNumber = 'L-0923';
