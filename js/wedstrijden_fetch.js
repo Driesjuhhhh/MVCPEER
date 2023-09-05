@@ -5,7 +5,6 @@ const select = document.getElementById('ploegenSelect');
 
 select.addEventListener("change", function (){
     const seriesId = select.value;
-    tableDiv.innerHTML = "";
     getMatchesFunction();
 });
 
