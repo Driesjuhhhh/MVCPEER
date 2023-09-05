@@ -1,17 +1,17 @@
 const reeksCodeArray = ["P1D","P3D-B","LMU17N2R1-E","LMU15N1R1-A","LMU15N2R1-C","LMU13N2R1-E","LMU13N3R1-B","LMU13N3R1-C","LMJU11N3R1-A","LMJU11N3R1-C","LMJU11N3R1-D","LMJU112-2(4.1)R1-B","BVLPD C","BVLPD L"];
 const reeksNameArray = ["Promo 1 Dames", "Promo 3 Dames", "U17 Meisjes Niveau 2", "U15 Meisjes A", "U15 Meisjes B", "U13 Meisjes A", "U13 Meisjes B", "U13 Meisjes C", "U11 Jongens-Meisjes A", "U11 Jongens-Meisjes B", "U11 Jongens-Meisjes C", "U11 Jongens Meisjes 2v2", "Beker van Limburg Promo 1", "Beker van Limburg Promo 3"];
 const tableDiv = document.getElementById('table');
-
+const select = document.getElementById('ploegenSelect');
 
 select.addEventListener("change", function (){
-    var select = document.getElementById('ploegenSelect');
+    const select = document.getElementById('ploegenSelect');
     var seriesId = select.value;
     removeTable;
     getMatchesFunction();
 });
 
 document.addEventListener("load", function (){
-    var select = document.getElementById('ploegenSelect');
+    const select = document.getElementById('ploegenSelect');
     var seriesId = select.value;
     removeTable;
     getMatchesFunction();
