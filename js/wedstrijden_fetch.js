@@ -10,6 +10,7 @@ select.addEventListener("change", function (){
 });
 
 document.addEventListener("load", function(){
+    const seriesId = select.value;
     getMatchesFunction();
 })
 
