@@ -30,13 +30,13 @@ main {
 
 @media screen and (max-width: 1520px) {
     main {
-        margin-bottom: 3800px;
+        margin-bottom: 2000px;
     }
 }
 
 @media screen and (max-width: 768px) {
     main {
-        margin-bottom: 3800px;
+        margin-bottom: 2000px;
     }
 }
 
@@ -48,7 +48,12 @@ main {
     .card-width {
         width: 90%;
     }
+
+    .sponsor-card {
+        height: 450px;
+    }
 }
+
 @media screen and (max-width: 600px) {
     main .card {
         box-sizing: border-box;
