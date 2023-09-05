@@ -142,7 +142,6 @@ const seriesId = document.getElementById('ploegenSelect').value;
 // Example: Get matches
 volleyAdmin.getMatches(seriesId, provinceId, clubNumber)
     .then((matches) => {
-        
         if (tableDiv) {
             const table = document.createElement('table');
             table.innerHTML = '<tr><th>Ploeg</th><th>Datum</th></tr>';
@@ -176,19 +175,19 @@ volleyAdmin.getMatches(seriesId, provinceId, clubNumber)
 // Example: Get series
 volleyAdmin.getSeries(provinceId)
     .then((series) => {
-        console.log('Series:', series);
+        // console.log('Series:', series);
     })
     .catch((error) => {
         table.innerHTML = `<p>Error<p>`;
-        console.error('Error:', error.message);
+        // console.error('Error:', error.message);
     });
 
 // Example: Get standings
 volleyAdmin.getStandings(seriesId, provinceId)
     .then((standings) => {
-        console.log('Standings:', standings);
+        // console.log('Standings:', standings);
     })
     .catch((error) => {
         table.innerHTML = `<p>Error<p>`;
-        console.log(error)
+        // console.log(error)
     });
