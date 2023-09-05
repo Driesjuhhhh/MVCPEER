@@ -5,7 +5,8 @@ const select = document.getElementById('ploegenSelect');
 
 select.addEventListener("change", function (){
     const seriesId = select.value;
-    tableDiv.removeAttribute(table);
+    console.log(seriesId)
+    document.removeAttribute(table);
     getMatchesFunction();
 });
 
@@ -157,7 +158,7 @@ function getMatchesFunction(){
     volleyAdmin.getMatches(seriesId, provinceId, clubNumber)
     .then((matches) => {
         if (tableDiv) {
-            const table = tableDiv.createElement('table');
+            const table = document.createElement('table');
             table.innerHTML = '<tr><th>Ploeg</th><th>Datum</th></tr>';
 
             matches.forEach(element => {
