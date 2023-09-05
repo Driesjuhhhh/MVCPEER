@@ -3,10 +3,10 @@ const reeksNameArray = ["Promo 1 Dames", "Promo 3 Dames", "U17 Meisjes Niveau 2"
 const tableDiv = document.getElementById('table');
 const select = document.getElementById('ploegenSelect');
 const table = document.createElement('table');
-const button = document.getElementById('button')
+const button = document.getElementById('button');
 
 button.addEventListener("click", function (){
-    tableDiv.removeChild('table')
+    tableDiv.childNodes.removeChild('table');
     getMatchesFunction();
     
    
@@ -161,7 +161,7 @@ function getMatchesFunction(){
                 const ploegnummer = element.Reeks;
                 for (let i = 0; i < reeksCodeArray.length; i++) {
                     if (reeksCodeArray[i] === ploegnummer){
-                        var ploeg = reeksNameArray[i]
+                        var ploeg = reeksNameArray[i];
                     }
                   }
                 const wedstrijdnummer = element.Wedstrijdnr;
