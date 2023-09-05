@@ -148,7 +148,7 @@ class VolleyAdmin2 {
 const volleyAdmin = new VolleyAdmin2();
 
 // Example: Get matches
-function getMatchesFunction(seriesId){
+function getMatchesFunction(){
     volleyAdmin.getMatches(seriesId, provinceId, clubNumber)
     .then((matches) => {
         if (tableDiv) {
