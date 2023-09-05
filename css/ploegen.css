@@ -5,7 +5,7 @@ main {
 
 @media screen and (max-width: 1200px) {
     main {
-        margin-bottom: 4500px;
+        margin-bottom: 5500px;
     }
 }
 
@@ -41,7 +41,7 @@ main {
     height: 550px;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1600px) {
     main .card {
         box-sizing: border-box;
         width: 48%;
