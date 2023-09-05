@@ -68,7 +68,6 @@ class VolleyAdmin2 {
 
             // Parse response as JSON
             const responseData = await response.json();
-            console.log(responseData)
             return responseData;
         } catch (error) {
             throw new Error(`An error occurred while fetching data: ${error.message}`);
