@@ -6,7 +6,12 @@ const select = document.getElementById('ploegenSelect');
 select.addEventListener("change", function (){
     const seriesId = select.value;
     tableDiv.innerHTML = "";
+    getMatchesFunction();
 });
+
+document.addEventListener("load", function(){
+    getMatchesFunction();
+})
 
 
 // Set the credentials
@@ -148,7 +153,8 @@ class VolleyAdmin2 {
 const volleyAdmin = new VolleyAdmin2();
 
 // Example: Get matches
-volleyAdmin.getMatches(seriesId, provinceId, clubNumber)
+function getMatchesFunction(){
+    volleyAdmin.getMatches(seriesId, provinceId, clubNumber)
     .then((matches) => {
         if (tableDiv) {
             const table = document.createElement('table');
@@ -178,10 +184,11 @@ volleyAdmin.getMatches(seriesId, provinceId, clubNumber)
         table.innerHTML = `<p>Error<p>`;
         console.error('Error:', error.message);
     });
-
+};
 
 // Example: Get series
-volleyAdmin.getSeries(provinceId)
+function getSeriesFunction(){
+    volleyAdmin.getSeries(provinceId)
     .then((series) => {
         // console.log('Series:', series);
     })
@@ -189,7 +196,10 @@ volleyAdmin.getSeries(provinceId)
         // table.innerHTML = `<p>Error<p>`;
         // console.error('Error:', error.message);
     });
+};
 
+
+function getStandingsFunction(){
 // Example: Get standings
 volleyAdmin.getStandings(seriesId, provinceId)
     .then((standings) => {
@@ -199,3 +209,7 @@ volleyAdmin.getStandings(seriesId, provinceId)
         // table.innerHTML = `<p>Error<p>`;
         // console.log(error)
     });
+};
+
+
+
