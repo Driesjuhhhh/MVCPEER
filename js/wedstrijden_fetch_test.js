@@ -212,14 +212,15 @@ function getMatchesFunction() {
 
                 matches.forEach((element) => {
                     var uitslag = element.UitslagHoofd
-                    if (uitslag == "undefined"){
-                        uitslag == "";
+                    if (uitslag === "undefined"){
+                        uitslag == "Nog geen uitslag";
                     } else {
                         uitslag = element.UitslagHoofd;
                     }
+
                     const row = document.createElement("tr");
                     row.innerHTML = `<td>${element.Thuis}</td>${element.Bezoekers}</td><td>${element.SporthalNaam}</td>
-                    ${element.t} ${element.aanvangsuur}</td> ${uitslag}}</td>`;
+                    ${element.t} ${element.Aanvangsuur}</td> ${uitslag}}</td>`;
                     console.log(element)
 
                     table.appendChild(row);
