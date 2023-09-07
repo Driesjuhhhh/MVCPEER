@@ -248,7 +248,10 @@ function getSeriesFunction() {
         })
         .catch((error) => {
             table.innerHTML = `<p>Error<p>`;
-            console.error('Error:', error.message);
+            if (rankingTableDiv) {
+                console.error('Error:', error.message);
+            }
+            
         });
 }
 
