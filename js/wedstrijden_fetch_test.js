@@ -260,15 +260,7 @@ function getStandingsFunction() {
             console.log('Standings:', standings);
         })
         .catch((error) => {
-            // table.innerHTML = `<p>Error<p>`;
-            // console.log(error)
+            table.innerHTML = `<p>Error<p>`;
+            console.log(error)
         });
-}
-
-function removeTable() {
-    if (table.childNodes) {
-        table.childNodes.removeChild(table);
-    } else {
-        console.log("kapot");
-    }
 }
