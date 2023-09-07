@@ -221,10 +221,7 @@ function getMatchesFunction() {
 
                     var dateString = element.t;
 
-                    var dateMomentObject = moment(dateString, "DD/MM/YYYY");
-                    var date = dateMomentObject.toDate();
-                    
-                    
+                    var date = new Date(element.t);
                     const today = new Date();
                     
 
