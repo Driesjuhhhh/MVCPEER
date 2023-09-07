@@ -219,7 +219,7 @@ function getMatchesFunction() {
                     }
 
                     const row = document.createElement("tr");
-                    row.innerHTML = `<td>${element.Thuis}</td>${element.Bezoekers}</td><td>${element.SporthalNaam}</td>
+                    row.innerHTML = `<td>${element.Thuis}</td><td>${element.Bezoekers}</td><td>${element.SporthalNaam}</td>
                     ${element.t} ${element.Aanvangsuur}</td> ${uitslag}}</td>`;
                     console.log(element)
 
