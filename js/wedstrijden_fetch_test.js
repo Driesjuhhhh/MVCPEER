@@ -208,20 +208,18 @@ function getMatchesFunction() {
         .then((matches) => {
             if (tableDiv) {
                 const table = document.createElement("table");
-                table.innerHTML = "<tr><th>Ploeg</th><th>Datum</th></tr>";
+                table.innerHTML = "<tr><th>Thuis</th><th>Bezoeker</th><th>Locatie</th><th>Wanneer</th><th>Score</th></tr>";
 
                 matches.forEach((element) => {
-                    const ploegnummer = element.Reeks;
-                    for (let i = 0; i < reeksCodeArray.length; i++) {
-                        if (reeksCodeArray[i] === ploegnummer) {
-                            var ploeg = reeksNameArray[i];
-                        }
+                    const uitslag = element.UitslagHoofd
+                    if (uitslag == "undefined"){
+                        uitslag == "";
+                    } else {
+                        uitslag = element.UitslagHoofd;
                     }
-                    const wedstrijdnummer = element.Wedstrijdnr;
-
                     const row = document.createElement("tr");
                     row.innerHTML = `<td>${element.Thuis}</td>${element.Bezoekers}</td><td>${element.SporthalNaam}</td>
-                    ${element.t} ${element.aanvangsuur}</td> ${element.UitslagHoofd}</td>`;
+                    ${element.t} ${element.aanvangsuur}</td> ${uitslag}}</td>`;
                     console.log(element)
 
                     table.appendChild(row);
