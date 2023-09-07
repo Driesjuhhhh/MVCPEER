@@ -222,9 +222,9 @@ function getMatchesFunction() {
                     var dateToCheck = new Date(element.t);
                     var currentDate = new Date();
 
-                    if (currentDate > dateToCheck){
+                    if (dateToCheck > currentDate){
                         const row = document.createElement("tr");
-                        row.innerHTML = `<td>${ploeg}</td><td>${element.t}</td>`;
+                        row.innerHTML = `<td>${ploeg}</td><td>${element.t}</td><td>${element.location}`;
     
                         table.appendChild(row);
                     }
