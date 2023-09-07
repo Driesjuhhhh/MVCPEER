@@ -208,20 +208,20 @@ function getMatchesFunction() {
         .then((matches) => {
             if (tableDiv) {
                 const table = document.createElement("table");
-                table.innerHTML = "<tr><th>Thuis</th><th>Bezoeker</th><th>Locatie</th><th>Wanneer</th><th>Score</th></tr>";
+                table.innerHTML =
+                    "<tr><th>Thuis</th><th>Bezoeker</th><th>Locatie</th><th>Wanneer</th><th>Score</th></tr>";
 
                 matches.forEach((element) => {
-                    var uitslag = element.UitslagHoofd
-                    if (uitslag === "undefined"){
-                        uitslag = "/";
+                    if (element.UitslagHoofd === "undefined") {
+                        var uitslag = "/";
                     } else {
-                        uitslag = element.UitslagHoofd;
+                        var uitslag = element.UitslagHoofd;
                     }
 
                     const row = document.createElement("tr");
                     row.innerHTML = `<td>${element.Thuis}</td><td>${element.Bezoekers}</td><td>${element.SporthalNaam}</td><td>
                     ${element.t} ${element.Aanvangsuur}</td><td> ${uitslag}</td>`;
-                    console.log(element)
+                    console.log(element);
 
                     table.appendChild(row);
                 });
