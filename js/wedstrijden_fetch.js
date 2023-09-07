@@ -219,10 +219,10 @@ function getMatchesFunction() {
                     }
                     const wedstrijdnummer = element.Wedstrijdnr;
 
-                    var dateToCheck = new Date(element.t);
-                    var currentDate = new Date();
+                    var dateToCheck = new Date.parse(element.t);
+                    var currentDate = new Date.now();
 
-                    if (dateToCheck > currentDate){
+                    if (dateToCheck.getDate() > currentDate.getDate()){
                         const row = document.createElement("tr");
                         row.innerHTML = `<td>${ploeg}</td><td>${element.t}</td><td>${element.location}`;
     
