@@ -219,33 +219,11 @@ function getMatchesFunction() {
                     }
                     const wedstrijdnummer = element.Wedstrijdnr;
 
-                    var dateString = element.t;
+                    const row = document.createElement("tr");
+                    row.innerHTML = `<td>${ploeg}</td><td>${element.t}</td>`;
+                    console.log(element)
 
-                    var dateString = element.t;
-                    dateString.split("/");
-                    var dateDay = dateString[0];
-                    var dateMonth = dateString[1];
-                    const today = new Date();
-                    const todayString = today.getDate().toString();
-                    todayString.split("/");
-                    var todayDay = todayString[0];
-                    
-
-                    if (dateMonth - today.getMonth() >= 0 && dateDay >= todayDay){
-                        console.log(ploeg);
-                        console.log(element.t);
-                    } else {
-                        console.log(today.getDate);
-                    }
-
-                    // if (dateToCheck > currentDate){
-                    //     const row = document.createElement("tr");
-                    //     row.innerHTML = `<td>${ploeg}</td><td>${element.t}</td><td>${element.location}`;
-    
-                    //     table.appendChild(row);
-                    // }
-
-                    
+                    table.appendChild(row);
                 });
 
                 tableDiv.appendChild(table);
