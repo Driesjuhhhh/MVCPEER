@@ -37,9 +37,9 @@ const table = document.createElement("table");
 const button = document.getElementById("button");
 
 button.addEventListener("click", function () {
-    // tableDiv.innerHTML = "";
+    tableDiv.innerHTML = "";
     // getMatchesFunction();
-    rankingTableDiv.innerHTML = "";
+    // rankingTableDiv.innerHTML = "";
     getSeriesFunction();
 });
 
@@ -247,7 +247,7 @@ function getSeriesFunction() {
             console.log('Series:', series);
         })
         .catch((error) => {
-            if (rankingTableDiv) {
+            if (tableDiv) {
                 table.innerHTML = `<p>Error<p>`;
             }
             console.error('Error:', error.message);
