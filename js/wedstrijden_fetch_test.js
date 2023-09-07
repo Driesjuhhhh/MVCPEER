@@ -220,7 +220,8 @@ function getMatchesFunction() {
                     const wedstrijdnummer = element.Wedstrijdnr;
 
                     const row = document.createElement("tr");
-                    row.innerHTML = `<td>${ploeg}</td><td>${element.t}</td>`;
+                    row.innerHTML = `<td>${element.Thuis}</td>${element.Bezoekers}</td><td>${element.SporthalNaam}</td>
+                    ${element.t} ${element.aanvangsuur}</td> ${element.UitslagHoofd}</td>`;
                     console.log(element)
 
                     table.appendChild(row);
