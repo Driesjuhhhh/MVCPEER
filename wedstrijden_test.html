@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="nl">
+    <head>
+        <title>MVC Peer | Home</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <link href="./assets/logo.png?" rel="shortcut icon" />
+        <meta charset="utf-8" />
+        <meta name="theme-color" content="#49739c" />
+        <meta name="og:url" content="https://mvcpeer.be" />
+        <meta name="og:title" content="MVC Peer | Home" />
+        <meta
+            name="description"
+            content="Dit is de officiele website van MVC Peer"
+        />
+        <meta
+            name="og:description"
+            content="Dit is de officiele website van MVC Peer"
+        />
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="upgrade-insecure-requests"
+        />
+        <meta name="robots" content="max-snippet:20" />
+        <meta name="og:site_name" content="Mvc Peer | Wedstrijden" />
+        <meta name="og:img" content="assets/logo.png" />
+        <meta name="og:img:width" content="1440" />
+        <meta name="og:img:height" content="1440" />
+        <link href="css/wedstrijden.css" rel="stylesheet" />
+        <link href="css/style.css" rel="stylesheet" />
+        <script src="js/wedstrijden_fetch_test.js" defer></script>
+        <script src="js/scripts.js" defer></script>
+        <script
+            src="https://kit.fontawesome.com/c2e4631732.js"
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+        <header>
+            <img src="assets/logo.png" alt="logo" />
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="ploegen.html">Ploegen</a>
+            </nav>
+            <div class="darkmode-switch">
+                <div class="dark-mode">
+                    <button id="darkmode-button" class="darkmode-button">
+                        <i class="fa-solid fa-circle-half-stroke"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <main class="text-align-center">
+            <article class="big-part">
+                <p class="card-text-3 text-color">
+                    <strong>Kies een ploeg:</strong>
+                </p>
+                <select id="ploegenSelect">
+                    <option value="P1D">Promo 1 Dames</option>
+                    <option value="P3D-B">Promo 3 Dames</option>
+                    <option value="LMU17N2R1-E">U17 Meisjes Niveau 2</option>
+                    <option value="LMU15N1R1-A">U15 Meisjes A</option>
+                    <option value="LMU15N2R1-C">U15 Meisjes B</option>
+                    <option value="LMU13N2R1-E">U13 Meisjes A</option>
+                    <option value="LMU13N3R1-B">U13 Meisjes B</option>
+                    <option value="LMU13N3R1-C">U13 Meisjes C</option>
+                    <option value="LMJU11N3R1-A">U11 Jongens-Meisjes A</option>
+                    <option value="LMJU11N3R1-C">U11 Jongens-Meisjes B</option>
+                    <option value="LMJU11N3R1-D">U11 Jongens-Meisjes C</option>
+                    <option value="LMJU112-2(4.1)R1-B">
+                        U11 Jongens Meisjes 2v2
+                    </option>
+                    <option value="BVLPD C">Beker van Limburg Promo 1</option>
+                    <option value="BVLPD L">Beker van Limburg Promo 3</option>
+                </select>
+                <br />
+                <br />
+                <button id="button">Kies ploeg</button>
+                <p class="card-text-3 text-color"><strong>Matches:</strong></p>
+                <div id="table"></div>
+                <p class="card-text-3 text-color"><strong>Scores:</strong></p>
+                <div id="rankingTable"></div>
+            </article>
+        </main>
+        <footer>
+            <p class="text-color footer-text-size">
+                &copy; MVC Peer <span class="text-color" id="year"></span
+                ><span class="text-color responsive-d-none"
+                    >| Design by
+                    <a class="text-color" href="https://www.driesbielen.be"
+                        >Dries Bielen</a
+                    ></span
+                >
+                |
+                <a
+                    href="https://www.instagram.com/mvcpeer/"
+                    class="instagram text-color"
+                    ><i class="fab fa-instagram"></i
+                ></a>
+                <a
+                    href="https://www.facebook.com/mvcpeervolley/?locale=nl_NL"
+                    class="facebook text-color"
+                    ><i class="fab fa-facebook"></i
+                ></a>
+            </p>
+        </footer>
+    </body>
+</html>
