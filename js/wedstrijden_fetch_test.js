@@ -213,13 +213,13 @@ function getMatchesFunction() {
                 matches.forEach((element) => {
                     var uitslag = element.UitslagHoofd
                     if (uitslag === "undefined"){
-                        uitslag == "Nog geen uitslag";
+                        uitslag == "";
                     } else {
                         uitslag = element.UitslagHoofd;
                     }
 
                     const row = document.createElement("tr");
-                    row.innerHTML = `<td>${element.Thuis}</td><td>${element.Bezoekers}</td><td>${element.SporthalNaam}</td>
+                    row.innerHTML = `<td>${element.Thuis}</td><td>${element.Bezoekers}</td><td>${element.SporthalNaam}</td><td>
                     ${element.t} ${element.Aanvangsuur}</td><td> ${uitslag}</td>`;
                     console.log(element)
 
