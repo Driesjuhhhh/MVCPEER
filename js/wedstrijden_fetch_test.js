@@ -226,7 +226,7 @@ function getMatchesFunction() {
                     var dateDay = dateString[0];
                     var dateMonth = dateString[1];
                     const today = new Date();
-                    const todayString = today.getDate();
+                    const todayString = today.getDate().toString();
                     todayString.split("/");
                     var todayDay = todayString[0];
                     
