@@ -221,15 +221,21 @@ function getMatchesFunction() {
 
                     var dateString = element.t;
 
-                    var date = new Date(element.t);
+                    var dateString = element.t;
+                    dateString.split("/");
+                    var dateDay = dateString[0];
+                    var dateMonth = dateString[1];
                     const today = new Date();
+                    const todayString = today.getDate;
+                    todayString.split("/");
+                    var todayDay = todayString[0];
                     
 
-                    if (today.getDate() > date.getDate()){
+                    if (dateMonth - today.getMonth() >= 0 && dateDay >= todayDay){
                         console.log(ploeg);
                         console.log(element.t);
                     } else {
-                        console.log(date);
+                        console.log(today.getDate);
                     }
 
                     // if (dateToCheck > currentDate){
