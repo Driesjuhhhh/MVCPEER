@@ -169,11 +169,12 @@ class VolleyAdmin2 {
      * @returns {Promise<object>}
      * @throws {Error}
      */
-    async getSeries(provinceId = null) {
+    async getSeries(provinceId = null, seriesId = null) {
         return this.doCall(
             VolleyAdmin2.API_METHOD_TEAMS,
             this.checkParameters({
                 [VolleyAdmin2.PROVINCE_ID]: provinceId,
+                [VolleyAdmin2.SERIES_ID]: seriesId,
             })
         );
     }
