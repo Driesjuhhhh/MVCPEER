@@ -219,10 +219,17 @@ function getMatchesFunction() {
                     }
                     const wedstrijdnummer = element.Wedstrijdnr;
 
-                    const row = document.createElement("tr");
-                    row.innerHTML = `<td>${ploeg}</td><td>${element.t}</td>`;
+                    var dateToCheck = new Date(element.t);
+                    var currentDate = new Date();
 
-                    table.appendChild(row);
+                    if (today > dateToCheck){
+                        const row = document.createElement("tr");
+                        row.innerHTML = `<td>${ploeg}</td><td>${element.t}</td>`;
+    
+                        table.appendChild(row);
+                    }
+
+                    
                 });
 
                 tableDiv.appendChild(table);
