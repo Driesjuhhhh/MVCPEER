@@ -40,7 +40,7 @@ button.addEventListener("click", function () {
     // tableDiv.innerHTML = "";
     // getMatchesFunction();
     rankingTableDiv.innerHTML = "";
-    getStandingsFunction();
+    getSeriesFunction();
 });
 
 // Set the credentials
@@ -244,11 +244,11 @@ function getSeriesFunction() {
     volleyAdmin
         .getSeries(provinceId)
         .then((series) => {
-            // console.log('Series:', series);
+            console.log('Series:', series);
         })
         .catch((error) => {
-            // table.innerHTML = `<p>Error<p>`;
-            // console.error('Error:', error.message);
+            table.innerHTML = `<p>Error<p>`;
+            console.error('Error:', error.message);
         });
 }
 
@@ -257,10 +257,10 @@ function getStandingsFunction() {
     volleyAdmin
         .getStandings(seriesId, provinceId)
         .then((standings) => {
-            console.log('Standings:', standings);
+            // console.log('Standings:', standings);
         })
         .catch((error) => {
-            table.innerHTML = `<p>Error<p>`;
-            console.log(error)
+            // table.innerHTML = `<p>Error<p>`;
+            // console.log(error)
         });
 }
