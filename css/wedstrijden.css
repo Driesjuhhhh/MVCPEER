@@ -1,11 +1,13 @@
 :root {
-    --table-color: #22b3e0;
+    --table-color: rgb(34, 179, 224, 0.4);
     --table-text-color: black;
+    --shadow-color: black;
 }
 
 .dark-mode-variables {
-    --table-color: #132bca;
+    --table-color: rgb(19, 43, 202, 0.4);
     --table-text-color: white;
+    --shadow-color: white;
 }
 
 /* footer bottom spacing  */
@@ -31,6 +33,9 @@ table {
     width: 80%;
     border-collapse: collapse;
     margin: 20px auto;
+    -webkit-backdrop-filter: blur(0.5px);
+    backdrop-filter: blur(0.5px);
+    box-shadow: 0 4px 30px var(--shadow-color);
 }
 
 /* Style for table rows */
