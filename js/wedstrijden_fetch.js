@@ -222,7 +222,7 @@ function getMatchesFunction() {
                     var dateToCheck = new Date.parse(element.t);
                     var currentDate = new Date.now();
 
-                    if (dateToCheck.getDate() > currentDate.getDate()){
+                    if (dateToCheck > currentDate){
                         const row = document.createElement("tr");
                         row.innerHTML = `<td>${ploeg}</td><td>${element.t}</td><td>${element.location}`;
     
