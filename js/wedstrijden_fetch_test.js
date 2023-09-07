@@ -213,7 +213,7 @@ function getMatchesFunction() {
                 matches.forEach((element) => {
                     var uitslag = element.UitslagHoofd
                     if (uitslag === "undefined"){
-                        uitslag == "";
+                        uitslag = "/";
                     } else {
                         uitslag = element.UitslagHoofd;
                     }
