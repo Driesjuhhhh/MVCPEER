@@ -43,4 +43,5 @@ tr {
 td {
     padding: 10px;
     border: 1px solid --table-color;
+    text-align: left;
 }
