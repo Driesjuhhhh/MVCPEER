@@ -219,13 +219,20 @@ function getMatchesFunction() {
                     }
                     const wedstrijdnummer = element.Wedstrijdnr;
 
-                    const date = new Date("September 1, 2004");
-                    const today = new Date();
-                    const monthDiff = date.getMonth - today.getMonth
+                    var dateString = element.t;
 
-                    if (today.getDate() < date.getDate()){
-                        console.log(ploeg)
-                        console.log(element.t)
+                    var dateMomentObject = moment(dateString, "DD/MM/YYYY");
+                    var date = dateMomentObject.toDate();
+                    
+                    
+                    const today = new Date();
+                    
+
+                    if (today.getDate() > date.getDate()){
+                        console.log(ploeg);
+                        console.log(element.t);
+                    } else {
+                        console.log(date);
                     }
 
                     // if (dateToCheck > currentDate){
