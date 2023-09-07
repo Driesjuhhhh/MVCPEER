@@ -262,11 +262,3 @@ function getStandingsFunction() {
             // console.log(error)
         });
 }
-
-function removeTable() {
-    if (table.childNodes) {
-        table.childNodes.removeChild(table);
-    } else {
-        console.log("kapot");
-    }
-}
