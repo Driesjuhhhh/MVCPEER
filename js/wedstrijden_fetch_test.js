@@ -211,7 +211,7 @@ function getMatchesFunction() {
                 table.innerHTML = "<tr><th>Thuis</th><th>Bezoeker</th><th>Locatie</th><th>Wanneer</th><th>Score</th></tr>";
 
                 matches.forEach((element) => {
-                    const uitslag = element.UitslagHoofd
+                    var uitslag = element.UitslagHoofd
                     if (uitslag == "undefined"){
                         uitslag == "";
                     } else {
