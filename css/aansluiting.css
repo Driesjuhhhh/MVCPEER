@@ -1,11 +1,11 @@
 /* footer bottom spacing  */
 main {
-    margin-bottom: 800px;
+    margin-bottom: 1500px;
 }
 
 @media screen and (max-width: 1520px) {
     main {
-        margin-bottom: 1300px;
+        margin-bottom: 1500px;
     }
 }
 
