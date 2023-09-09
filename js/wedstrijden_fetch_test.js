@@ -1,35 +1,3 @@
-const reeksCodeArray = [
-    "P1D",
-    "P3D-B",
-    "LMU17N2R1-E",
-    "LMU15N1R1-A",
-    "LMU15N2R1-C",
-    "LMU13N2R1-E",
-    "LMU13N3R1-B",
-    "LMU13N3R1-C",
-    "LMJU11N3R1-A",
-    "LMJU11N3R1-C",
-    "LMJU11N3R1-D",
-    "LMJU112-2(4.1)R1-B",
-    "BVLPD C",
-    "BVLPD L",
-];
-const reeksNameArray = [
-    "Promo 1 Dames",
-    "Promo 3 Dames",
-    "U17 Meisjes Niveau 2",
-    "U15 Meisjes A",
-    "U15 Meisjes B",
-    "U13 Meisjes A",
-    "U13 Meisjes B",
-    "U13 Meisjes C",
-    "U11 Jongens-Meisjes A",
-    "U11 Jongens-Meisjes B",
-    "U11 Jongens-Meisjes C",
-    "U11 Jongens Meisjes 2v2",
-    "Beker van Limburg Promo 1",
-    "Beker van Limburg Promo 3",
-];
 const tableDiv = document.getElementById("table");
 const select = document.getElementById("ploegenSelect");
 const table = document.createElement("table");
@@ -217,11 +185,10 @@ function getMatchesFunction() {
                     } else {
                         var uitslag = element.UitslagHoofd;
                     }
-
+                    var aanvangsuur = element.Aanvangsuur;
                     const row = document.createElement("tr");
                     row.innerHTML = `<td>${element.Thuis}</td><td>${element.Bezoekers}</td><td>${element.SporthalNaam}</td><td>
-                    ${element.t} ${element.Aanvangsuur}</td><td> ${uitslag}</td>`;
-                    console.log(element);
+                    ${element.t} ${aanvangsuur.substr(0,5)}</td><td> ${uitslag}</td>`;
 
                     table.appendChild(row);
                 });
