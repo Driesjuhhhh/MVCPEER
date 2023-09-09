@@ -1,5 +1,5 @@
-.groepsfoto-img {
-    width: 60%;
+.bestuur-img{
+    width: 30%;
 }
 
 .card-height {
@@ -25,7 +25,7 @@ main {
 
 /* Responsive design */
 
-@media screen and (max-width: 1550px) {
+@media screen and (max-width: 1500px) {
     main .card {
         width: 42%;
     }
@@ -34,8 +34,8 @@ main {
         width: 90%;
     }
 
-    .groepsfoto-img{
-        width: 80%
+    .bestuur-img{
+        width: 400px;
     }
 }
 
@@ -45,7 +45,7 @@ main {
         margin: 1%;
     }
 
-    .groepsfoto-img {
-        width: 95%;
+    .bestuur-img{
+        width: 250px;
     }
 }
