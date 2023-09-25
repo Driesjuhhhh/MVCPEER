@@ -187,8 +187,13 @@ function getMatchesFunction() {
                     }
                     var aanvangsuur = element.Aanvangsuur;
                     const row = document.createElement("tr");
-                    row.innerHTML = `<td>${element.Thuis}</td><td>${element.Bezoekers}</td><td>${element.SporthalNaam}</td><td>
-                    ${element.t} ${aanvangsuur.substr(0,5)}</td><td> ${uitslag}</td>`;
+                    row.innerHTML = `<td>${element.Thuis}</td><td>${
+                        element.Bezoekers
+                    }</td><td>${element.SporthalNaam}</td><td>
+                    ${element.t} ${aanvangsuur.substr(
+                        0,
+                        5
+                    )}</td><td> ${uitslag}</td>`;
 
                     table.appendChild(row);
                 });
