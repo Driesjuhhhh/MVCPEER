@@ -38,7 +38,7 @@ main {
 }
 
 .card-height {
-    height: 550px;
+    height: 600px;
 }
 
 @media screen and (max-width: 1500px) {
