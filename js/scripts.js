@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const darkModeButton = document.getElementById("darkmode-button");
+    const mobileDarkModeButton = document.getElementById("mobile-darkmode-button");
+    mobileDarkModeButton.addEventListener("click", handleDarkModeButtonClick);
     darkModeButton.addEventListener("click", handleDarkModeButtonClick);
 });
 
@@ -38,3 +40,12 @@ function setCurrentYear() {
         yearSpan.textContent = currentYear;
     }
 }
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+  
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+  

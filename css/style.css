@@ -100,8 +100,8 @@ li {
     margin-right: auto;
 }
 
-/* Header */
-header {
+/* .Header */
+.header {
     position: fixed;
     width: 100%;
     top: 0px;
@@ -112,7 +112,7 @@ header {
     background-color: var(--header-background-color);
 }
 
-header h1 {
+.header h1 {
     float: right;
     font-size: 20px;
     position: fixed;
@@ -120,29 +120,77 @@ header h1 {
     top: 10px;
 }
 
-header img {
+.header img {
     position: fixed;
     margin-top: 6px;
     margin-left: 8%;
     width: 60px;
 }
 
-header nav {
+.header nav {
     position: relative;
     margin-top: 10px;
     text-align: center;
 }
 
-header nav a {
+.header nav a {
     text-decoration: none;
     color: var(--header-text-color);
     display: inline-block;
     margin: 20px;
 }
 
-header nav a:hover {
+.header nav a:hover {
     transition: 0.5s;
     color: var(--header-hover-color);
+}
+
+.mobile-header {
+    display: none;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    background-color: var(--header-background-color);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    color: var(--color-text)
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: var(--header-text-color);
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
 }
 
 /* Big parts */
@@ -250,28 +298,36 @@ footer a {
 /* responsive */
 
 @media screen and (max-width: 800px) {
-    header {
+    .mobile-header {
+        display: block;
+    }
+    .header {
+        display: none;
+    }
+
+    .header {
         height: 55px;
     }
 
-    header nav a {
+    .header nav a {
         text-decoration: none;
         color: var(--header-text-color);
         display: inline-block;
         margin: 2px;
     }
 
-    header img {
+    .header img {
         display: none;
     }
 
-    header .darkmode-button {
+    .header .darkmode-button {
         right: 5px;
         top: 20px;
     }
 
     .page-title {
-        margin-top: auto;
+        padding-top: 0px;
+
     }
 
     main .card {
@@ -288,7 +344,6 @@ footer a {
 
     .page-title {
         font-size: 20pt;
-        padding-top: 40px;
     }
 
     .card-text {
