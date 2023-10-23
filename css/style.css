@@ -149,6 +149,10 @@ li {
     display: none;
 }
 
+.mobile-header-button {
+    color: var(--color-text);
+}
+
 .sidenav {
     height: 100%;
     width: 0;
@@ -272,7 +276,7 @@ footer a {
 }
 
 /* Darkmode */
-.darkmode-button:hover {
+.darkmode-button:hover, .mobile-darkmode-button:hover {
     cursor: pointer;
 }
 
@@ -282,10 +286,10 @@ footer a {
     top: 10px;
 }
 
-.darkmode-button {
+.darkmode-button, .mobile-darkmode-button {
     text-decoration: none;
     background: none;
-    color: black;
+    color: var(--color-text);
     border-radius: 2rem;
     font-weight: bold;
     font-size: 20px;
@@ -360,6 +364,14 @@ footer a {
 
     .card-text-3 {
         font-size: 13pt;
+    }
+
+    .darkmode-button{
+        display: none;
+    }
+
+    .mobile-darkmode-button{
+        padding: 8px 8px 8px 32px;
     }
 }
 
