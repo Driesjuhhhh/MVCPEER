@@ -1,6 +1,6 @@
 /* footer bottom spacing  */
 main {
-    margin-bottom: 1000px;
+    margin-bottom: 1300px;
 }
 
 @media screen and (max-width: 1520px) {
@@ -21,7 +21,7 @@ main {
 }
 
 .card-height {
-    height: 200px;
+    min-height: 300px;
 }
 
 @media screen and (max-width: 1520px) {

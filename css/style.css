@@ -12,6 +12,7 @@
     --border-radius-1: 0.4rem;
     --color-light: rgba(132, 139, 200, 0.18);
     --footer-color: rgba(0, 0, 0, 0.3);
+    --box-shadow: rgba(0, 0, 0, 0.35);
 }
 
 .dark-mode-variables {
@@ -22,6 +23,7 @@
     --header-hover-color: pink;
     --header-text-color: white;
     --footer-color: rgba(255, 255, 255, 0.3);
+    --box-shadow: rgba(255, 255, 255, 0.35);
 }
 
 html {
@@ -200,7 +202,7 @@ li {
 /* Big parts */
 
 .big-part {
-    width: 80%;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
     background-color: var(--color-background);
@@ -210,20 +212,23 @@ li {
 
 .card {
     float: left;
-    border: #49739c 2px solid;
-    border-radius: 15px;
+    text-decoration: none;
+    font-size: 1.3em;
+    color: var(--color-title);
+    border: 3px solid transparent;
+    padding: 10px 50px;
+    box-shadow: 0 5px 15px var(--box-shadow);
+    border-radius: 6px;
+    transition: all 0.3s ease;
     margin: 1%;
-    margin-left: 1.5%;
-    margin-top: 20px;
-    padding: 15px;
-    position: relative;
-    text-align: center;
-    margin-bottom: 50px;
-    color: var(--color-text);
+}
+
+.card:hover{
+    border-color: var(--color-primary);
 }
 
 .standard-card-width {
-    width: 28%;
+    width: 23.5%;
 }
 
 .full-page-card-width {
