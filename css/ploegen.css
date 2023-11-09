@@ -1,17 +1,17 @@
 /* footer bottom spacing  */
 main {
-    margin-bottom: 3000px;
+    margin-bottom: 5500px;
 }
 
 @media screen and (max-width: 1200px) {
     main {
-        margin-bottom: 5500px;
+        margin-bottom: 10500px;
     }
 }
 
 @media screen and (max-width: 768px) {
     main {
-        margin-bottom: 7500px;
+        margin-bottom: 10000px;
     }
 }
 
@@ -46,13 +46,13 @@ main {
         box-sizing: border-box;
         width: 48%;
         margin: 1%;
-        height: 600px;
+        height: 750px;
     }
 }
 
 @media screen and (max-width: 800px) {
     main .card {
-        height: 550px;
+        height: 750px;
     }
 
     main .ploegen-card-text {
