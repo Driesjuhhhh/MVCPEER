@@ -11,7 +11,7 @@ main {
 
 @media screen and (max-width: 768px) {
     main {
-        margin-bottom: 2500px;
+        margin-bottom: 3000px;
     }
 }
 
@@ -35,7 +35,11 @@ main {
 
 @media screen and (max-width: 768px) {
     main .card {
-        height: 300px;
+        height: 330px;
+    }
+
+    .card-text{
+        font-size: 5pt;
     }
 
     main .card img {

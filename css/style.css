@@ -26,6 +26,18 @@
     --box-shadow: rgba(255, 255, 255, 0.35);
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+}
+
 html {
     animation: 1s ease-out 0s 1 startupAnimation;
 }
@@ -340,9 +352,14 @@ footer a {
     }
 
     main .card {
-        width: 95%;
+        width: 85%;
         margin-left: 20px;
         margin-right: 15px;
+    }
+
+    .card-img {
+        height: auto;
+        width: 100%;
     }
 
     .card.visibility-disabled {
@@ -358,7 +375,11 @@ footer a {
     }
 
     .card-text {
-        font-size: 20pt;
+        font-size: 13pt;
+    }
+
+    .card-text-2{
+        font-size: 10pt;
     }
 
     .responsive-d-none {
