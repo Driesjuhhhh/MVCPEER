@@ -46,6 +46,13 @@ main {
     color: var(--color-text) !important;
 }
 
+
+.navbar-collapse .dropdown-item:hover {
+    background-color: var(--header-background-color) !important;
+    width: 250px;
+    color: var(--color-hover)
+}
+
 main li{
     background-color: var(--color-background) !important;
     color: var(--color-text) !important;
@@ -55,7 +62,6 @@ main li{
     border: 3px solid transparent;
     box-shadow: 0 5px 15px var(--box-shadow);
     border-radius: 6px;
-    height: 600px;
     color: var(--color-text) !important;
     background-color: var(--color-background) !important;
 }
@@ -65,7 +71,7 @@ main li{
 }
 
 .row{
-    margin-top: 15px;
+    margin-top: 15px !important;
 }
 
 .darkmode-button:hover, .mobile-darkmode-button:hover {
