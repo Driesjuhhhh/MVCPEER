@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <title>MVC Peer | Verzekering</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="./assets/logo.png?" rel="shortcut icon" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link href="css/verzekering.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="js/scripts.js" defer></script>
+    <meta charset="utf-8" />
+    <meta name="theme-color" content="#49739c" />
+    <meta name="og:url" content="https://mvcpeer.be/verzekering.html" />
+    <meta name="og:title" content="MVC Peer | Gedragscode" />
+    <meta name="description" content="Op deze pagina vind je de Verzekering terug" />
+    <meta name="og:description" content="Op deze pagina vind je de Verzekering terug" />
+    <meta name="robots" content="max-snippet:20" />
+    <meta name="og:site_name" content="Mvc Peer | Verzekering" />
+    <meta name="og:img" content="assets/logo.png" />
+    <meta name="og:img:width" content="1440" />
+    <meta name="og:img:height" content="1440" />
+    <script src="https://kit.fontawesome.com/c2e4631732.js" crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F1YG1YEWZ8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        gtag("config", "G-F1YG1YEWZ8");
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar fixed-top navbar-expand-lg">
+            <div class="container-fluid">
+                <div class="darkmode-switch">
+                    <div class="dark-mode">
+                        <button id="darkmode-button" class="darkmode-button">
+                            <i class="fa-solid fa-circle-half-stroke"></i>
+                        </button>
+                    </div>
+                </div>
+                <a class="navbar-brand" href="index.html">
+                    <img src="assets/logo.png" alt="Logo" width="40" height="34"
+                        class="d-inline-block align-text-top" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse justify-content-center navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ploegen.html">Ploegen</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="wedstrijden.html">Wedstrijden</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Administratie
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="administratie.html">Overzicht</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="aansluiting.html">Aansluiting club</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="wedstrijden.html">Wedstrijden</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="kantine_scheids_lijst.html">Kantine en
+                                        scheidsrechters lijst</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="privacyverklaring.html">Privacy verklaring</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="tegemoetkoming.html">Tegemoetkoming</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item"
+                                        href="https://volleyvlaanderen.be/Gezondheid-en-ethiek/Federatie-API">Vertrouwenspersonen</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="gedragscode.html">Gedragscode</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="verzekering.html">Verzekeringsformulier</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="steun.html">Steun</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="page-header justify-content-center d-flex">
+            <h1 id="welcomeText">
+                Verzekering
+            </h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 mb-3 mb-sm-0">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">Onze volleybalclub is aangesloten bij een federatie, namelijk Volley
+                                Vlaanderen en het ondergeschikte Volley Limburg. Deze aansluiting houdt onder meer in
+                                dat jullie verzekerd zijn bij de club en dit via de verzekeringsmaatschappij Ethias. Als
+                                club betalen we hiervoor elk jaar voor elk lid een bepaald bedrag aan de federatie.
+                                Zowel spelers als niet-spelende leden kunnen ingeval van een ongeval beroep doen op deze
+                                verzekering.
+                            </p>
+                            <p class="card-text">Wat is verzekerd door de club?</p>
+                            <p class="card-text">Wat wordt er door de verzekering gedekt (dit is een oplijsting van de meest voorkomende gevallen):</p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    Burgerlijke aansprakelijkheid
+                                </li>
+                                <li class="list-group-item">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            Zowel lichamelijke als materiële schade
+                                        </li>
+                                        <li class="list-group-item">
+                                            bijvoorbeeld: Wanneer je onderweg naar een wedstrijd betrokken raakt bij een ongeval
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="list-group-item">
+                                    Lichamelijke ongevallen (sportongevallen)
+                                </li>
+                                <li class="list-group-item">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            Medische onkosten lichamelijk letsel: bijvoorbeeld wanneer je je enkel verzwikt tijdens het volleyballen
+                                        </li>
+                                        <li class="list-group-item">
+                                            Brilschade ten gevolge van een volleybalactiviteit: zowel glazen als montuur. (Enkel voor scheidsrechters en officiëlen zoals terreinafgevaardigden, niet voor spelende leden)
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p class="card-text">Naast de activiteiten die direct gelinkt zijn met het uitvoeren van de volleybalactiviteit, vallen onder de verzekering ook:
+                            </p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    Activiteiten die als doel hebben om de clubkas te spijzen: eetfestijn, bbq…
+                                </li>
+                                <li class="list-group-item">
+                                    Nevenactiviteiten: einde seizoensactiviteit, teambuilding enz…
+                                </li>
+                            </ul>
+                            <p class="card-text">De polis die door Volley Vlaanderen werd afgesloten is volledig te raadplegen op de site van <a class="text-decoration-none text-color"
+                                href="https://old.volleyvlaanderen.be/verzekering/">volley vlaanderen
+                            </a></p>
+                            <p class="card-text">Indien je twijfelt of de verzekering tussenkomt in bepaalde gevallen, nag je steeds Lieve Creemers aansreken of een mailtje sturen</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 mb-3 mb-sm-0">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">Welke procedure volg je indien je een schadegeval wenst aan te geven?
+                            </p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    Licht je trianer / trainster in
+                                </li>
+                                <li class="list-group-item">
+                                    Licht Lieve Creemers in
+                                </li>
+                                <li class="list-group-item">
+                                Ga naar de website van Volley Vlaanderen en download het formulier <a class="text-decoration-none text-color"
+                                href="https://old.volleyvlaanderen.be/verzekering/">ongevalaangifte</a> (volleyvlaanderen.be/verzekering). Volgende velden van het formulier moeten ingevuld worden:
+                                </li>
+                                <li class="list-group-item">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                           Identiteit slachtoffer
+                                        </li>
+                                        <li class="list-group-item">
+                                            Gegevens van het ongeval
+                                        </li>
+                                        <li class="list-group-item">
+                                            geneeskundig getuigschrift(in te vullen door de behandelende geneesheer)
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="list-group-item">
+                                    Bezorg bovenstaande gegevens zo snel als mogelijk aan Lieve Creemers (secretaris) van het bestuur (dit kan eventueel via je trainer / trainster). Zij zal bij Ethias een dossier aanmaken m.b.t. de schadeclaim. In deze fase dienen GEEN documenten rechtstreeks naar Ethias verstuurd te worden.
+                                </li>
+                                <li class="list-group-item">
+                                    Nadat de clubsecretaris het dossier heeft aangemaakt, ontvangen jullie een brief/mail waarin het dossiernummer, de contactgegevens en in het kort de te volgen procedure voor verdere afhandeling van het dossier staat vermeld.
+                                </li>
+                                <li class="list-group-item">
+                                    Vanaf dan verloopt de correspondentie met Ethias via jullie zelf, en niet meer via de club.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                <div class="col-md-4 d-flex align-items-center">
+                    <span class="mb-3 mb-md-0 text-muted" id="year"></span>
+                </div>
+                <div class="col-md-4 d-flex align-items-center">
+                    <a class="mb-3 mb-md-0 text-muted" href="https://driesbielen.be">Design by Dries Bielen</a>
+                </div>
+                <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                    <li class="ms-3">
+                        <a class="text-muted" href="https://www.instagram.com/mvcpeer/"><i
+                                class="fab fa-instagram"></i></a>
+                    </li>
+                    <li class="ms-3">
+                        <a class="text-muted" href="https://www.facebook.com/mvcpeervolley/?locale=nl_NL"><i
+                                class="fab fa-facebook"></i></a>
+                    </li>
+                </ul>
+            </footer>
+        </div>
+    </footer>
+</body>
+
+</html>
