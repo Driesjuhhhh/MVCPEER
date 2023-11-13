@@ -37,6 +37,14 @@ header nav,header .dropdown-menu {
     background-color: var(--header-background-color);
 }
 
+header nav a{
+    color: var(--header-text-color) !important;
+}
+
+header nav a:hover {
+    color: var(--header-hover-color) !important;
+}
+
 main {
     padding-top: 150px;
     height: auto;
