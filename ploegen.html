@@ -1,619 +1,505 @@
 <!DOCTYPE html>
 <html lang="nl">
-    <head>
-        <title>MVC Peer | Ploegen</title>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <link href="./assets/logo.png?" rel="shortcut icon" />
-        <meta charset="utf-8" />
-        <meta name="theme-color" content="#49739c" />
-        <meta name="og:url" content="https://mvcpeer.be/ploegen" />
-        <meta name="og:title" content="MVC Peer | Ploegen" />
-        <meta
-            name="description"
-            content="Hier vind je de ploegen van MVC Peer terug"
-        />
-        <meta
-            name="og:description"
-            content="Hier vind je de ploegen van MVC Peer terug"
-        />
-        <meta name="robots" content="max-snippet:20" />
-        <meta name="og:site_name" content="Mvc Peer | Ploegen" />
-        <meta name="og:img" content="assets/logo.png" />
-        <meta name="og:img:width" content="1440" />
-        <meta name="og:img:height" content="1440" />
-        <link href="css/ploegen.css" rel="stylesheet" />
-        <link href="css/style.css" rel="stylesheet" />
-        <script src="js/scripts.js" defer></script>
-        <script
-            src="https://kit.fontawesome.com/c2e4631732.js"
-            crossorigin="anonymous"
-        ></script>
-        <!-- Google tag (gtag.js) -->
-        <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-8ZK21Q5C4Z"
-        ></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag("js", new Date());
 
-            gtag("config", "G-8ZK21Q5C4Z");
-        </script>
-    </head>
-    <body>
-        <header class="header">
-            <img src="assets/logo.png" alt="logo" />
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="ploegen.html">Ploegen</a>
-                <a href="wedstrijden.html">Wedstrijden</a>
-                <a href="administratie.html">Administratie</a>
-                <a href="steun.html">Steun</a>
-                <a href="contact.html">Contact</a>
-            </nav>
-            <div class="darkmode-switch">
-                <div class="dark-mode">
-                    <button id="darkmode-button" class="darkmode-button">
-                        <i class="fa-solid fa-circle-half-stroke"></i>
-                    </button>
-                </div>
+<head>
+  <title>MVC Peer | Ploegen</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <link href="assets/logo.png?" rel="shortcut icon" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script src="js/scripts.js" defer></script>
+  <link href="css/style.css" rel="stylesheet" />
+  <link href="css/ploegen.css" rel="stylesheet" />
+  <meta charset="utf-8" />
+  <meta name="theme-color" content="#49739c" />
+  <meta name="og:url" content="https://mvcpeer.be/ploegen" />
+  <meta name="og:title" content="MVC Peer | Ploegen" />
+  <meta name="description" content="Hier vind je de ploegen van MVC Peer terug" />
+  <meta name="og:description" content="Hier vind je de ploegen van MVC Peer terug" />
+  <meta name="robots" content="max-snippet:20" />
+  <meta name="og:site_name" content="Mvc Peer | Ploegen" />
+  <meta name="og:img" content="assets/logo.png" />
+  <meta name="og:img:width" content="1440" />
+  <meta name="og:img:height" content="1440" />
+  <script src="https://kit.fontawesome.com/c2e4631732.js" crossorigin="anonymous"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8ZK21Q5C4Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-8ZK21Q5C4Z");
+  </script>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar fixed-top navbar-expand-lg">
+      <div class="container-fluid">
+        <div class="darkmode-switch">
+          <div class="dark-mode">
+            <button id="darkmode-button" class="darkmode-button">
+              <i class="fa-solid fa-circle-half-stroke"></i>
+            </button>
+          </div>
+        </div>
+        <a class="navbar-brand" href="index.html">
+          <img src="assets/logo.png" alt="Logo" width="40" height="34" class="d-inline-block align-text-top" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse justify-content-center navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="ploegen.html">Ploegen</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="wedstrijden.html">Wedstrijden</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Administratie
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="administratie.html">Overzicht</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="aansluiting.html">Aansluiting club</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="wedstrijden.html">Wedstrijden</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="kantine_scheids_lijst.html">Kantine en scheidsrechters lijst</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="privacyverklaring.html">Privacy verklaring</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="tegemoetkoming.html">Tegemoetkoming</a>
+                </li>
+                <li>
+                  <a class="dropdown-item"
+                    href="https://volleyvlaanderen.be/Gezondheid-en-ethiek/Federatie-API">Vertrouwenspersonen</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="gedragscode.html">Gedragscode</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="verzekering.html">Verzekeringsformulier</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="steun.html">Steun</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="container">
+      <div class="page-header justify-content-center d-flex">
+        <h1>Onze ploegen:</h1>
+      </div>
+      <br />
+      <div class="page-header justify-content-center d-flex border-bottom">
+        <h1>Dames ploegen:</h1>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-sm-4 mb-3 mb-sm-0">
+          <div class="card">
+            <img src="assets/Ploeg-Promo1.jpeg" class="card-img-top" alt="Promo1" />
+            <div class="card-body">
+              <h5 class="card-title">Promo 1</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Etienne Willekens
+              </h6>
+              <br />
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Trainingen:
+              </h6>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  Dinsdag: 19:30 - 21:00
+                </li>
+                <li class="list-group-item">
+                  Vrijdag: 19:30 - 21:00
+                </li>
+              </ul>
             </div>
-        </header>
-        <header class="mobile-header">
-            <span style="font-size:30px;cursor:pointer" class="mobile-header-button" onclick="openNav()">&#9776;</span>
-            <div id="mySidenav" class="sidenav">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="index.html">Home</a>
-                <a href="ploegen.html">Ploegen</a>
-                <a href="wedstrijden.html">Wedstrijden</a>
-                <a href="administratie.html">Administratie</a>
-                <a href="steun.html">Steun</a>
-                <a href="contact.html">Contact</a>
-                <button id="mobile-darkmode-button" class="mobile-darkmode-button">
-                    <i class="fa-solid fa-circle-half-stroke"></i>
-                </button>
+          </div>
+        </div>
+        <div class="col-sm-4 mb-3 mb-sm-0">
+          <div class="card">
+            <img src="assets/Ploeg-Promo3.jpeg" class="card-img-top" alt="Promo3" />
+            <div class="card-body">
+              <h5 class="card-title">Promo 3</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Luc Mertens
+              </h6>
+              <br />
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Trainingen:
+              </h6>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  Dinsdag: 19:30 - 21:00
+                </li>
+                <li class="list-group-item">
+                  Vrijdag: 19:30 - 21:00
+                </li>
+              </ul>
             </div>
-        </header>
-        <main class="text-align-center">
-            <article class="page-title">
-                <div>
-                    <h1 class="page-title title-color">Onze ploegen</h1>
-                </div>
-            </article>
-            <article class="big-part">
-                <h1 class="article-title title-color">Dames ploegen</h1>
-                <article
-                    class="card standard-card-width card-height card-background-color"
-                >
-                    <h1 class="text-color card-text">Promo 1</h1>
-                    <img
-                        class="card-img"
-                        src="assets/Ploeg-Promo1.jpeg"
-                    />
-                    <div>
-                        <p
-                        class="special-text text-align-left text-color ploegen-card-text"
-                    >
-                        Training data:
-                    </p>
-                    <p class="text-align-left text-color ploegen-card-text">
-                        Dinsdag: 19:30 - 21:00
-                    </p>
-                    <p class="text-align-left text-color ploegen-card-text">
-                        Vrijdag: 19:30 - 21:00
-                    </p>
-                    </div>
-                    <div>
-                        <p
-                        class="special-text text-align-left text-color ploegen-card-text"
-                    >
-                        Trainer:
-                    </p>
-                    <p class="text-align-left text-color ploegen-card-text">
-                        Etienne Willekens
-                    </p>
-                    </div>
-                </article>
-                <article
-                    class="card standard-card-width card-height card-background-color"
-                >
-                    <h1 class="text-color card-text">Promo 3</h1>
-                    <img
-                        class="card-img"
-                        src="assets/Ploeg-Promo3.jpeg"
-                        alt="Promo3-b.png"
-                    />
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Training data:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Dinsdag: 19:30 - 21:00
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Vrijdag: 19:30 - 21:00
-                        </p>
-                    </div>
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Trainer:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Luc Mertens
-                        </p>
-                    </div>
-                </article>
-                <article
-                    class="card standard-card-width card-height card-background-color"
-                >
-                    <h1 class="text-color card-text">Recreatie</h1>
-                    <img
-                        class="card-img"
-                        src="assets/Ploeg-Recreatie.jpeg"
-                        alt="Recreatie.png"
-                    />
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Training data:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Dinsdag: 19:30 - 21:00
-                        </p>
-                    <br>
-                    </div>
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Trainer:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            André Roekaers
-                        </p>
-                    </div>
-                </article>
-            </article>
-            <article class="big-part">
-                <h1 class="article-title title-color">Jeugdploegen</h1>
-                <article
-                    class="card standard-card-width card-height card-background-color"
-                >
-                    <h1 class="text-color card-text">Volleyspeeltuin</h1>
-                    <img
-                        class="card-img"
-                        src="assets/Benjaminies.jpg"
-                        alt="Volleyspeeltuin.png"
-                    />
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Training data:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Woensdag: 18:00 - 19:00
-                        </p>
-                        <br>
-                    <br>
-                    </div>
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Trainer:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Lore Haex
-                        </p>
-                    </div>
-                </article>
-                <article
-                    class="card standard-card-width card-height card-background-color"
-                >
-                    <h1 class="text-color card-text">Benjaminies</h1>
-                    <img
-                        class="card-img"
-                        src="assets/Benjaminies.jpg"
-                        alt="Benjaminies"
-                    />
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Training data:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Maandag: 18:00 - 19:30
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Woensdag: 18:00 - 19:30
-                        </p>
-                    </div>
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Trainer:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Lieve Creemers
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Wendy Vrijsen
-                        </p>
-                    </div>
-                </article>
-                <article
-                    class="card standard-card-width card-height card-background-color"
-                >
-                    <h1 class="text-color card-text">U11 2v2</h1>
-                    <img
-                        class="card-img"
-                        src="assets/Ploeg-U11-2V2.jpeg"
-                        alt="U112v2.png"
-                    />
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Training data:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Maandag: 18:00 - 19:30
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Donderdag: 18:00 - 19:30
-                        </p>
-                    </div>
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Trainer:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Lieve Creemers
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Anne Haex
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Charlotte Bielen
-                        </p>
-                    </div>
-                </article>
-                <article
-                    class="card standard-card-width card-height card-background-color"
-                >
-                    <h1 class="text-color card-text">U11 3v3 A</h1>
-                    <img
-                        class="card-img"
-                        src="assets/Ploeg-U11-A.jpeg"
-                        alt="u113v3a.png"
-                    />
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Training data:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Dinsdag: 18:00 - 19:30
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Donderdag: 18:00 - 19:30
-                        </p>
-                    </div>
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Trainer:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Femke Leurs
-                        </p>
-                    </div>
-                </article>
-                <article
-                    class="card standard-card-width card-height card-background-color"
-                >
-                    <h1 class="text-color card-text">U11 3v3 B</h1>
-                    <img
-                        class="card-img"
-                        src="assets/Ploeg-U11-B.jpeg"
-                        alt="u113v3b.png"
-                    />
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Training data:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Dinsdag: 18:00 - 19:30
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Donderdag: 18:00 - 19:30
-                        </p>
-                    </div>
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Trainer:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Charlotte Bielen
-                        </p>
-                    </div>
-                </article>
-                <article
-                    class="card standard-card-width card-height card-background-color"
-                >
-                    <h1 class="text-color card-text">U11 3v3 C</h1>
-                    <img
-                        class="card-img"
-                        src="assets/Ploeg-U11-C.jpeg"
-                        alt="u113v3c.png"
-                    />
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Training data:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Dinsdag: 18:00 - 19:30
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Donderdag: 18:00 - 19:30
-                        </p>
-                    </div>
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Trainer:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Brenda Loos
-                        </p>
-                    </div>
-                </article>
-                <article
-                    class="card standard-card-width card-height card-background-color"
-                >
-                    <h1 class="text-color card-text">U13 A</h1>
-                    <img
-                        class="card-img"
-                        src="assets/Ploeg-U13-A.jpeg"
-                        alt="u13a.png"
-                    />
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Training data:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Dinsdag: 18:00 - 19:30
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Vrijdag: 18:00 - 19:30
-                        </p>
-                    </div>
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Trainer:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Marissa Meyen
-                        </p>
-                    </div>
-                </article>
-                <article
-                    class="card standard-card-width card-height card-background-color"
-                >
-                    <h1 class="text-color card-text">U13 B</h1>
-                    <img
-                        class="card-img"
-                        src="assets/Ploeg-U13-B.jpeg"
-                        alt="u13b.png"
-                    />
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Training data:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Dinsdag: 18:00 - 19:30
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Vrijdag: 18:00 - 19:30
-                        </p>
-                    </div>
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Trainer:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Marissa Meyen
-                        </p>
-                    </div>
-                </article>
-                <article
-                    class="card standard-card-width card-height card-background-color"
-                >
-                    <h1 class="text-color card-text">U13 C</h1>
-                    <img
-                        class="card-img"
-                        src="assets/Ploeg-U13-C.jpeg"
-                        alt="u13c.png"
-                    />
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Training data:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Maandag: 18:00 - 19:30
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Donderdag: 18:00 - 19:30
-                        </p>
-                    </div>
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Trainer:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Lieve Creemers
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Wendy Vrijsen
-                        </p>
-                    </div>
-                </article>
-                <article
-                    class="card standard-card-width card-height card-background-color"
-                >
-                    <h1 class="text-color card-text">U15 A</h1>
-                    <img
-                        class="card-img"
-                        src="assets/Ploeg-U15-A.jpeg"
-                        alt="u15a.png"
-                    />
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Training data:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Woensdag: 18:00 - 19:30
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Vrijdag: 18:00 - 19:30
-                        </p>
-                    </div>
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Trainer:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Gunter Visterin
-                        </p>
-                    </div>
-                </article>
-                <article
-                    class="card standard-card-width card-height card-background-color"
-                >
-                    <h1 class="text-color card-text">U15 B</h1>
-                    <img
-                        class="card-img"
-                        src="assets/Ploeg-U15-B.jpeg"
-                        alt="u15b.png"
-                    />
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Training data:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Woensdag: 19:00 - 20:30
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Vrijdag: 18:00 - 19:30
-                        </p>
-                    </div>
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Trainer:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Rosi Fransen
-                        </p>
-                    </div>
-                </article>
-                <article
-                    class="card standard-card-width card-height card-background-color"
-                >
-                    <h1 class="text-color card-text">U17</h1>
-                    <img
-                        class="card-img"
-                        src="assets/Ploeg-U17.jpeg"
-                        alt="u17.png"
-                    />
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Training data:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Woensdag: 19:30 - 21:00
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Vrijdag: 19:30 - 21:00
-                        </p>
-                    </div>
-                    <div>
-                        <p
-                            class="special-text text-align-left text-color ploegen-card-text"
-                        >
-                            Trainer:
-                        </p>
-                        <p class="text-align-left text-color ploegen-card-text">
-                            Gunter Visterin
-                        </p>
-                    </div>
-                </article>
-            </article>
-        </main>
-        <footer>
-            <p class="text-color footer-text-size">
-                &copy; MVC Peer <span class="text-color" id="year"></span
-                ><span class="text-color responsive-d-none"
-                    >| Design by
-                    <a class="text-color" href="https://www.driesbielen.be"
-                        >Dries Bielen</a
-                    ></span
-                >
-                |
-                <a
-                    href="https://www.instagram.com/mvcpeer/"
-                    class="instagram text-color"
-                    ><i class="fab fa-instagram"></i
-                ></a>
-                <a
-                    href="https://www.facebook.com/mvcpeervolley/?locale=nl_NL"
-                    class="facebook text-color"
-                    ><i class="fab fa-facebook"></i
-                ></a>
-            </p>
-        </footer>
-    </body>
+          </div>
+        </div>
+        <div class="col-sm-4 mb-3 mb-sm-0">
+          <div class="card">
+            <img src="assets/Ploeg-Recreatie.jpeg" class="card-img-top" alt="Recreatie" />
+            <div class="card-body">
+              <h5 class="card-title">Recreatie</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                André Roekaers
+              </h6>
+              <br />
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Trainingen:
+              </h6>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  Dinsdag: 19:30 - 21:00
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="page-header justify-content-center d-flex border-bottom">
+        <h1>Jeugdploegen:</h1>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 mb-3 mb-sm-0">
+          <div class="card">
+            <img src="assets/Benjaminies.jpg" class="card-img-top" alt="Volleyspeeltuin" />
+            <div class="card-body">
+              <h5 class="card-title">Volleyspeeltuin</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Lore Haex
+              </h6>
+              <br />
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Trainingen:
+              </h6>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  Woensdag: 18:00 - 19:00
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 mb-3 mb-sm-0">
+          <div class="card">
+            <img src="assets/Benjaminies.jpg" class="card-img-top" alt="Benjaminies" />
+            <div class="card-body">
+              <h5 class="card-title">Benjaminies</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Lieve Creemers & Wendy Vrijsen
+              </h6>
+              <br />
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Trainingen:
+              </h6>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  Maandag: 18:00 - 19:30
+                </li>
+                <li class="list-group-item">
+                  Woensdag: 18:00 - 19:30
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 mb-3 mb-sm-0">
+          <div class="card">
+            <img src="assets/Ploeg-U11-2V2.jpeg" class="card-img-top" alt="U11 2v2" />
+            <div class="card-body">
+              <h5 class="card-title">U11 2v2</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Lieve Creemers & Anne Haex
+              </h6>
+              <br />
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Trainingen:
+              </h6>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  Maandag: 18:00 - 19:30
+                </li>
+                <li class="list-group-item">
+                  Donderdag: 18:00 - 19:30
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 mb-3 mb-sm-0">
+          <div class="card">
+            <img src="assets/Ploeg-U11-A.jpeg" class="card-img-top" alt="U11 A" />
+            <div class="card-body">
+              <h5 class="card-title">U11 A</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Femke Leurs
+              </h6>
+              <br />
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Trainingen:
+              </h6>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  Dinsdag: 18:00 - 19:30
+                </li>
+                <li class="list-group-item">
+                  Donderdag: 18:00 - 19:30
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 mb-3 mb-sm-0">
+          <div class="card">
+            <img src="assets/Ploeg-U11-B.jpeg" class="card-img-top" alt="U11 B" />
+            <div class="card-body">
+              <h5 class="card-title">U11 B</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Charlotte Bielen
+              </h6>
+              <br />
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Trainingen:
+              </h6>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  Dinsdag: 18:00 - 19:30
+                </li>
+                <li class="list-group-item">
+                  Donderdag: 18:00 - 19:30
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 mb-3 mb-sm-0">
+          <div class="card">
+            <img src="assets/Ploeg-U11-C.jpeg" class="card-img-top" alt="U11 C" />
+            <div class="card-body">
+              <h5 class="card-title">U11 C</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Brenda Loos
+              </h6>
+              <br />
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Trainingen:
+              </h6>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  Dinsdag: 18:00 - 19:30
+                </li>
+                <li class="list-group-item">
+                  Donderdag: 18:00 - 19:30
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 mb-3 mb-sm-0">
+          <div class="card">
+            <img src="assets/Ploeg-U13-A.jpeg" class="card-img-top" alt="U13 A" />
+            <div class="card-body">
+              <h5 class="card-title">U13 A</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Marissa Meyen
+              </h6>
+              <br />
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Trainingen:
+              </h6>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  Dinsdag: 18:00 - 19:30
+                </li>
+                <li class="list-group-item">
+                  Vrijdag: 18:00 - 19:30
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 mb-3 mb-sm-0">
+          <div class="card">
+            <img src="assets/Ploeg-U13-B.jpeg" class="card-img-top" alt="U13 B" />
+            <div class="card-body">
+              <h5 class="card-title">U13 B</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Marissa Meyen
+              </h6>
+              <br />
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Trainingen:
+              </h6>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  Dinsdag: 18:00 - 19:30
+                </li>
+                <li class="list-group-item">
+                  Vrijdag: 18:00 - 19:30
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 mb-3 mb-sm-0">
+          <div class="card">
+            <img src="assets/Ploeg-U13-C.jpeg" class="card-img-top" alt="U13 C" />
+            <div class="card-body">
+              <h5 class="card-title">U13 C</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Lieve Creemers & Wendy Vrijsen
+              </h6>
+              <br />
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Trainingen:
+              </h6>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  Maandag: 18:00 - 19:30
+                </li>
+                <li class="list-group-item">
+                  Donderdag: 18:00 - 19:30
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 mb-3 mb-sm-0">
+          <div class="card">
+            <img src="assets/Ploeg-U15-A.jpeg" class="card-img-top" alt="U15 A" />
+            <div class="card-body">
+              <h5 class="card-title">U15 A</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Gunter Visterin
+              </h6>
+              <br />
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Trainingen:
+              </h6>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  Dinsdag: 18:00 - 19:30
+                </li>
+                <li class="list-group-item">
+                  Vrijdag: 18:00 - 19:30
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 mb-3 mb-sm-0">
+          <div class="card">
+            <img src="assets/Ploeg-U15-B.jpeg" class="card-img-top" alt="U15 B" />
+            <div class="card-body">
+              <h5 class="card-title">U15 B</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Rosi Fransen
+              </h6>
+              <br />
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Trainingen:
+              </h6>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  Woensdag: 19:00 - 20:30
+                </li>
+                <li class="list-group-item">
+                  Vrijdag: 18:00 - 19:30
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4 mb-3 mb-sm-0">
+          <div class="card">
+            <img src="assets/Ploeg-U17.jpeg" class="card-img-top" alt="U17" />
+            <div class="card-body">
+              <h5 class="card-title">U17</h5>
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Gunter Visterin
+              </h6>
+              <br />
+              <h6 class="card-subtitle mb-2 text-body-secondary">
+                Trainingen:
+              </h6>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  Woensdag: 19:30 - 21:00
+                </li>
+                <li class="list-group-item">
+                  Vrijdag: 19:30 - 21:00
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+          <span class="mb-3 mb-md-0 text-muted" id="year"></span>
+        </div>
+        <div class="col-md-4 d-flex align-items-center">
+          <a class="mb-3 mb-md-0 text-muted" href="https://driesbielen.be">Design by Dries Bielen</a>
+        </div>
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+          <li class="ms-3">
+            <a class="text-muted" href="https://www.instagram.com/mvcpeer/"><i class="fab fa-instagram"></i></a>
+          </li>
+          <li class="ms-3">
+            <a class="text-muted" href="https://www.facebook.com/mvcpeervolley/?locale=nl_NL"><i
+                class="fab fa-facebook"></i></a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+  </footer>
+</body>
+
 </html>

@@ -1,196 +1,265 @@
 <!DOCTYPE html>
 <html lang="nl">
-    <head>
-        <title>MVC Peer | Administratie</title>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <link href="./assets/logo.png?" rel="shortcut icon" />
-        <meta charset="utf-8" />
-        <meta name="theme-color" content="#49739c" />
-        <meta name="og:url" content="https://mvcpeer.be/administratie" />
-        <meta name="og:title" content="MVC Peer | Administratie" />
-        <meta
-            name="description"
-            content="Dit is de pagina waar je alles omtrend administratie terugvind"
-        />
-        <meta
-            name="og:description"
-            content="Dit is de pagina waar je alles omtrend administratie terugvind"
-        />
-        <meta name="robots" content="max-snippet:20" />
-        <meta name="og:site_name" content="Mvc Peer | Administratie" />
-        <meta name="og:img" content="assets/logo.png" />
-        <meta name="og:img:width" content="1440" />
-        <meta name="og:img:height" content="1440" />
-        <link href="css/administratie.css" rel="stylesheet" />
-        <link href="css/style.css" rel="stylesheet" />
-        <script src="js/scripts.js" defer></script>
-        <script
-            src="https://kit.fontawesome.com/c2e4631732.js"
-            crossorigin="anonymous"
-        ></script>
-        <!-- Google tag (gtag.js) -->
-        <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-2QZ7767FTK"
-        ></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag("js", new Date());
 
-            gtag("config", "G-2QZ7767FTK");
-        </script>
-    </head>
-    <body>
-        <header class="header">
-            <img src="assets/logo.png" alt="logo" />
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="ploegen.html">Ploegen</a>
-                <a href="wedstrijden.html">Wedstrijden</a>
-                <a href="administratie.html">Administratie</a>
-                <a href="steun.html">Steun</a>
-                <a href="contact.html">Contact</a>
-            </nav>
-            <div class="darkmode-switch">
-                <div class="dark-mode">
-                    <button id="darkmode-button" class="darkmode-button">
-                        <i class="fa-solid fa-circle-half-stroke"></i>
-                    </button>
+<head>
+    <title>MVC Peer | Administratie</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="assets/logo.png?" rel="shortcut icon" />
+    <link href="css/administratie.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="js/scripts.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <meta charset="utf-8" />
+    <meta name="theme-color" content="#49739c" />
+    <meta name="og:url" content="https://mvcpeer.be/administratie" />
+    <meta name="og:title" content="MVC Peer | Administratie" />
+    <meta name="description" content="Dit is de pagina waar je alles omtrend administratie terugvind" />
+    <meta name="og:description" content="Dit is de pagina waar je alles omtrend administratie terugvind" />
+    <meta name="robots" content="max-snippet:20" />
+    <meta name="og:site_name" content="Mvc Peer | Administratie" />
+    <meta name="og:img" content="assets/logo.png" />
+    <meta name="og:img:width" content="1440" />
+    <meta name="og:img:height" content="1440" />
+    <script src="https://kit.fontawesome.com/c2e4631732.js" crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QZ7767FTK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        gtag("config", "G-2QZ7767FTK");
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar fixed-top navbar-expand-lg">
+            <div class="container-fluid">
+                <div class="darkmode-switch">
+                    <div class="dark-mode">
+                        <button id="darkmode-button" class="darkmode-button">
+                            <i class="fa-solid fa-circle-half-stroke"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </header>
-        <header class="mobile-header">
-            <span style="font-size:30px;cursor:pointer" class="mobile-header-button" onclick="openNav()">&#9776;</span>
-            <div id="mySidenav" class="sidenav">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="index.html">Home</a>
-                <a href="ploegen.html">Ploegen</a>
-                <a href="wedstrijden.html">Wedstrijden</a>
-                <a href="administratie.html">Administratie</a>
-                <a href="steun.html">Steun</a>
-                <a href="contact.html">Contact</a>
-                <button id="mobile-darkmode-button" class="mobile-darkmode-button">
-                    <i class="fa-solid fa-circle-half-stroke"></i>
+                <a class="navbar-brand" href="index.html">
+                    <img src="assets/logo.png" alt="Logo" width="40" height="34"
+                        class="d-inline-block align-text-top" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-            </div>
-        </header>
-        <main class="text-align-center">
-            <article class="page-title">
-                <div>
-                    <h1 id="welcomeText" class="page-title title-color">
-                        Administratie
-                    </h1>
+                <div class="collapse justify-content-center navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ploegen.html">Ploegen</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="wedstrijden.html">Wedstrijden</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Administratie
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="administratie.html">Overzicht</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="aansluiting.html">Aansluiting club</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="wedstrijden.html">Wedstrijden</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="kantine_scheids_lijst.html">Kantine en
+                                        scheidsrechters lijst</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="privacyverklaring.html">Privacy verklaring</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="tegemoetkoming.html">Tegemoetkoming</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item"
+                                        href="https://volleyvlaanderen.be/Gezondheid-en-ethiek/Federatie-API">Vertrouwenspersonen</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="gedragscode.html">Gedragscode</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="verzekering.html">Verzekeringsformulier</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="steun.html">Steun</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
                 </div>
-            </article>
-            <article class="big-part">
-                <article
-                    class="card standard-card-width card-height card-background-color"
-                >
-                    <h1 class="text-color card-text">Aansluiting club</h1>
-                    <a class="text card-text-2" href="aansluiting.html"
-                        >Wil jij graag komen volleyballen bij MVC Peer? Klik
-                        hier om naar de aansluitingspagina te gaan.</a
-                    >
-                </article>
-                <article
-                    class="card standard-card-width card-height card-background-color"
-                >
-                    <h1 class="text-color card-text">Wedstrijden</h1>
-                    <a class="text card-text-2" href="wedstrijden.html"
-                        >Wil jij graag weten wanneer de volgende wedstrijden
-                        zijn? Klik dan hier.</a
-                    >
-                </article>
-                <article
-                    class="card standard-card-width card-height card-background-color"
-                >
-                    <h1 class="text-color card-text">
-                        Kantine en scheidsrechters lijst
-                    </h1>
-                    <a
-                        class="text card-text-2"
-                        href="https://docs.google.com/document/d/13UbRZQdofZ5uW9JhhLyqGxbmzd_QA03Y/edit?usp=sharing&ouid=106841927531066735266&rtpof=true&sd=true"
-                        >Wil jij graag weten wanneer jij aan de beurt bent om in
-                        de kantine te staan of om als scheids te moeten
-                        optreden? Klik dan hier</a
-                    >
-                </article>
-                <article
-                    class="card standard-card-width card-height card-background-color"
-                >
-                    <h1 class="text-color card-text">Privacy verklaring</h1>
-                    <a class="text card-text-2" href="privacyverklaring.html"
-                        >Klik hier om te weten te komen wat er precies gebeurt
-                        met alle gegevens die MVC heeft</a
-                    >
-                </article>
-                <article
-                    class="card standard-card-width card-height card-background-color"
-                >
-                    <h1 class="text-color card-text">Tegemoet koming</h1>
-                    <a class="text card-text-2" href="tegemoetkoming.html"
-                        >Bij de ziekenfonds kan je jaarlijks een tegemoetkoming
-                        vragen. Zij betalen een bedrag van het inschrijvingsgeld
-                        terug.</a
-                    >
-                </article>
-                <article
-                    class="card standard-card-width card-height card-background-color"
-                >
-                    <h1 class="text-color card-text">Vertrouwenspersonen</h1>
-                    <a
-                        class="text card-text-2"
-                        href="https://volleyvlaanderen.be/Gezondheid-en-ethiek/Federatie-API"
-                        >Vertrouwenspersoon Volley Vlaanderen</a
-                    >
-                </article>
-                <article
-                    class="card standard-card-width card-height card-background-color"
-                >
-                    <h1 class="text-color card-text">Gedragscode</h1>
-                    <a class="text card-text-2" href="gedragscode.html"
-                        >Klik hier</a
-                    >
-                </article>
-                <!-- <article
-                    class="card standard-card-width card-height card-background-color visibility-disabled"
-                ></article> -->
-                <article
-                    class="card standard-card-width card-height card-background-color"
-                >
-                    <h1 class="text-color card-text">Verzekerings formulier</h1>
-                    <a class="text card-text-2" href="verzekering.html"
-                        >Een blessure opgelopen tijdens het sporten? Vind hier
-                        welke stappen je moet ondernemen en hopelijk zien we je
-                        snel terug op het volleybalveld.
-                    </a>
-                </article>
-            </article>
-        </main>
-        <footer>
-            <p class="text-color footer-text-size">
-                &copy; MVC Peer <span class="text-color" id="year"></span
-                ><span class="text-color responsive-d-none"
-                    >| Design by
-                    <a class="text-color" href="https://www.driesbielen.be"
-                        >Dries Bielen</a
-                    ></span
-                >
-                |
-                <a
-                    href="https://www.instagram.com/mvcpeer/"
-                    class="instagram text-color"
-                    ><i class="fab fa-instagram"></i
-                ></a>
-                <a
-                    href="https://www.facebook.com/mvcpeervolley/?locale=nl_NL"
-                    class="facebook text-color"
-                    ><i class="fab fa-facebook"></i
-                ></a>
-            </p>
-        </footer>
-    </body>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="page-header justify-content-center d-flex">
+                <h1 id="welcomeText">
+                    Administratie
+                </h1>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 mb-3 mb-sm-0">
+                    <div class="card">
+                        <h2 class="card-title d-flex justify-content-center m-5">
+                            Aansluiting
+                        </h2>
+                        <div class="card-body">
+                            <p class="card-text">Wil jij graag komen volleyballen bij MVC Peer? Klik dan hieronder
+                                op
+                                word lid om lid te worden</p>
+                            <a href="aansluiting.html" class="btn btn-primary d-flex justify-content-center">Word
+                                lid</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 mb-3 mb-sm-0">
+            <div class="card">
+                <h2 class="card-title d-flex justify-content-center m-5">
+                    Wedstrijden
+                </h2>
+                <div class="card-body">
+                    <p class="card-text">Ben jij benieuwd naar onze wedstrijden? Klik dan hieronder voor een
+                        overzicht</p>
+                    <a href="wedstrijden.html" class="btn btn-primary d-flex justify-content-center">Wedstrijden</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 mb-3 mb-sm-0">
+            <div class="card">
+                <h2 class="card-title d-flex justify-content-center m-5">
+                    Kantine en scheidsrechters lijst
+                    </h5>
+                    <div class="card-body">
+                        <p class="card-text">Wil jij graag weten wanneer jij aan de beurt bent om in de kantine
+                            te staan of om als scheids te moeten optreden? </p>
+                        <a href="kantine_scheids_lijst.html" class="btn btn-primary d-flex justify-content-center">Klik
+                            hier</a>
+                    </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 mb-3 mb-sm-0">
+                <div class="card">
+                    <h2 class="card-title d-flex justify-content-center m-5">
+                        privacyverklaring
+                        </h2>
+                        <div class="card-body">
+                            <p class="card-text">Hier kom je te weten wat er precies gebeurt met alle gegevens die
+                                MVC Peer heeft.</p>
+                            <a href="privacyverklaring.html"
+                                class="btn btn-primary d-flex justify-content-center">privacyverklaring</a>
+                        </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-3 mb-sm-0">
+                <div class="card">
+                    <h2 class="card-title d-flex justify-content-center m-5">
+                        Tegemoetkoming
+                        </h2>
+                        <div class="card-body">
+                            <p class="card-text">Bij je ziekenfonds kan je jaarlijks een tegemoetkoming vragen. Zij
+                                betalen een bedrag van het inschrijvingsgeld terug.</p>
+                            <a href="tegemoetkoming.html"
+                                class="btn btn-primary d-flex justify-content-center">Wedstrijden</a>
+                        </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-3 mb-sm-0">
+                <div class="card">
+                    <h2 class="card-title d-flex justify-content-center m-5">
+                        Vertrouwenspersonen
+                        </h2>
+                        <div class="card-body">
+                            <p class="card-text">Is er iets gebeurd waar je over wil praten? Contacteer dan het
+                                bestuur of de vertrouwnspersoon van volley vlaanderen</p>
+                            <a href="bestuur.html" class="btn btn-primary d-flex justify-content-center">Bestuur</a>
+                            <br>
+                            <a href="vertrouwenspersoon.html"
+                                class="btn btn-primary d-flex justify-content-center">Vertrouwenspersoon volley
+                                vlaanderen</a>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 mb-3 mb-sm-0">
+                <div class="card">
+                    <h2 class="card-title d-flex justify-content-center m-5">
+                        Gedragscode
+                        </h2>
+                        <div class="card-body">
+                            <p class="card-text">Info omtrent de gedragscode:</p>
+                            <a href="gedragscode.html"
+                                class="btn btn-primary d-flex justify-content-center">gedragscode</a>
+                        </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-3 mb-sm-0">
+                <div class="card">
+                    <h2 class="card-title d-flex justify-content-center m-5">
+                        Verzekeringsformulier
+                        </h2>
+                        <div class="card-body">
+                            <p class="card-text">Een blessure opgelopen tijdens het sporten? Vind hier welke stappen
+                                je moet ondernemen en hopelijk zien we je snel terug op het volleybalveld.</p>
+                            <a href="verzekeringsformulier.html"
+                                class="btn btn-primary d-flex justify-content-center">Verzekeringsformulier</a>
+                        </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                <div class="col-md-4 d-flex align-items-center">
+                    <span class="mb-3 mb-md-0 text-muted" id="year"></span>
+                </div>
+                <div class="col-md-4 d-flex align-items-center">
+                    <a class="mb-3 mb-md-0 text-muted" href="https://driesbielen.be">Design by Dries Bielen</a>
+                </div>
+                <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                    <li class="ms-3">
+                        <a class="text-muted" href="https://www.instagram.com/mvcpeer/"><i
+                                class="fab fa-instagram"></i></a>
+                    </li>
+                    <li class="ms-3">
+                        <a class="text-muted" href="https://www.facebook.com/mvcpeervolley/?locale=nl_NL"><i
+                                class="fab fa-facebook"></i></a>
+                    </li>
+                </ul>
+            </footer>
+        </div>
+    </footer>
+</body>
 </html>
