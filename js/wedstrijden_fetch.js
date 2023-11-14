@@ -177,7 +177,7 @@ function getMatchesFunction() {
             if (tableDiv) {
                 const table = document.createElement("table");
                 table.innerHTML =
-                    "<tr><th>Thuis</th><th>Bezoeker</th><th>Locatie</th><th>Wanneer</th><th>Score</th></tr>";
+                    '<thead><tr><th scope="col"></th><th scope="col">Bezoeker</th><th scope="col">Locatie</th><th scope="col">Wanneer</th><th scope="col">Score</th></tr></thead>';
 
                 matches.forEach((element) => {
                     if (element.UitslagHoofd === "undefined") {
