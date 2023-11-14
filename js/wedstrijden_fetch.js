@@ -178,7 +178,7 @@ function getMatchesFunction() {
                 const table = document.createElement("table");
                 table.classList.add("table");
                 table.innerHTML =
-                    '<thead><tr><th scope="col"></th><th scope="col">Bezoeker</th><th scope="col">Locatie</th><th scope="col">Wanneer</th><th scope="col">Score</th></tr></thead>';
+                    '<thead><tr><th scope="col">Thuis</th><th scope="col">Bezoeker</th><th scope="col">Locatie</th><th scope="col">Wanneer</th><th scope="col">Score</th></tr></thead>';
 
                 matches.forEach((element) => {
                     if (element.UitslagHoofd === "undefined") {
@@ -188,7 +188,7 @@ function getMatchesFunction() {
                     }
                     var aanvangsuur = element.Aanvangsuur;
                     const row = document.createElement("tr");
-                    row.innerHTML = `<td>${element.Thuis}</td><td>${
+                    row.innerHTML = `<th class="row"></th><td>${element.Thuis}</td><td>${
                         element.Bezoekers
                     }</td><td>${element.SporthalNaam}</td><td>
                     ${element.t} ${aanvangsuur.substr(
