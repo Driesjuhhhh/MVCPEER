@@ -113,3 +113,7 @@ main li{
     margin-bottom: 20px;
     background-color: none;
 }
+
+.btn {
+    margin-bottom: 20px !important;
+}
