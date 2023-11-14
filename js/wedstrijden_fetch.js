@@ -176,6 +176,7 @@ function getMatchesFunction() {
         .then((matches) => {
             if (tableDiv) {
                 const table = document.createElement("table");
+                table.classList.add("table");
                 table.innerHTML =
                     '<thead><tr><th scope="col"></th><th scope="col">Bezoeker</th><th scope="col">Locatie</th><th scope="col">Wanneer</th><th scope="col">Score</th></tr></thead>';
 
