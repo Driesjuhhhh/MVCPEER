@@ -1,3 +1,7 @@
 .card {
-    height: 350px !important;
+    height: 400px !important;
+}
+
+.btn {
+    margin-bottom: 20px !important;
 }
