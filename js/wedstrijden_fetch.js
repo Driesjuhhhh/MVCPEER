@@ -179,7 +179,7 @@ function getMatchesFunction() {
                 table.classList.add("table");
                 table.innerHTML =
                     '<thead><tr><th scope="col">Thuis</th><th scope="col">Bezoeker</th><th scope="col">Locatie</th><th scope="col">Wanneer</th><th scope="col">Score</th></tr></thead>';
-
+                const tbody = table.createElement("tbody");
                 matches.forEach((element) => {
                     if (element.UitslagHoofd === "undefined") {
                         var uitslag = "/";
@@ -188,7 +188,7 @@ function getMatchesFunction() {
                     }
                     var aanvangsuur = element.Aanvangsuur;
                     const row = document.createElement("tr");
-                    row.innerHTML = `<th class="row"></th><td>${element.Thuis}</td><td>${
+                    row.innerHTML = `<td>${element.Thuis}</td><td>${
                         element.Bezoekers
                     }</td><td>${element.SporthalNaam}</td><td>
                     ${element.t} ${aanvangsuur.substr(
@@ -196,7 +196,7 @@ function getMatchesFunction() {
                         5
                     )}</td><td> ${uitslag}</td>`;
 
-                    table.appendChild(row);
+                    tbody.appendChild(row);
                 });
 
                 tableDiv.appendChild(table);
