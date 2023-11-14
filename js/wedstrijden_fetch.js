@@ -179,7 +179,7 @@ function getMatchesFunction() {
                 table.classList.add("table");
                 table.innerHTML =
                     '<thead><tr><th scope="col">Thuis</th><th scope="col">Bezoeker</th><th scope="col">Locatie</th><th scope="col">Wanneer</th><th scope="col">Score</th></tr></thead>';
-                const tbody = table.createElement("tbody");
+                var tbody = table.createTBody();
                 matches.forEach((element) => {
                     if (element.UitslagHoofd === "undefined") {
                         var uitslag = "/";
