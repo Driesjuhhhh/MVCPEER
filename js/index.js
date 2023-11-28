@@ -15,6 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Call the updateText function every second
+    // Call the updateText function every 2 seconds
     setInterval(updateText, 2000);
 });
