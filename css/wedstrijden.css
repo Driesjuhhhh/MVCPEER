@@ -10,4 +10,6 @@
     --shadow-color: white;
 }
 
-
+table {
+    overflow-x: auto;
+}
