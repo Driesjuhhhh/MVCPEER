@@ -27,7 +27,7 @@ fetch(url)
   })
   .catch(error => console.error("Fout bij het ophalen van gegevens:", error));
 
-function eerstvolgendeWedstrijden() {
+function eerstvolgendeWedstrijden(data) {
     const futureDates = []
 
     for (let i = 0; i < data.length; i++) {
