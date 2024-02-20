@@ -20,9 +20,9 @@ fetch(url)
       ? `<span>Locatie: ${eerstvolgendeWedstrijd.SporthalNaam}</span>`
       : "<span>Geen komende wedstrijden gevonden.</span>";
 
-    wedstrijddatum.innerHTML = `<span>Aanvangsuur: ${eerstvolgendeWedstrijd.Aanvangsuur}</span>`
+    wedstrijddatum.innerHTML = `<span>Datum: ${eerstvolgendeWedstrijd.t}</span>`
 
-    wedstrijduur.innerHTML = `<span>Aanvangsuur: ${eerstvolgendeWedstrijd.Aanvangsuur}</span>`
+    wedstrijduur.innerHTML = `<span>Uur: ${eerstvolgendeWedstrijd.Aanvangsuur}</span>`
   })
   .catch(error => console.error("Fout bij het ophalen van gegevens:", error));
 
