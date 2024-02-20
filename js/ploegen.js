@@ -34,7 +34,7 @@ function fetchpromo1() {
 }
 
 function fetchpromo3() {
-    const url = "https://www.volleyadmin2.be/services/wedstrijden_xml.php?province_id=4&stamnummer=L-0923&seriesid=p3d-b&format=json";
+    const urlp3 = "https://www.volleyadmin2.be/services/wedstrijden_xml.php?province_id=4&stamnummer=L-0923&seriesid=p3d-b&format=json";
 
     // Selecteer de lijstitems waar je de informatie wilt weergeven
     const wedstrijdsporthal = document.querySelector(".volgendewedstrijdpromo-3-sporthal");
@@ -42,7 +42,7 @@ function fetchpromo3() {
     const wedstrijduur = document.querySelector(".volgendewedstrijdpromo-3-tijd");
 
     // Fetch data using Fetch API
-    fetch(url)
+    fetch(urlp3)
         .then(response => response.json())
         .then(data => {
 
@@ -53,13 +53,13 @@ function fetchpromo3() {
             const eerstvolgendeWedstrijd = wedstrijden[0];
 
             // Update de innerHTML van de lijstitems
-            wedstrijdsporthal.innerHTML = this.eerstvolgendeWedstrijd
-                ? `<span>Locatie: ${this.eerstvolgendeWedstrijd.SporthalNaam}</span>`
+            wedstrijdsporthal.innerHTML = eerstvolgendeWedstrijd
+                ? `<span>Locatie: ${eerstvolgendeWedstrijd.SporthalNaam}</span>`
                 : "<span>Geen komende wedstrijden gevonden.</span>";
 
-            wedstrijddatum.innerHTML = `<span>Datum: ${this.eerstvolgendeWedstrijd.t}</span>`
+            wedstrijddatum.innerHTML = `<span>Datum: ${eerstvolgendeWedstrijd.t}</span>`
 
-            wedstrijduur.innerHTML = `<span>Uur: ${this.eerstvolgendeWedstrijd.Aanvangsuur}</span>`
+            wedstrijduur.innerHTML = `<span>Uur: ${eerstvolgendeWedstrijd.Aanvangsuur}</span>`
         })
         .catch(error => console.error("Fout bij het ophalen van gegevens:", error));
 }
