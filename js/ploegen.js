@@ -9,11 +9,12 @@ const wedstrijduur = document.querySelector(".volgendewedstrijdpromo-1-tijd");
 fetch(url)
   .then(response => response.json())
   .then(data => {
+
     // Filter de wedstrijden die nog moeten plaatsvinden
     const komendeWedstrijden = data.filter(wedstrijd => wedstrijd.t < getCurrentDate());
 
     // Neem de gegevens van de eerstvolgende wedstrijd
-    const eerstvolgendeWedstrijd = komendeWedstrijden.length > 0 ? komendeWedstrijden[0] : null;
+    const eerstvolgendeWedstrijd = komendeWedstrijden[0];
 
     // Update de innerHTML van de lijstitems
     wedstrijdsporthal.innerHTML = eerstvolgendeWedstrijd
