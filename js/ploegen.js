@@ -3,7 +3,7 @@ const url = "https://www.volleyadmin2.be/services/wedstrijden_xml.php?province_i
 // Selecteer de lijstitems waar je de informatie wilt weergeven
 const wedstrijdsporthal = document.querySelector(".volgendewedstrijdpromo-1-sporthal");
 const wedstrijddatum = document.querySelector(".volgendewedstrijdpromo-1-datum");
-const wedstrijduur = document.querySelector(".volgendewedstrijdpromo-1-uur");
+const wedstrijduur = document.querySelector(".volgendewedstrijdpromo-1-tijd");
 
 // Fetch data using Fetch API
 fetch(url)
