@@ -1,18 +1,41 @@
 const url = "https://www.volleyadmin2.be/services/wedstrijden_xml.php?province_id=4&stamnummer=L-0923&seriesid=p1d&format=json";
 
-// Select the list item where you want to display the information
-const wedstrijdInfoElement = document.querySelector(".volgendewedstrijdpromo-1");
+// Selecteer de lijstitems waar je de informatie wilt weergeven
+const wedstrijdsporthal = document.querySelector(".volgendewedstrijdpromo-1-sporthal");
+const wedstrijddatum = document.querySelector(".volgendewedstrijdpromo-1-datum");
+const wedstrijduur = document.querySelector(".volgendewedstrijdpromo-1-uur");
 
 // Fetch data using Fetch API
 fetch(url)
   .then(response => response.json())
   .then(data => {
-    // Neem alleen de gegevens van de eerstvolgende wedstrijd
-    const eerstvolgendeWedstrijd = data[0];
+    // Filter de wedstrijden die nog moeten plaatsvinden
+    const komendeWedstrijden = data.filter(wedstrijd => wedstrijd.t > getCurrentDate());
 
-    // Update the innerHTML of the list item
-    wedstrijdInfoElement.innerHTML = eerstvolgendeWedstrijd
-      ? `<span>Sporthal: ${eerstvolgendeWedstrijd.SporthalNaam}, Aanvangsuur: ${eerstvolgendeWedstrijd.Aanvangsuur}</span>`
+    // Neem de gegevens van de eerstvolgende wedstrijd
+    const eerstvolgendeWedstrijd = komendeWedstrijden.length > 0 ? komendeWedstrijden[0] : null;
+
+    // Update de innerHTML van de lijstitems
+    wedstrijdsporthal.innerHTML = eerstvolgendeWedstrijd
+      ? `<span>Sporthal: ${eerstvolgendeWedstrijd.SporthalNaam}</span>`
       : "<span>Geen komende wedstrijden gevonden.</span>";
+
+    wedstrijddatum.innerHTML = eerstvolgendeWedstrijd
+      ? `<span>Datum: ${eerstvolgendeWedstrijd.t}</span>`
+      : "";
+
+    wedstrijduur.innerHTML = eerstvolgendeWedstrijd
+      ? `<span>Aanvangsuur: ${eerstvolgendeWedstrijd.Aanvangsuur}</span>`
+      : "";
   })
   .catch(error => console.error("Fout bij het ophalen van gegevens:", error));
+
+// Functie om de huidige datum in het juiste formaat te krijgen (bijvoorbeeld "16/09/2023")
+function getCurrentDate() {
+  const today = new Date();
+  const day = today.getDate();
+  const month = today.getMonth() + 1; // Maanden beginnen bij 0
+  const year = today.getFullYear();
+
+  return `${day}/${month}/${year}`;
+}
