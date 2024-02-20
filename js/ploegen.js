@@ -11,19 +11,19 @@ fetch(url)
   .then(data => {
 
     // Filter de wedstrijden die nog moeten plaatsvinden
-    const wedstrijden = eerstvolgendeWedstrijd(data)
+    const wedstrijden = eerstvolgendeWedstrijden(data)
 
     // Neem de gegevens van de eerstvolgende wedstrijd
-    const nextwedstrijden = wedstrijden[0];
+    const eerstvolgendeWedstrijd = wedstrijden[0];
 
     // Update de innerHTML van de lijstitems
     wedstrijdsporthal.innerHTML = nextwedstrijden
-      ? `<span>Locatie: ${nextwedstrijden.SporthalNaam}</span>`
+      ? `<span>Locatie: ${eerstvolgendeWedstrijd.SporthalNaam}</span>`
       : "<span>Geen komende wedstrijden gevonden.</span>";
 
-    wedstrijddatum.innerHTML = `<span>Datum: ${nextwedstrijden.t}</span>`
+    wedstrijddatum.innerHTML = `<span>Datum: ${eerstvolgendeWedstrijd.t}</span>`
 
-    wedstrijduur.innerHTML = `<span>Uur: ${nextwedstrijden.Aanvangsuur}</span>`
+    wedstrijduur.innerHTML = `<span>Uur: ${eerstvolgendeWedstrijd.Aanvangsuur}</span>`
   })
   .catch(error => console.error("Fout bij het ophalen van gegevens:", error));
 
