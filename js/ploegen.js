@@ -11,10 +11,10 @@ fetch(url)
   .then(data => {
 
     // Filter de wedstrijden die nog moeten plaatsvinden
-    const komendeWedstrijden = data.filter(wedstrijd => wedstrijd.t < getCurrentDate());
+    const wedstrijden = eerstvolgendeWedstrijd(data)
 
     // Neem de gegevens van de eerstvolgende wedstrijd
-    const eerstvolgendeWedstrijd = komendeWedstrijden[0];
+    const eerstvolgendeWedstrijd = wedstrijden[0];
 
     // Update de innerHTML van de lijstitems
     wedstrijdsporthal.innerHTML = eerstvolgendeWedstrijd
@@ -27,12 +27,21 @@ fetch(url)
   })
   .catch(error => console.error("Fout bij het ophalen van gegevens:", error));
 
-// Functie om de huidige datum in het juiste formaat te krijgen (bijvoorbeeld "16/09/2023")
-function getCurrentDate() {
-  const today = new Date();
-  const day = today.getDate();
-  const month = today.getMonth() + 1; // Maanden beginnen bij 0
-  const year = today.getFullYear();
+function eerstvolgendeWedstrijden() {
+    const futureDates = []
 
-  return `${day}/${month}/${year}`;
+    for (let i = 0; i < data.length; i++) {
+        const time = data[i]
+        //console.log(time)
+        const date = time.t.split("/").reverse().join("-");
+        //console.log(date)
+        const alreadyHappened = new Date(date) < new Date();
+
+        if (!alreadyHappened) {
+            futureDates.push(date)
+        }
+    }
+
+    return futureDates
 }
+
