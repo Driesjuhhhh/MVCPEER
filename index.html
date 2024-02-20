@@ -121,97 +121,130 @@
     </header>
     <main>
         <div class="container">
-            <div class="page-header justify-content-center d-flex">
-                <h1 id="welcomeText">
-                    Welkom
-                </h1>
-            </div>
-            <div class="page-header justify-content-center d-flex">
-                <img src="assets/groepsfoto.png" class="img-fluid img-thumbnail" alt="Responsive image">
-            </div>
-            <div class="page-header justify-content-center d-flex border-bottom">
-                <h1>Onze Kampioenen:</h1>
-            </div>
-            <div class="row kampioenen-row">
-                <div class="col-sm-4 mb-3 mb-sm-0">
-                    <div class="card kampioenen-card">
-                        <img src="assets/KAMPIOENEN/2023-12-09-U11A-Kampioen.jpg" class="card-img-top" alt="Kampioenen" />
-                        <div class="card-body">
-                            <h5 class="card-title">U11 A</h5>
-                            <h6 class="card-subtitle mb-2 text-body-secondary">
-                                En ook de U11A ploeg van coach <strong>Femke Leurs</strong> en trainsters
-                                <strong>Charlotte Bielen</strong> en <strong>Brenda Loos</strong>zijn kampioen. Ook een
-                                dikke proficiat dames! 👏
-                            </h6>
-                            <br />
+            <div class="container">
+                <!-- Melding -->
+                <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header">
+                            <strong class="me-auto">Volgende wedstrijd</strong>
+                            <small></small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item volgendewedstrijd-sporthal">
+                                </li>
+                                <li class="list-group-item volgendewedstrijd-datum"> </li>
+                                <li class="list-group-item volgendewedstrijd-tijd"></li>
+                              </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4 mb-3 mb-sm-0">
-                    <div class="card kampioenen-card">
-                      <img src="assets/KAMPIOENEN/2023-12-09-U11B-Kampioen.jpg" class="card-img-top" alt="Kampioenen" />
-                      <div class="card-body">
-                        <h5 class="card-title margin-top-text">U11 B</h5>
-                        <h6 class="card-subtitle mb-2 text-body-secondary">
-                            De U11B ploeg van coach <strong>Charlotte Bielen</strong> en trainsters <strong>Brenda Loos</strong> en <stong>Femke Leurs</stong> zijn herfstkampioen! Dikke proficiat dames! 👏
-                        </h6>
-                        <br />
-                      </div>
+                <div class="page-header justify-content-center d-flex">
+                    <h1 id="welcomeText">
+                        Welkom
+                    </h1>
+                </div>
+                <div class="page-header justify-content-center d-flex">
+                    <img src="assets/groepsfoto.png" class="img-fluid img-thumbnail" alt="Responsive image">
+                </div>
+                <div class="page-header justify-content-center d-flex border-bottom">
+                    <h1>Onze Kampioenen:</h1>
+                </div>
+                <div class="row kampioenen-row">
+                    <div class="col-sm-4 mb-3 mb-sm-0">
+                        <div class="card kampioenen-card">
+                            <img src="assets/KAMPIOENEN/2023-12-09-U11A-Kampioen.jpg" class="card-img-top"
+                                alt="Kampioenen" />
+                            <div class="card-body">
+                                <h5 class="card-title">U11 A</h5>
+                                <h6 class="card-subtitle mb-2 text-body-secondary">
+                                    En ook de U11A ploeg van coach <strong>Femke Leurs</strong> en trainsters
+                                    <strong>Charlotte Bielen</strong> en <strong>Brenda Loos</strong>zijn
+                                    kampioen. Ook een
+                                    dikke proficiat dames! 👏
+                                </h6>
+                                <br />
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                  <div class="col-sm-4 mb-3 mb-sm-0">
-                    <div class="card kampioenen-card">
-                      <img src="assets/KAMPIOENEN/2023-12-09-U13B-Kampioen.jpg" class="card-img-top" alt="Kampioenen" />
-                      <div class="card-body">
-                        <h5 class="card-title">U13 A</h5>
-                        <h6 class="card-subtitle mb-2 text-body-secondary">
-                            De U13B van trainster <strong>Marissa Meyen</strong> en coach <strong>kelly Paesen</strong> zijn herfstkampioen! Ze bleven bijna ongeslagen en hebben veel bijgeleerd. Proficiat dames! 👏
-                        </h6>
-                        <br />
-                      </div>
+                    <div class="col-sm-4 mb-3 mb-sm-0">
+                        <div class="card kampioenen-card">
+                            <img src="assets/KAMPIOENEN/2023-12-09-U11B-Kampioen.jpg" class="card-img-top"
+                                alt="Kampioenen" />
+                            <div class="card-body">
+                                <h5 class="card-title margin-top-text">U11 B</h5>
+                                <h6 class="card-subtitle mb-2 text-body-secondary">
+                                    De U11B ploeg van coach <strong>Charlotte Bielen</strong> en trainsters
+                                    <strong>Brenda Loos</strong> en <stong>Femke Leurs</stong> zijn
+                                    herfstkampioen! Dikke proficiat dames! 👏
+                                </h6>
+                                <br />
+                            </div>
+                        </div>
                     </div>
-                  </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-4 mb-3 mb-sm-0">
-                    <div class="card">
-                        <img src="assets/beker-icon.png" class="card-img-top" alt="Wedstrijden" />
-                        <div class="card-body">
-                            <p class="card-text">Op deze pagina kan je een overzicht terugvinden van alle wedstrijden
-                            </p>
-                            <br>
-                            <br>
-                            <div class="position-absolute bottom-0 start-50 translate-middle-x">
-                                <a href="wedstrijden.html"
-                                    class="btn btn-primary d-flex justify-content-center">Wedstrijden</a>
+                    <div class="col-sm-4 mb-3 mb-sm-0">
+                        <div class="card kampioenen-card">
+                            <img src="assets/KAMPIOENEN/2023-12-09-U13B-Kampioen.jpg" class="card-img-top"
+                                alt="Kampioenen" />
+                            <div class="card-body">
+                                <h5 class="card-title">U13 A</h5>
+                                <h6 class="card-subtitle mb-2 text-body-secondary">
+                                    De U13B van trainster <strong>Marissa Meyen</strong> en coach <strong>kelly
+                                        Paesen</strong> zijn herfstkampioen! Ze bleven bijna ongeslagen en
+                                    hebben veel bijgeleerd. Proficiat dames! 👏
+                                </h6>
+                                <br />
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4 mb-3 mb-sm-0">
-                    <div class="card">
-                        <img src="assets/Ploeg-Promo1.jpeg" class="card-img-top" alt="Promo1" />
-                        <div class="card-body">
-                            <p class="card-text">Op deze pagina kan je een overzicht terugvinden van onze ploegen</p>
-                            <br>
-                            <br>
-                            <br>
-                            <div class="position-absolute bottom-0 start-50 translate-middle-x">
-                                <a href="ploegen.html" class="btn btn-primary d-flex justify-content-center">Bekijk onze
-                                    ploegen</a>
+                <div class="row">
+                    <div class="col-sm-4 mb-3 mb-sm-0">
+                        <div class="card">
+                            <img src="assets/beker-icon.png" class="card-img-top" alt="Wedstrijden" />
+                            <div class="card-body">
+                                <p class="card-text">Op deze pagina kan je een overzicht terugvinden van alle
+                                    wedstrijden
+                                </p>
+                                <br>
+                                <br>
+                                <div class="position-absolute bottom-0 start-50 translate-middle-x">
+                                    <a href="wedstrijden.html"
+                                        class="btn btn-primary d-flex justify-content-center">Wedstrijden</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-4 mb-3 mb-sm-0">
-                    <div class="card">
-                        <img src="assets/bestuur-picture.png" class="card-img-top" alt="Bestuur" />
-                        <div class="card-body">
-                            <p class="card-text">Op deze pagina kan je een overzicht terugvinden van onze besturusleden
-                            </p>
-                            </br>
-                            <div class="position-absolute bottom-0 start-50 translate-middle-x">
-                                <a href="bestuur.html" class="btn btn-primary d-flex justify-content-center">Bestuur</a>
+                    <div class="col-sm-4 mb-3 mb-sm-0">
+                        <div class="card">
+                            <img src="assets/Ploeg-Promo1.jpeg" class="card-img-top" alt="Promo1" />
+                            <div class="card-body">
+                                <p class="card-text">Op deze pagina kan je een overzicht terugvinden van onze
+                                    ploegen</p>
+                                <br>
+                                <br>
+                                <br>
+                                <div class="position-absolute bottom-0 start-50 translate-middle-x">
+                                    <a href="ploegen.html" class="btn btn-primary d-flex justify-content-center">Bekijk
+                                        onze
+                                        ploegen</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 mb-3 mb-sm-0">
+                        <div class="card">
+                            <img src="assets/bestuur-picture.png" class="card-img-top" alt="Bestuur" />
+                            <div class="card-body">
+                                <p class="card-text">Op deze pagina kan je een overzicht terugvinden van onze
+                                    besturusleden
+                                </p>
+                                </br>
+                                <div class="position-absolute bottom-0 start-50 translate-middle-x">
+                                    <a href="bestuur.html"
+                                        class="btn btn-primary d-flex justify-content-center">Bestuur</a>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -9,3 +9,7 @@
 .margin-top-text {
     margin-top: 28%;
 }
+
+.toast-container li {
+    background-color: transparent !important;
+}
