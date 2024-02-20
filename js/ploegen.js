@@ -3,7 +3,7 @@ fetchpromo3();
 
 
 function fetchpromo1() {
-    const url = "https://www.volleyadmin2.be/services/wedstrijden_xml.php?province_id=4&stamnummer=L-0923&seriesid=p1d&format=json";
+    const url = "https://www.volleyadmin2.be/services/wedstrijden_xml.php?reeks=P1D&province_id=4&stamnummer=L-0923&format=json";
 
     // Selecteer de lijstitems waar je de informatie wilt weergeven
     const wedstrijdsporthal = document.querySelector(".volgendewedstrijdpromo-1-sporthal");
@@ -34,7 +34,7 @@ function fetchpromo1() {
 }
 
 function fetchpromo3() {
-    const urlp3 = "https://www.volleyadmin2.be/services/wedstrijden_xml.php?reeks=P3D-B&province_id=4&stamnummer=L-0923&format=json";
+    const url = "https://www.volleyadmin2.be/services/wedstrijden_xml.php?reeks=P3D-B&province_id=4&stamnummer=L-0923&format=json";
 
     // Selecteer de lijstitems waar je de informatie wilt weergeven
     const wedstrijdsporthal = document.querySelector(".volgendewedstrijdpromo-3-sporthal");
@@ -42,7 +42,7 @@ function fetchpromo3() {
     const wedstrijduur = document.querySelector(".volgendewedstrijdpromo-3-tijd");
 
     // Fetch data using Fetch API
-    fetch(urlp3)
+    fetch(url)
         .then(response => response.json())
         .then(data => {
 
