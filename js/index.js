@@ -18,9 +18,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Call the updateText function every 2 seconds
     setInterval(updateText, 2000);
 
+    fetchNextMatch();
+
     const toastLiveExample = document.getElementById('liveToast');
     const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
     toastBootstrap.show();
+    
 });
 
 
