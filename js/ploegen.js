@@ -59,7 +59,10 @@ function fetchpromo3() {
 
             wedstrijddatum.innerHTML = `<span>Datum: ${eerstvolgendeWedstrijd.t}</span>`
 
-            wedstrijduur.innerHTML = `<span>Uur: ${eerstvolgendeWedstrijd.Aanvangsuur}</span>`
+            wedstrijduur.innerHTML = `<span>Uur: ${eerstvolgendeWedstrijd.Aanvangsuur.substr(
+                0,
+                5
+            )}</span>`
         })
         .catch(error => console.error("Fout bij het ophalen van gegevens:", error));
 }
