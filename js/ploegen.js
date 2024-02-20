@@ -1,7 +1,7 @@
 const url = "https://www.volleyadmin2.be/services/wedstrijden_xml.php?province_id=4&stamnummer=L-0923&seriesid=p1d&format=json";
 
 // Select the list item where you want to display the information
-const wedstrijdInfoElement = document.querySelector(".card-subtitle.mb-2.text-body-secondary ul.list-group-item");
+const wedstrijdInfoElement = document.querySelector(".volgendewedstrijdpromo-1");
 
 // Fetch data using Fetch API
 fetch(url)
