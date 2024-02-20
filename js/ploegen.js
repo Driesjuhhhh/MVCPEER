@@ -17,16 +17,12 @@ fetch(url)
 
     // Update de innerHTML van de lijstitems
     wedstrijdsporthal.innerHTML = eerstvolgendeWedstrijd
-      ? `<span>Sporthal: ${eerstvolgendeWedstrijd.SporthalNaam}</span>`
+      ? `<span>Locatie: ${eerstvolgendeWedstrijd.SporthalNaam}</span>`
       : "<span>Geen komende wedstrijden gevonden.</span>";
 
-    wedstrijddatum.innerHTML = eerstvolgendeWedstrijd
-      ? `<span>Datum: ${eerstvolgendeWedstrijd.t}</span>`
-      : "";
+    wedstrijddatum.innerHTML = `<span>Aanvangsuur: ${eerstvolgendeWedstrijd.Aanvangsuur}</span>`
 
-    wedstrijduur.innerHTML = eerstvolgendeWedstrijd
-      ? `<span>Aanvangsuur: ${eerstvolgendeWedstrijd.Aanvangsuur}</span>`
-      : "";
+    wedstrijduur.innerHTML = `<span>Aanvangsuur: ${eerstvolgendeWedstrijd.Aanvangsuur}</span>`
   })
   .catch(error => console.error("Fout bij het ophalen van gegevens:", error));
 
