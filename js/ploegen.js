@@ -10,7 +10,7 @@ fetch(url)
   .then(response => response.json())
   .then(data => {
     // Filter de wedstrijden die nog moeten plaatsvinden
-    const komendeWedstrijden = data.filter(wedstrijd => wedstrijd.t > getCurrentDate());
+    const komendeWedstrijden = data.filter(wedstrijd => wedstrijd.t < getCurrentDate());
 
     // Neem de gegevens van de eerstvolgende wedstrijd
     const eerstvolgendeWedstrijd = komendeWedstrijden.length > 0 ? komendeWedstrijden[0] : null;
