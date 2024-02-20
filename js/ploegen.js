@@ -31,14 +31,14 @@ function eerstvolgendeWedstrijden(data) {
     const futureDates = []
 
     for (let i = 0; i < data.length; i++) {
-        const time = data[i]
+        const wedstrijd = data[i]
         //console.log(time)
-        const date = time.t.split("/").reverse().join("-");
+        const date = wedstrijd.t.split("/").reverse().join("-");
         //console.log(date)
         const alreadyHappened = new Date(date) < new Date();
 
         if (!alreadyHappened) {
-            futureDates.push(date)
+            futureDates.push(wedstrijd)
         }
     }
 
