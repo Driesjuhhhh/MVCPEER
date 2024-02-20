@@ -34,7 +34,7 @@ function fetchpromo1() {
 }
 
 function fetchpromo3() {
-    const urlp3 = "https://www.volleyadmin2.be/services/wedstrijden_xml.php?province_id=4&stamnummer=L-0923&seriesid=p3d-b&format=json";
+    const urlp3 = "https://www.volleyadmin2.be/services/wedstrijden_xml.php?reeks=P3D-B&province_id=4&stamnummer=L-0923&format=json";
 
     // Selecteer de lijstitems waar je de informatie wilt weergeven
     const wedstrijdsporthal = document.querySelector(".volgendewedstrijdpromo-3-sporthal");
