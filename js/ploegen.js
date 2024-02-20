@@ -17,7 +17,7 @@ fetch(url)
     const eerstvolgendeWedstrijd = wedstrijden[0];
 
     // Update de innerHTML van de lijstitems
-    wedstrijdsporthal.innerHTML = nextwedstrijden
+    wedstrijdsporthal.innerHTML = eerstvolgendeWedstrijd
       ? `<span>Locatie: ${eerstvolgendeWedstrijd.SporthalNaam}</span>`
       : "<span>Geen komende wedstrijden gevonden.</span>";
 
