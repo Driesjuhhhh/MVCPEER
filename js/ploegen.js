@@ -47,19 +47,19 @@ function fetchpromo3() {
         .then(data => {
 
             // Filter de wedstrijden die nog moeten plaatsvinden
-            const wedstrijden = eerstvolgendeWedstrijden(data)
+            const wedstrijdenp3 = eerstvolgendeWedstrijden(data)
 
             // Neem de gegevens van de eerstvolgende wedstrijd
-            const eerstvolgendeWedstrijd = wedstrijden[0];
+            const eerstvolgendeWedstrijdp3 = wedstrijdenp3[0];
 
             // Update de innerHTML van de lijstitems
-            wedstrijdsporthalp3.innerHTML = eerstvolgendeWedstrijd
-                ? `<span>Locatie: ${eerstvolgendeWedstrijd.SporthalNaam}</span>`
+            wedstrijdsporthalp3.innerHTML = eerstvolgendeWedstrijdp3
+                ? `<span>Locatie: ${eerstvolgendeWedstrijdp3.SporthalNaam}</span>`
                 : "<span>Geen komende wedstrijden gevonden.</span>";
 
-            wedstrijddatump3.innerHTML = `<span>Datum: ${eerstvolgendeWedstrijd.t}</span>`
+            wedstrijddatump3.innerHTML = `<span>Datum: ${eerstvolgendeWedstrijdp3.t}</span>`
 
-            wedstrijduurp3.innerHTML = `<span>Uur: ${eerstvolgendeWedstrijd.Aanvangsuur}</span>`
+            wedstrijduurp3.innerHTML = `<span>Uur: ${eerstvolgendeWedstrijdp3.Aanvangsuur}</span>`
         })
         .catch(error => console.error("Fout bij het ophalen van gegevens:", error));
 }
