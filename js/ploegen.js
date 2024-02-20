@@ -37,9 +37,9 @@ function fetchpromo3() {
     const url = "https://www.volleyadmin2.be/services/wedstrijden_xml.php?province_id=4&stamnummer=L-0923&seriesid=p3d-b&format=json";
 
     // Selecteer de lijstitems waar je de informatie wilt weergeven
-    const wedstrijdsporthalp3 = document.querySelector(".volgendewedstrijdpromo-3-sporthal");
-    const wedstrijddatump3 = document.querySelector(".volgendewedstrijdpromo-3-datum");
-    const wedstrijduurp3 = document.querySelector(".volgendewedstrijdpromo-3-tijd");
+    const wedstrijdsporthal = document.querySelector(".volgendewedstrijdpromo-3-sporthal");
+    const wedstrijddatum = document.querySelector(".volgendewedstrijdpromo-3-datum");
+    const wedstrijduur = document.querySelector(".volgendewedstrijdpromo-3-tijd");
 
     // Fetch data using Fetch API
     fetch(url)
@@ -47,19 +47,19 @@ function fetchpromo3() {
         .then(data => {
 
             // Filter de wedstrijden die nog moeten plaatsvinden
-            const wedstrijdenp3 = eerstvolgendeWedstrijden(data)
+            const wedstrijden = eerstvolgendeWedstrijden(data)
 
             // Neem de gegevens van de eerstvolgende wedstrijd
-            const eerstvolgendeWedstrijdp3 = wedstrijdenp3[0];
+            const eerstvolgendeWedstrijd = wedstrijden[0];
 
             // Update de innerHTML van de lijstitems
-            wedstrijdsporthalp3.innerHTML = eerstvolgendeWedstrijdp3
-                ? `<span>Locatie: ${eerstvolgendeWedstrijdp3.SporthalNaam}</span>`
+            wedstrijdsporthal.innerHTML = this.eerstvolgendeWedstrijd
+                ? `<span>Locatie: ${this.eerstvolgendeWedstrijd.SporthalNaam}</span>`
                 : "<span>Geen komende wedstrijden gevonden.</span>";
 
-            wedstrijddatump3.innerHTML = `<span>Datum: ${eerstvolgendeWedstrijdp3.t}</span>`
+            wedstrijddatum.innerHTML = `<span>Datum: ${this.eerstvolgendeWedstrijd.t}</span>`
 
-            wedstrijduurp3.innerHTML = `<span>Uur: ${eerstvolgendeWedstrijdp3.Aanvangsuur}</span>`
+            wedstrijduur.innerHTML = `<span>Uur: ${this.eerstvolgendeWedstrijd.Aanvangsuur}</span>`
         })
         .catch(error => console.error("Fout bij het ophalen van gegevens:", error));
 }
