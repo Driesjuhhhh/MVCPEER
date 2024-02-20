@@ -28,10 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 function fetchNextMatch() {
-    const url = "https://www.volleyadmin2.be/services/wedstrijden_xml.php?province_id=4&stamnummer=L-0923&format=json";
+    const url = "https://www.volleyadmin2.be/services/wedstrijden_xml.php?reeks=P1D&province_id=4&stamnummer=L-0923&format=json";
 
     // Selecteer de lijstitems waar je de informatie wilt weergeven
-    const wedstrijdsporthal = document.querySelector(".volgendewedstrijd-sporthal");
     const wedstrijddatum = document.querySelector(".volgendewedstrijd-datum");
     const wedstrijduur = document.querySelector(".volgendewedstrijd-tijd");
 
@@ -47,11 +46,9 @@ function fetchNextMatch() {
             const eerstvolgendeWedstrijd = wedstrijden[0];
 
             // Update de innerHTML van de lijstitems
-            wedstrijdsporthal.innerHTML = eerstvolgendeWedstrijd
-                ? `<span>Locatie: ${eerstvolgendeWedstrijd.SporthalNaam}</span>`
+            wedstrijddatum.innerHTML = eerstvolgendeWedstrijd
+                ? `<span>Datum: ${eerstvolgendeWedstrijd.t}</span>`
                 : "<span>Geen komende wedstrijden gevonden.</span>";
-
-            wedstrijddatum.innerHTML = `<span>Datum: ${eerstvolgendeWedstrijd.t}</span>`
 
             wedstrijduur.innerHTML = `<span>Uur: ${eerstvolgendeWedstrijd.Aanvangsuur.substr(
                 0,
