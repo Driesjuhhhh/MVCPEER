@@ -24,6 +24,12 @@
     --box-shadow: rgba(255, 255, 255, 0.35);
 }
 
+.cookiesalert {
+    background: var(--color-text);
+    color: var(--color-background);
+    margin-bottom: -50px;
+}
+
 
 ::-webkit-scrollbar {
     width: 10px;
