@@ -24,10 +24,10 @@
     --box-shadow: rgba(255, 255, 255, 0.35);
 }
 
-.cookiesalert {
-    background: var(--color-text);
-    color: var(--color-background);
-    margin-bottom: -50px;
+.cookiealert {
+    background: white !important;
+    color: black !important;
+    padding-bottom: -50px !important;
 }
 
 
