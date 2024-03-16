@@ -78,7 +78,7 @@ function eerstvolgendeWedstrijden(data) {
         //console.log(time)
         const date = wedstrijd.t.split("/").reverse().join("-");
         //console.log(date)
-        const alreadyHappened = new Date(date) < new Date();
+        const alreadyHappened = new Date(date) =< new Date();
 
         if (!alreadyHappened) {
             futureDates.push(wedstrijd)
