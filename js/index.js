@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 function fetchNextMatch() {
-    const url = "https://www.volleyadmin2.be/services/wedstrijden_xml.php?reeks=P1D&province_id=4&stamnummer=L-0923&format=json";
+    const url = "https://www.volleyadmin2.be/services/wedstrijden_xml.php?reeks=LDP1&province_id=4&stamnummer=L-0923&format=json";
 
     // Selecteer de lijstitems waar je de informatie wilt weergeven
     const wedstrijddatum = document.querySelector(".volgendewedstrijd-datum");
