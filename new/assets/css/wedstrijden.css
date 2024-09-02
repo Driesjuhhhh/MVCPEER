@@ -1,0 +1,15 @@
+:root {
+    --table-color: rgb(34, 179, 224, 0.4);
+    --table-text-color: black;
+    --shadow-color: black;
+}
+
+.dark-mode-variables {
+    --table-color: rgb(19, 43, 202, 0.4);
+    --table-text-color: white;
+    --shadow-color: white;
+}
+
+table {
+    overflow-x: auto;
+}
