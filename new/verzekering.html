@@ -36,7 +36,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
     </style>
-    <script src="assets/js/wedstrijden_fetch.js" defer></script>
+
 
 
     <!-- Google tag (gtag.js) -->
@@ -72,7 +72,7 @@
                     <div class="navigation-options-card">
                         <ul>
                             <li><a class="nav-link scrollto" href="index.html">Home</a></li>
-                            <li><a class="nav-link scrollto" href="Ploegen.html">Ploegen</a></li>
+                            <li><a class="nav-link scrollto" href="PloegenPloegen.html">Ploegen</a></li>
                             <li><a class="nav-link scrollto" href="Wedstrijden.html">Wedstrijden</a></li>
                             <li><a class="nav-link scrollto" href="Steun.html">Steun</a></li>
                             <li class="nav-item dropdown">
@@ -119,10 +119,10 @@
                 <ul>
                     <li><a class="nav-link scrollto" href="index.html">Home</a></li>
                     <li><a class="nav-link scrollto" href="Ploegen.html">Ploegen</a></li>
-                    <li><a class="nav-link scrollto active" href="Wedstrijden.html">Wedstrijden</a></li>
+                    <li><a class="nav-link scrollto" href="Wedstrijden.html">Wedstrijden</a></li>
                     <li><a class="nav-link scrollto" href="Steun.html">Steun</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             Administratie
                         </a>
@@ -164,52 +164,137 @@
         <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
             <img src="assets/img/logo.png">
             </br>
-            <h1 class="poppins-bold">Wedstrijden</h1>
+            <h1 class="poppins-bold">Verzekeringsformulier</h1>
         </div>
     </section>
     <main id="main">
-        <section id="wedstrijden">
+        <section id="verzekering">
             <div class="container" data-aos="zoom-in" data-aos-delay="100">
                 <div class="page-header justify-content-center d-flex">
-                    <h1 class="poppins-bold">Wedstrijden</h1>
+                    <h1 class="poppins-bold">
+                        Verzekerignsformulier
+                    </h1>
                 </div>
-                <br>
-                <br>
-                <br>
-                <div class="page-header justify-content-center d-flex">
-    
-                </div>
+            <div class="container">
                 <div class="row">
-                    <div class="col-sm-12 mb-12 mb-sm-0">
+                    <div class="col-sm-12 mb-3 mb-sm-0">
                         <div class="card">
-                            <select class="form-select form-select-sm" aria-label=".form-select-sm example"
-                                id="ploegenSelect">
-                                <option value="LDP1" selected>Promo 1 Dames</option>
-                                <option value="BVLPD F">Promo 1 Dames BEKER</option>
-                                <option value="LDP3-A">Promo 3 Dames</option>
-                                <option value="BVLPD O">Promo 3 Dames BEKER</option>
-                                <option value="LMU17N1R1-B">U17 Meisjes A</option>
-                                <option value="LMU17N2R1-C">U17 Meisjes B</option>
-                                <option value="LMU15N2R1-C">U15 Meisjes</option>
-                                <option value="LMU13N2R1-E">U13 Meisjes A</option>
-                                <option value="LMU13N2R1-H">U13 Meisjes B</option>
-                                <option value="LMU13N1R1-B">U13 Meisjes C</option>
-                                <option value="LMU13N3R1-C">U13 Meisjes D</option>
-                                <option value="LMU13N2R1-B">U13 Meisjes E</option>
-                                <option value="LMU11N1R1-A">U11 Meisjes 3 VS 3 A</option>
-                                <option value="LMU11N3R1-A">U11 Meisjes 3 VS 3 B</option>
-                                <option value="LJMU112-24.1R1-A">U11 Jongens-Meisjes 2 VS 2</option>
-                            </select>
-                            <br />
-                            <br />
-                            <button class="btn btn-primary" id="button">Kies ploeg</button>
-                            <br>
-                            <p class="card-text-3 text-color d-flex justify-content-center"><strong>Matches:</strong></p>
-                            <br>
-                            <div id="table"></div>
+                            <div class="card-body">
+                                <p class="card-text">Onze volleybalclub is aangesloten bij een federatie, namelijk Volley
+                                    Vlaanderen en het ondergeschikte Volley Limburg. Deze aansluiting houdt onder meer in
+                                    dat jullie verzekerd zijn bij de club en dit via de verzekeringsmaatschappij Ethias. Als
+                                    club betalen we hiervoor elk jaar voor elk lid een bepaald bedrag aan de federatie.
+                                    Zowel spelers als niet-spelende leden kunnen ingeval van een ongeval beroep doen op deze
+                                    verzekering.
+                                </p>
+                                <p class="card-text">Wat is verzekerd door de club?</p>
+                                <p class="card-text">Wat wordt er door de verzekering gedekt (dit is een oplijsting van de
+                                    meest voorkomende gevallen):</p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        Burgerlijke aansprakelijkheid
+                                    </li>
+                                    <li class="list-group-item">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">
+                                                Zowel lichamelijke als materiële schade
+                                            </li>
+                                            <li class="list-group-item">
+                                                bijvoorbeeld: Wanneer je onderweg naar een wedstrijd betrokken raakt bij een
+                                                ongeval
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Lichamelijke ongevallen (sportongevallen)
+                                    </li>
+                                    <li class="list-group-item">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">
+                                                Medische onkosten lichamelijk letsel: bijvoorbeeld wanneer je je enkel
+                                                verzwikt tijdens het volleyballen
+                                            </li>
+                                            <li class="list-group-item">
+                                                Brilschade ten gevolge van een volleybalactiviteit: zowel glazen als
+                                                montuur. (Enkel voor scheidsrechters en officiëlen zoals
+                                                terreinafgevaardigden, niet voor spelende leden)
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <p class="card-text">Naast de activiteiten die direct gelinkt zijn met het uitvoeren van de
+                                    volleybalactiviteit, vallen onder de verzekering ook:
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        Activiteiten die als doel hebben om de clubkas te spijzen: eetfestijn, bbq…
+                                    </li>
+                                    <li class="list-group-item">
+                                        Nevenactiviteiten: einde seizoensactiviteit, teambuilding enz…
+                                    </li>
+                                </ul>
+                                <p class="card-text">De polis die door Volley Vlaanderen werd afgesloten is volledig te
+                                    raadplegen op de site van <a class="text-decoration-none text-color"
+                                        href="https://old.volleyvlaanderen.be/verzekering/">volley vlaanderen
+                                    </a></p>
+                                <p class="card-text">Indien je twijfelt of de verzekering tussenkomt in bepaalde gevallen,
+                                    nag je steeds Lieve Creemers aansreken of een mailtje sturen</p>
+                            </div>
                         </div>
                     </div>
-    
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 mb-3 mb-sm-0">
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="card-text">Welke procedure volg je indien je een schadegeval wenst aan te geven?
+                                </p>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        Licht je trianer / trainster in
+                                    </li>
+                                    <li class="list-group-item">
+                                        Licht Lieve Creemers in
+                                    </li>
+                                    <li class="list-group-item">
+                                        Ga naar de website van Volley Vlaanderen en download het formulier <a
+                                            class="text-decoration-none text-color"
+                                            href="https://old.volleyvlaanderen.be/verzekering/">ongevalaangifte</a>
+                                        (volleyvlaanderen.be/verzekering). Volgende velden van het formulier moeten ingevuld
+                                        worden:
+                                    </li>
+                                    <li class="list-group-item">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">
+                                                Identiteit slachtoffer
+                                            </li>
+                                            <li class="list-group-item">
+                                                Gegevens van het ongeval
+                                            </li>
+                                            <li class="list-group-item">
+                                                geneeskundig getuigschrift(in te vullen door de behandelende geneesheer)
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Bezorg bovenstaande gegevens zo snel als mogelijk aan Lieve Creemers (secretaris)
+                                        van het bestuur (dit kan eventueel via je trainer / trainster). Zij zal bij Ethias
+                                        een dossier aanmaken m.b.t. de schadeclaim. In deze fase dienen GEEN documenten
+                                        rechtstreeks naar Ethias verstuurd te worden.
+                                    </li>
+                                    <li class="list-group-item">
+                                        Nadat de clubsecretaris het dossier heeft aangemaakt, ontvangen jullie een
+                                        brief/mail waarin het dossiernummer, de contactgegevens en in het kort de te volgen
+                                        procedure voor verdere afhandeling van het dossier staat vermeld.
+                                    </li>
+                                    <li class="list-group-item">
+                                        Vanaf dan verloopt de correspondentie met Ethias via jullie zelf, en niet meer via
+                                        de club.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
