@@ -56,6 +56,13 @@ header nav,header .dropdown-menu {
     background-color: var(--header-background-color);
 }
 
+/* Zorg dat het dropdown-menu zichtbaar blijft bij hover */
+.navbar .dropdown:hover > .dropdown-menu,
+.navbar .dropdown-menu:hover {
+    display: block;
+    margin-top: 0; /* voorkomt springend effect */
+}
+
 header nav a{
     color: var(--header-text-color) !important;
 }
