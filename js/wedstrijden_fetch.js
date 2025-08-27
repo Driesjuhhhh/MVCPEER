@@ -1,3 +1,4 @@
+
 const tableDiv = document.getElementById("table");
 const select = document.getElementById("ploegenSelect");
 const table = document.createElement("table");
@@ -7,6 +8,39 @@ button.addEventListener("click", function () {
     tableDiv.innerHTML = "";
     getMatchesFunction();
 });
+
+// Functie om automatisch ploegnamen en ids te laden uit volleyscores.be
+async function updatePloegenSelectFromVolleyscores() {
+    const volleyscoresUrl = "https://www.volleyscores.be/index.php?v=2&ss=0&isActiveSeason=1&t=Club%20L-0923%20Monsheide%20VBC%20Peer&a=cc&se=12&pi=&si=&ti=&ci=10791&mm=&ssi=&st=&w=%25&f=&lng=nl";
+    try {
+        const response = await fetch(volleyscoresUrl);
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, "text/html");
+        // Zoek alle tekstnodes met "Reeks:"
+        const allElements = Array.from(doc.querySelectorAll('body *'));
+        let options = [];
+        allElements.forEach(el => {
+            if (el.childNodes.length === 1 && el.childNodes[0].nodeType === 3 && el.textContent.includes('Reeks:')) {
+                const match = el.textContent.match(/Reeks:\s*(.*?)\s*\((.*?)\)/);
+                if (match) {
+                    const naam = match[1].trim();
+                    const id = match[2].trim();
+                    options.push({ id, naam });
+                }
+            }
+        });
+        if (options.length > 0 && select) {
+            select.innerHTML = options.map(opt => `<option value="${opt.id}">${opt.naam}</option>`).join("\n");
+        }
+    } catch (e) {
+        // Fallback: doe niets, gebruik bestaande opties
+        console.warn("Kon ploegen niet automatisch laden van volleyscores.be", e);
+    }
+}
+
+// Roep de functie aan bij paginalaad
+document.addEventListener("DOMContentLoaded", updatePloegenSelectFromVolleyscores);
 
 // Set the credentials
 const clubNumber = "L-0923";
