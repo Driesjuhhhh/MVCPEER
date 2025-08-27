@@ -10,6 +10,7 @@ button.addEventListener("click", function () {
 });
 
 // Functie om automatisch ploegnamen en ids te laden uit volleyscores.be
+
 async function updatePloegenSelectFromVolleyscores() {
     const volleyscoresUrl = "https://www.volleyscores.be/index.php?v=2&ss=0&isActiveSeason=1&t=Club%20L-0923%20Monsheide%20VBC%20Peer&a=cc&se=12&pi=&si=&ti=&ci=10791&mm=&ssi=&st=&w=%25&f=&lng=nl";
     try {
@@ -32,15 +33,38 @@ async function updatePloegenSelectFromVolleyscores() {
         });
         if (options.length > 0 && select) {
             select.innerHTML = options.map(opt => `<option value="${opt.id}">${opt.naam}</option>`).join("\n");
+            // Verwijder eventuele oude fallback-melding
+            const oldFallback = document.getElementById('ploegen-fallback');
+            if (oldFallback) oldFallback.remove();
+            // Selecteer eerste ploeg, maar laad nog geen wedstrijden
+            select.selectedIndex = 0;
         }
     } catch (e) {
-        // Fallback: doe niets, gebruik bestaande opties
+        // Fallback: toon melding onder de select
         console.warn("Kon ploegen niet automatisch laden van volleyscores.be", e);
+        if (select) {
+            let fallback = document.getElementById('ploegen-fallback');
+            if (!fallback) {
+                fallback = document.createElement('div');
+                fallback.id = 'ploegen-fallback';
+                fallback.style.color = 'red';
+                fallback.style.fontSize = '0.9em';
+                fallback.style.marginTop = '8px';
+                fallback.textContent = 'Let op: ploegenlijst kon niet automatisch geladen worden.';
+                select.parentNode.insertBefore(fallback, select.nextSibling);
+            }
+        }
     }
 }
 
 // Roep de functie aan bij paginalaad
-document.addEventListener("DOMContentLoaded", updatePloegenSelectFromVolleyscores);
+document.addEventListener("DOMContentLoaded", async function() {
+    // Toon tijdelijk een laad-optie
+    if (select) {
+        select.innerHTML = '<option disabled selected>laden...</option>';
+    }
+    await updatePloegenSelectFromVolleyscores();
+});
 
 // Set the credentials
 const clubNumber = "L-0923";
@@ -117,48 +141,51 @@ class VolleyAdmin2 {
      * @throws {Error}
      */
     checkParameters(parameters) {
-        const result = {};
-
-        // We loop all parameters to find their real key (= dutch key which the API uses)
-        for (const [key, value] of Object.entries(parameters)) {
-            if (value === null) {
-                continue;
+        try {
+            const response =  fetch(volleyscoresUrl);
+            const html =  response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, "text/html");
+            // Zoek alle tekstnodes met "Reeks:"
+            const allElements = Array.from(doc.querySelectorAll('body *'));
+            let options = [];
+            allElements.forEach(el => {
+                if (el.childNodes.length === 1 && el.childNodes[0].nodeType === 3 && el.textContent.includes('Reeks:')) {
+                    const match = el.textContent.match(/Reeks:\s*(.*?)\s*\((.*?)\)/);
+                    if (match) {
+                        const naam = match[1].trim();
+                        const id = match[2].trim();
+                        options.push({ id, naam });
+                    }
+                }
+            });
+            if (options.length > 0 && select) {
+                select.innerHTML = options.map(opt => `<option value="${opt.id}">${opt.naam}</option>`).join("\n");
+                // Verwijder eventuele oude fallback-melding
+                const oldFallback = document.getElementById('ploegen-fallback');
+                if (oldFallback) oldFallback.remove();
+                // Selecteer eerste ploeg, maar laad nog geen wedstrijden
+                select.selectedIndex = 0;
+            } else if (select) {
+                select.innerHTML = '<option disabled selected>Geen ploegen gevonden</option>';
             }
-
-            if (
-                ![
-                    VolleyAdmin2.CLUB_NUMBER,
-                    VolleyAdmin2.PROVINCE_ID,
-                    VolleyAdmin2.SERIES_ID,
-                ].includes(key)
-            ) {
-                throw new Error(`The key "${key}" is invalid.`);
+        } catch (e) {
+            // Fallback: toon melding onder de select
+            console.warn("Kon ploegen niet automatisch laden van volleyscores.be", e);
+            if (select) {
+                select.innerHTML = '<option disabled selected>Geen ploegen gevonden</option>';
+                let fallback = document.getElementById('ploegen-fallback');
+                if (!fallback) {
+                    fallback = document.createElement('div');
+                    fallback.id = 'ploegen-fallback';
+                    fallback.style.color = 'red';
+                    fallback.style.fontSize = '0.9em';
+                    fallback.style.marginTop = '8px';
+                    fallback.textContent = 'Let op: ploegenlijst kon niet automatisch geladen worden.';
+                    select.parentNode.insertBefore(fallback, select.nextSibling);
+                }
             }
-
-            result[key] = value;
         }
-
-        return result;
-    }
-
-    /**
-     * Get matches
-     *
-     * @param {string} seriesId
-     * @param {number} provinceId
-     * @param {string} clubNumber
-     * @returns {Promise<object>}
-     * @throws {Error}
-     */
-    async getMatches(seriesId = null, provinceId = null, clubNumber = null) {
-        return this.doCall(
-            VolleyAdmin2.API_METHOD_MATCHES,
-            this.checkParameters({
-                [VolleyAdmin2.SERIES_ID]: seriesId,
-                [VolleyAdmin2.PROVINCE_ID]: provinceId,
-                [VolleyAdmin2.CLUB_NUMBER]: clubNumber,
-            })
-        );
     }
 
     /**
