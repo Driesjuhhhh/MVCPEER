@@ -50,11 +50,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 </tr>
             </thead>`;
         var tbody = table.createTBody();
-        const mockMatches = [
-            { Thuis: "MVC Peer", Bezoekers: "VC Jansen", SporthalNaam: "Sporthal Peer", t: "2025-09-01", Aanvangsuur: "20:00", UitslagHoofd: "3-1" },
-            { Thuis: "VC Jansen", Bezoekers: "MVC Peer", SporthalNaam: "Sporthal Jansen", t: "2025-09-08", Aanvangsuur: "19:30", UitslagHoofd: "2-3" },
-            { Thuis: "MVC Peer", Bezoekers: "Volley Limburg", SporthalNaam: "Sporthal Peer", t: "2025-09-15", Aanvangsuur: "18:00", UitslagHoofd: "/" }
-        ];
         mockMatches.forEach((element, idx) => {
             var uitslag = (element.UitslagHoofd === "undefined") ? "/" : element.UitslagHoofd;
             var aanvangsuur = element.Aanvangsuur;

@@ -1,295 +1,274 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" class="bg-gray-50 dark:bg-gray-900">
 
 <head>
     <!-- Meta Tags -->
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#49739c" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
 
-    <!-- Title -->
     <title>MVC Peer | Steun</title>
-
-    <!-- Favicon -->
     <link href="assets/logo.png?" rel="shortcut icon" />
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-
-    <!-- Bootstrap JavaScript Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-
-    <!-- Custom CSS -->
-    <link href="css/steun.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
-
-    <!-- Custom Scripts -->
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class' };
+    </script>
     <script src="js/scripts.js" defer></script>
 
-    <!-- Description for SEO -->
-    <meta name="theme-color" content="#49739c" />
+    <!-- SEO -->
     <meta name="og:url" content="https://mvcpeer.be/steun.html" />
     <meta name="og:title" content="MVC Peer | Steun" />
     <meta name="description" content="Via deze link vind je de mogelijkheden om de club te steunen" />
     <meta name="og:description" content="Via deze link vind je de mogelijkheden om de club te steunen" />
-    <meta name="robots" content="max-snippet:20" />
-    <meta name="og:site_name" content="Mvc Peer | Steun" />
 
-    <!-- Open Graph Meta Tags for Social Media Sharing -->
-    <meta name="og:img" content="assets/logo.png" />
-    <meta name="og:img:width" content="1440" />
-    <meta name="og:img:height" content="1440" />
-
-    <!-- Font Awesome Kit -->
+    <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/c2e4631732.js" crossorigin="anonymous"></script>
-
-    <!-- Bootstrap Cookie Alert -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.css">
-    <script src="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.js" defer></script>
 </head>
 
 <body>
-    <div class="alert text-center cookiealert" role="alert">
-        <b>Do you like cookies?</b> &#x1F36A; We maken gebruik van cookies om het siteverkeer te analyseren. <a
-            href="https://cookiesandyou.com/" target="_blank">Meer info</a>
-
-        <button type="button" class="btn btn-primary btn-sm acceptcookies">
-            Okay
-        </button>
+    <!-- Cookie Alert (Tailwind style) -->
+    <div id="cookiealert" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-blue-100 border border-blue-300 text-blue-900 px-6 py-4 rounded shadow flex items-center space-x-4" style="display:none;">
+        <span class="font-bold">Do you like cookies?</span> 🍪 We maken gebruik van cookies om het siteverkeer te analyseren.
+        <a href="https://cookiesandyou.com/" target="_blank" class="underline text-blue-700">Meer info</a>
+        <button id="acceptcookies" class="ml-4 px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700">Okay</button>
     </div>
+
     <header>
-        <nav class="navbar fixed-top navbar-expand-lg">
-            <div class="container-fluid">
-                <div class="darkmode-switch">
-                    <div class="dark-mode">
-                        <button id="darkmode-button" class="darkmode-button">
-                            <i class="fa-solid fa-circle-half-stroke"></i>
-                        </button>
+        <nav class="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 shadow z-40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="flex items-center">
+                        <img id="header-logo" src="assets/logo.png" alt="Logo" class="w-10 h-9 mr-2 transition duration-300" style="filter: none;" onerror="this.style.filter='none';this.style.background='#fff';" />
+    <script>
+        // Logo filter for dark mode
+        function updateLogoFilter() {
+            const logo = document.getElementById('header-logo');
+            if (!logo) return;
+            if (document.documentElement.classList.contains('dark')) {
+                logo.style.filter = 'invert(1) brightness(2)';
+            } else {
+                logo.style.filter = 'none';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', updateLogoFilter);
+        // Listen for theme changes
+        const observer = new MutationObserver(updateLogoFilter);
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    </script>
+                        <span class="sr-only">MVC Peer</span>
+                    </a>
+                </div>
+                <div class="flex items-center justify-end flex-1">
+                    <div class="hidden md:flex items-center space-x-6">
+                        <a href="index.html" class="text-gray-700 dark:text-gray-200 hover:text-blue-700 dark:hover:text-blue-400">Home</a>
+                        <a href="ploegen.html" class="text-gray-700 dark:text-gray-200 hover:text-blue-700 dark:hover:text-blue-400">Ploegen</a>
+                        <a href="wedstrijden.html" class="text-gray-700 dark:text-gray-200 hover:text-blue-700 dark:hover:text-blue-400">Wedstrijden</a>
+                        <div class="relative group">
+                          <div class="dropdown-hover-area">
+                              <button class="text-gray-700 dark:text-gray-200 hover:text-blue-700 dark:hover:text-blue-400 focus:outline-none">Administratie
+                                  <svg class="inline w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                  </svg>
+                              </button>
+                              <div class="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible dropdown-menu z-50 transition-all duration-200">
+                                  <a href="aansluiting.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Aansluiting club</a>
+                                  <a href="wedstrijden.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Wedstrijden</a>
+                                  <a href="kantine_scheids_lijst.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Kantine & scheidsrechters</a>
+                                  <a href="privacyverklaring.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Privacy verklaring</a>
+                                  <a href="tegemoetkoming.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Tegemoetkoming</a>
+                                  <a href="https://volleyvlaanderen.be/Gezondheid-en-ethiek/Federatie-API" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Vertrouwenspersonen</a>
+                                  <a href="gedragscode.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Gedragscode</a>
+                                  <a href="verzekering.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Verzekeringsformulier</a>
+                              </div>
+                        </div>
                     </div>
+                        <a href="steun.html" class="text-blue-700 dark:text-blue-400 font-semibold">Steun</a>
+                    <a href="contact.html" class="text-gray-700 dark:text-gray-200 hover:text-blue-700 dark:hover:text-blue-400">Contact</a>
                 </div>
-                <a class="navbar-brand" href="index.html">
-                    <img src="assets/logo.png" alt="Logo" width="40" height="34"
-                        class="d-inline-block align-text-top" />
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <button id="darkmode-button" class="ml-4 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-xl flex items-center justify-center w-10 h-10 rounded-full transition" aria-label="Toggle dark mode">
+                    <span id="theme-icon">
+                        <svg id="icon-sun" class="block dark:hidden w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2"/><path stroke="currentColor" stroke-width="2" d="M12 1v2m0 18v2m11-11h-2M3 12H1m16.95 7.07l-1.41-1.41M6.34 6.34L4.93 4.93m12.02 0l-1.41 1.41M6.34 17.66l-1.41 1.41"/></svg>
+                        <svg id="icon-moon" class="hidden dark:block w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z"/></svg>
+                    </span>
                 </button>
-                <div class="collapse justify-content-center navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="ploegen.html">Ploegen</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="wedstrijden.html">Wedstrijden</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Administratie
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item" href="administratie.html">Overzicht</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="aansluiting.html">Aansluiting club</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="wedstrijden.html">Wedstrijden</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="kantine_scheids_lijst.html">Kantine &
-                                        scheidsrechters</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="privacyverklaring.html">Privacy verklaring</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="tegemoetkoming.html">Tegemoetkoming</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item"
-                                        href="https://volleyvlaanderen.be/Gezondheid-en-ethiek/Federatie-API">Vertrouwenspersonen</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="gedragscode.html">Gedragscode</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="verzekering.html">Verzekeringsformulier</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="steun.html">Steun</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
-                        </li>
-                    </ul>
-                </div>
             </div>
+            <div class="md:hidden flex items-center space-x-2">
+                <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            </div>
+            <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
+                <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Home</a>
+                <a href="ploegen.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Ploegen</a>
+                <a href="wedstrijden.html" class="block px-4 py-2 text-blue-700 font-semibold">Wedstrijden</a>
+                <div class="border-t border-gray-100"></div>
+                <a href="aansluiting.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Aansluiting club</a>
+                <a href="wedstrijden.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Wedstrijden</a>
+                <a href="kantine_scheids_lijst.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Kantine & scheidsrechters</a>
+                <a href="privacyverklaring.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Privacy verklaring</a>
+                <a href="tegemoetkoming.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Tegemoetkoming</a>
+                <a href="https://volleyvlaanderen.be/Gezondheid-en-ethiek/Federatie-API" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Vertrouwenspersonen</a>
+                <a href="gedragscode.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Gedragscode</a>
+                <a href="verzekering.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Verzekeringsformulier</a>
+                <div class="border-t border-gray-100"></div>
+                <a href="steun.html" class="block px-4 py-2 text-blue-700 font-semibold">Steun</a>
+                <a href="contact.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Contact</a>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const btn = document.getElementById('mobile-menu-button');
+                    const menu = document.getElementById('mobile-menu');
+                    if (btn && menu) {
+                        btn.addEventListener('click', () => { menu.classList.toggle('hidden'); });
+                    }
+                });
+            </script>
         </nav>
     </header>
-    <main>
-        <div class="container">
-            <div class="page-header justify-content-center d-flex">
-                <h1 id="welcomeText">
-                    Steun mogelijkheden
-                </h1>
-            </div>
-            <div class="row">
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                    <div class="card">
-                        <div class="card-body">
-                            <p class="card-text d-flex justify-content-center text-center ">Via onderstaande knop kan je
-                                naar de webshop gaan</p>
-                            <br>
-                            <br>
-                            <div class="position-absolute bottom-0 start-50 translate-middle-x">
-                                <a href="webshop.html" class="btn btn-primary d-flex justify-content-center">Webshop</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 mb-3 mb-sm-0">
-                    <div class="card">
-                        <div class="card-body">
-                            <p class="d-flex justify-content-center text-center card-text">Via onderstaande knop kan je
-                                naar de trooper pagina gaan</p>
-                            <br>
-                            <br>
-                            <div class="position-absolute bottom-0 start-50 translate-middle-x">
-                                <a href="trooper.html" class="btn btn-primary d-flex justify-content-center">Trooper</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-4 mb-3 mb-sm-0">
-                    <div class="card">
-                        <div class="card-body">
 
-                            <a href="https://www.kinera.be/"><img src="assets/Sponsor_kinera_eps.png"
-                                    class="card-img-top" alt="Kinera" /></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 mb-3 mb-sm-0">
-                    <div class="card">
-                        <div class="card-body">
+    <main class="pt-24 pb-12 min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 font-sans">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-center">
+                <h1 id="welcomeText" class="text-4xl font-extrabold tracking-tight text-blue-800 dark:text-blue-300 mb-8 drop-shadow-lg text-center">Steun mogelijkheden</h1>
+            </div>
 
-                            <a href="https://jansen-dhz.be/"><img src="assets/Sponsor_Jansen_dhz_ok.png"
-                                    class="card-img-top" alt="Jansen DHZ" /></a>
+            <!-- Main card matching other pages -->
+            <div class="relative animate-fadein bg-white/90 dark:bg-gray-800/90 backdrop-blur-md border border-gray-200 dark:border-gray-700 rounded-3xl shadow-2xl p-8 mb-8 transition-all duration-300">
+                <div class="mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white dark:bg-gray-900 border dark:border-gray-700 rounded-lg p-6 flex flex-col items-center justify-center text-center">
+                            <p class="text-gray-700 dark:text-gray-200 mb-6">Via onderstaande knop kan je naar de webshop gaan</p>
+                            <a href="webshop.html" class="inline-block px-5 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700">Webshop</a>
+                        </div>
+                        <div class="bg-white dark:bg-gray-900 border dark:border-gray-700 rounded-lg p-6 flex flex-col items-center justify-center text-center">
+                            <p class="text-gray-700 dark:text-gray-200 mb-6">Via onderstaande knop kan je naar de trooper pagina gaan</p>
+                            <a href="trooper.html" class="inline-block px-5 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700">Trooper</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4 mb-3 mb-sm-0">
-                    <div class="card">
-                        <div class="card-body">
 
-                            <a href="https://www.appsysictgroup.com/"><img src="assets/Sponsor_AppSys.png"
-                                    class="card-img-top" alt="Appsys" /></a>
+                <hr class="border-t my-6 border-gray-100 dark:border-gray-700" />
+
+                <h2 class="text-center text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4">Onze sponsoren</h2>
+
+                <!-- Sponsors card -->
+                <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 items-center">
+                        <div class="flex items-center justify-center p-6 bg-white dark:bg-gray-800 border rounded-xl min-h-[180px]">
+                            <a href="https://www.kinera.be/" target="_blank" rel="noopener">
+                                <img src="assets/Sponsor_kinera_eps.png" alt="Kinera" class="max-h-36 md:max-h-44 w-auto object-contain" />
+                            </a>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-4 mb-3 mb-sm-0">
-                    <div class="card">
-                        <div class="card-body">
-                            
-                            <a href="https://optiekwithofs.be/"><img src="assets/Sponsor_Optiek_Withofs.png" class="card-img-top" alt="Withofs" /></a>
+                        <div class="flex items-center justify-center p-6 bg-white dark:bg-gray-800 border rounded-xl min-h-[180px]">
+                            <a href="https://jansen-dhz.be/" target="_blank" rel="noopener">
+                                <img src="assets/Sponsor_Jansen_dhz_ok.png" alt="Jansen DHZ" class="max-h-36 md:max-h-44 w-auto object-contain" />
+                            </a>
                         </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 mb-3 mb-sm-0">
-                    <div class="card">
-                        <div class="card-body">
-                            
-                            <img src="assets/Sponsor_Agten_interieur.png" class="card-img-top" alt="Agten" />
+                        <div class="flex items-center justify-center p-6 bg-white dark:bg-gray-800 border rounded-xl min-h-[180px]">
+                            <a href="https://www.appsysictgroup.com/" target="_blank" rel="noopener">
+                                <img src="assets/Sponsor_AppSys.png" alt="Appsys" class="max-h-36 md:max-h-44 w-auto object-contain" />
+                            </a>
                         </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 mb-3 mb-sm-0">
-                    <div class="card">
-                        <div class="card-body">
-                            <img src="assets/Sponsor_Sammy.png" class="card-img-top" alt="Sammy" />
+                        <div class="flex items-center justify-center p-6 bg-white dark:bg-gray-800 border rounded-xl min-h-[180px]">
+                            <a href="https://optiekwithofs.be/" target="_blank" rel="noopener">
+                                <img src="assets/Sponsor_Optiek_Withofs.png" alt="Withofs" class="max-h-36 md:max-h-44 w-auto object-contain" />
+                            </a>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-4 mb-3 mb-sm-0">
-                    <div class="card">
-                        <div class="card-body">
-                            <a href="https://www.paesen.be/"><img src="assets/Sponsor_paesen.png" class="card-img-top"
-                                    alt="Paesen" /></a>
+                        <div class="flex items-center justify-center p-6 bg-white dark:bg-gray-800 border rounded-xl min-h-[180px]">
+                            <img src="assets/Sponsor_Agten_interieur.png" alt="Agten" class="max-h-36 md:max-h-44 w-auto object-contain" />
                         </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 mb-3 mb-sm-0">
-                    <div class="card">
-                        <div class="card-body">
-                            <a href="https://bijlutjeenrob.itsready.be/nl"><img
-                                    src="assets/Sponsor_Frituur_Lutje_en_Rob.png" class="card-img-top"
-                                    alt="Lutje en Rob" /></a>
+                        <div class="flex items-center justify-center p-6 bg-white dark:bg-gray-800 border rounded-xl min-h-[180px]">
+                            <img src="assets/Sponsor_Sammy.png" alt="Sammy" class="max-h-36 md:max-h-44 w-auto object-contain" />
                         </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 mb-3 mb-sm-0">
-                    <div class="card">
-                        <div class="card-body">
-                            <a href="https://www.slagerijcornelissen.be/"><img
-                                    src="assets/Sponsor_slagerij_cornelissen.png" class="card-img-top"
-                                    alt="Slagerij Cornelissen" /></a>
+                        <div class="flex items-center justify-center p-6 bg-white dark:bg-gray-800 border rounded-xl min-h-[180px]">
+                            <a href="https://www.paesen.be/" target="_blank" rel="noopener">
+                                <img src="assets/Sponsor_paesen.png" alt="Paesen" class="max-h-36 md:max-h-44 w-auto object-contain" />
+                            </a>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-4 mb-3 mb-sm-0">
-                    <div class="card">
-                        <div class="card-body">
-                            <a href="https://www.vandijck.nu/"><img
-                                    src="assets/Sponsor_Vandijck.png" class="card-img-top"
-                                    alt="Vandijck" /></a>
+                        <div class="flex items-center justify-center p-6 bg-white dark:bg-gray-800 border rounded-xl min-h-[180px]">
+                            <a href="https://bijlutjeenrob.itsready.be/nl" target="_blank" rel="noopener">
+                                <img src="assets/Sponsor_Frituur_Lutje_en_Rob.png" alt="Lutje en Rob" class="max-h-36 md:max-h-44 w-auto object-contain" />
+                            </a>
+                        </div>
+                        <div class="flex items-center justify-center p-6 bg-white dark:bg-gray-800 border rounded-xl min-h-[180px]">
+                            <a href="https://www.slagerijcornelissen.be/" target="_blank" rel="noopener">
+                                <img src="assets/Sponsor_slagerij_cornelissen.png" alt="Slagerij Cornelissen" class="max-h-36 md:max-h-44 w-auto object-contain" />
+                            </a>
+                        </div>
+                        <div class="flex items-center justify-center p-6 bg-white dark:bg-gray-800 border rounded-xl min-h-[180px]">
+                            <a href="https://www.vandijck.nu/" target="_blank" rel="noopener">
+                                <img src="assets/Sponsor_Vandijck.png" alt="Vandijck" class="max-h-36 md:max-h-44 w-auto object-contain" />
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-    <footer>
-        <div class="container">
-            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-                <div class="col-md-4 d-flex align-items-center">
-                    <span class="mb-3 mb-md-0 text-muted" id="year"></span>
-                </div>
-                <div class="col-md-4 d-flex align-items-center">
-                    <a class="mb-3 mb-md-0 text-muted" href="https://driesbielen.be">Design by Dries Bielen</a>
-                </div>
-                <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                    <li class="ms-3">
-                        <a class="text-muted" href="https://www.instagram.com/mvcpeer/"><i
-                                class="fab fa-instagram"></i></a>
-                    </li>
-                    <li class="ms-3">
-                        <a class="text-muted" href="https://www.facebook.com/mvcpeervolley/?locale=nl_NL"><i
-                                class="fab fa-facebook"></i></a>
-                    </li>
-                </ul>
-            </footer>
+
+    <style>
+        .animate-fadein { animation: fadein 0.7s cubic-bezier(.4,0,.2,1); }
+        @keyframes fadein { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+    </style>
+
+    <footer class="bg-white dark:bg-gray-900 border-t">
+        <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between">
+            <span class="text-gray-500 dark:text-gray-300 mb-2 md:mb-0" id="year"></span>
+            <a class="text-gray-500 dark:text-gray-300 hover:text-blue-700 dark:hover:text-blue-400 mb-2 md:mb-0" href="https://driesbielen.be">Design by Dries Bielen</a>
+            <div class="flex space-x-4">
+                <a class="text-gray-500 dark:text-gray-300 hover:text-pink-600 dark:hover:text-pink-400" href="https://www.instagram.com/mvcpeer/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a class="text-gray-500 dark:text-gray-300 hover:text-blue-700 dark:hover:text-blue-400" href="https://www.facebook.com/mvcpeervolley/?locale=nl_NL" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            </div>
         </div>
     </footer>
+
+    <script>
+        // Year in footer
+        document.getElementById('year').textContent = `© ${new Date().getFullYear()} MVC Peer`;
+
+        // Dark mode toggle logic with icon switch
+        document.addEventListener('DOMContentLoaded', function () {
+            const html = document.documentElement;
+            const darkBtn = document.getElementById('darkmode-button');
+            const iconSun = document.getElementById('icon-sun');
+            const iconMoon = document.getElementById('icon-moon');
+            function updateIcons() {
+                if (html.classList.contains('dark')) {
+                    if (iconSun) iconSun.classList.add('hidden');
+                    if (iconMoon) iconMoon.classList.remove('hidden');
+                } else {
+                    if (iconSun) iconSun.classList.remove('hidden');
+                    if (iconMoon) iconMoon.classList.add('hidden');
+                }
+            }
+            if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+            } else { html.classList.remove('dark'); }
+            updateIcons();
+            if (darkBtn) {
+                darkBtn.addEventListener('click', function () {
+                    html.classList.toggle('dark');
+                    if (html.classList.contains('dark')) { localStorage.setItem('color-theme','dark'); } else { localStorage.setItem('color-theme','light'); }
+                    updateIcons();
+                });
+            }
+        });
+
+        // Cookie accept
+        document.addEventListener('DOMContentLoaded', function(){
+            const cookie = document.getElementById('cookiealert');
+            const accept = document.getElementById('acceptcookies');
+            if (!localStorage.getItem('mvc_cookie_accepted')) { if (cookie) cookie.style.display='flex'; }
+            if (accept) accept.addEventListener('click', function(){ localStorage.setItem('mvc_cookie_accepted','1'); if (cookie) cookie.style.display='none'; });
+        });
+    </script>
+
 </body>
 
 </html>
