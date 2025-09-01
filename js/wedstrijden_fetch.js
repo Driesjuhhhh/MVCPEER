@@ -135,16 +135,16 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (!setScore || setScore === "/" || setScore === "undefined") continue;
                 const [setHome, setAway] = setScore.split("-").map(Number);
                 if (isNaN(setHome) || isNaN(setAway)) continue;
+                // Alleen daadwerkelijk gespeelde sets tellen, en juiste score pakken
                 if (m.Thuis === teamName) {
                     puntenTotaal += setHome;
+                    setsTotaal++;
                 } else if (m.Bezoekers === teamName) {
                     puntenTotaal += setAway;
+                    setsTotaal++;
                 }
-                setsTotaal++;
             }
             if (setsTotaal > 0) {
-                if (!m._puntenTotaal) m._puntenTotaal = 0;
-                if (!m._setsTotaal) m._setsTotaal = 0;
                 m._puntenTotaal = puntenTotaal;
                 m._setsTotaal = setsTotaal;
             }
@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Gemiddeld aantal punten per set voor MVC Peer
             let totaalPunten = 0, totaalSets = 0;
             mockMatches.forEach(m => {
-                if (m._puntenTotaal && m._setsTotaal) {
+                if (typeof m._puntenTotaal === "number" && typeof m._setsTotaal === "number") {
                     totaalPunten += m._puntenTotaal;
                     totaalSets += m._setsTotaal;
                 }
@@ -439,16 +439,16 @@ function getMatchesFunction() {
                         if (!setScore || setScore === "/" || setScore === "undefined") continue;
                         const [setHome, setAway] = setScore.split("-").map(Number);
                         if (isNaN(setHome) || isNaN(setAway)) continue;
+                        // Alleen daadwerkelijk gespeelde sets tellen, en juiste score pakken
                         if (m.Thuis === teamName) {
                             puntenTotaal += setHome;
+                            setsTotaal++;
                         } else if (m.Bezoekers === teamName) {
                             puntenTotaal += setAway;
+                            setsTotaal++;
                         }
-                        setsTotaal++;
                     }
                     if (setsTotaal > 0) {
-                        if (!m._puntenTotaal) m._puntenTotaal = 0;
-                        if (!m._setsTotaal) m._setsTotaal = 0;
                         m._puntenTotaal = puntenTotaal;
                         m._setsTotaal = setsTotaal;
                     }
@@ -473,7 +473,7 @@ function getMatchesFunction() {
                     // Gemiddeld aantal punten per set voor MVC Peer
                     let totaalPunten = 0, totaalSets = 0;
                     matches.forEach(m => {
-                        if (m._puntenTotaal && m._setsTotaal) {
+                        if (typeof m._puntenTotaal === "number" && typeof m._setsTotaal === "number") {
                             totaalPunten += m._puntenTotaal;
                             totaalSets += m._setsTotaal;
                         }
