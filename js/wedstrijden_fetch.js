@@ -34,7 +34,159 @@ document.addEventListener("DOMContentLoaded", function() {
         const oldFallback = document.getElementById('ploegen-fallback');
         if (oldFallback) oldFallback.remove();
     }
-    // Geen mock data of statistieken tonen bij laden, alleen selectie vullen
+    // Show mock data table by default
+    if (tableDiv) {
+        const table = document.createElement("table");
+        table.className = "min-w-full text-sm text-gray-800 dark:text-gray-100 border-separate border-spacing-y-2";
+        table.innerHTML =
+            `<thead>
+                <tr class="bg-blue-100 dark:bg-gray-700 text-base">
+                    <th class="px-2 py-3 w-8"></th>
+                    <th class="px-4 py-3">Thuis</th>
+                    <th class="px-4 py-3">Bezoeker</th>
+                    <th class="px-4 py-3">Locatie</th>
+                    <th class="px-4 py-3">Wanneer</th>
+                    <th class="px-4 py-3">Score</th>
+                </tr>
+            </thead>`;
+        var tbody = table.createTBody();
+        mockMatches.forEach((element, idx) => {
+            var uitslag = (element.UitslagHoofd === "undefined") ? "/" : element.UitslagHoofd;
+            var aanvangsuur = element.Aanvangsuur;
+            const row = document.createElement("tr");
+            row.className = `bg-white dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-lg transition-all cursor-pointer group ${idx % 2 === 0 ? 'bg-opacity-90' : 'bg-opacity-100'}`;
+            // Open/dichtklap icoon SVG (chevron)
+            const iconTd = `<td class=\"px-2 py-3 align-middle w-8\">
+                <span class=\"inline-block transition-transform duration-300 group-[.open]:rotate-90\">
+                    <svg class=\"w-5 h-5 text-blue-500 dark:text-blue-300\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9 5l7 7-7 7\"/></svg>
+                </span>
+            </td>`;
+            row.innerHTML =
+                iconTd +
+                `<td class=\"px-4 py-3 font-semibold\">${element.Thuis}</td>
+                <td class=\"px-4 py-3\">${element.Bezoekers}</td>
+                <td class=\"px-4 py-3 text-sm\">${element.SporthalNaam}</td>
+                <td class=\"px-4 py-3 text-sm whitespace-nowrap\">${element.t} <span class=\"font-mono\">${aanvangsuur.substr(0,5)}</span></td>
+                <td class=\"px-4 py-3 text-center font-bold\">${uitslag}</td>
+            `;
+            tbody.appendChild(row);
+
+            // Uitklapbare details rij
+            const detailsRow = document.createElement("tr");
+            detailsRow.className = "hidden details-row";
+            detailsRow.innerHTML = `<td colspan="6" class="px-6 py-5 bg-gradient-to-br from-blue-100/80 to-blue-200/60 dark:from-gray-900/80 dark:to-gray-800/60 rounded-b-2xl border-t border-blue-200 dark:border-gray-700">
+                <div class="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+                    <div class="flex-1">
+                        <div class="font-semibold text-blue-700 dark:text-blue-300 mb-2">Setstanden</div>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-1 text-sm">
+                            <div><span class="font-medium">Set 1:</span> ${element.UitslagHoofd_set1 || '/'} </div>
+                            <div><span class="font-medium">Set 2:</span> ${element.UitslagHoofd_set2 || '/'} </div>
+                            <div><span class="font-medium">Set 3:</span> ${element.UitslagHoofd_set3 || '/'} </div>
+                            <div><span class="font-medium">Set 4:</span> ${element.UitslagHoofd_set4 || '/'} </div>
+                            <div><span class="font-medium">Set 5:</span> ${element.UitslagHoofd_set5 || '/'} </div>
+                        </div>
+                    </div>
+                    <div class="flex-1 mt-4 md:mt-0">
+                        <div class="font-semibold text-blue-700 dark:text-blue-300 mb-2">Eindstand</div>
+                        <div class="text-lg font-bold">${element.UitslagHoofd || '/'} </div>
+                    </div>
+                </div>
+            </td>`;
+            tbody.appendChild(detailsRow);
+
+            row.addEventListener('click', function() {
+                detailsRow.classList.toggle('hidden');
+            });
+        });
+    tableDiv.innerHTML = "";
+    tableDiv.appendChild(table);
+
+        // Statistiek toevoegen
+        const statDiv = document.createElement("div");
+        statDiv.className = "mt-6 text-center text-base font-semibold text-blue-700 dark:text-blue-300";
+        // Simpele analyse: wie wint vaker, thuis of uit?
+        let homeWins = 0, awayWins = 0, teamName = "MVC Peer";
+        mockMatches.forEach(m => {
+            if (!m.UitslagHoofd || m.UitslagHoofd === "/" || m.UitslagHoofd === "undefined") return;
+            const [home, away] = m.UitslagHoofd.split("-").map(Number);
+            if (isNaN(home) || isNaN(away)) return;
+            if (m.Thuis === teamName && home > away) homeWins++;
+            if (m.Bezoekers === teamName && away > home) awayWins++;
+        });
+        let statText = "";
+        if (homeWins > awayWins) statText = `🏠 <b>MVC Peer</b> wint vaker thuis! (${homeWins}x thuis vs ${awayWins}x uit)`;
+        else if (awayWins > homeWins) statText = `🚌 <b>MVC Peer</b> wint vaker uit! (${awayWins}x uit vs ${homeWins}x thuis)`;
+        else if (homeWins === 0 && awayWins === 0) statText = `Nog geen overwinningen voor <b>MVC Peer</b>.`;
+        else statText = `Evenveel thuis- als uitoverwinningen voor <b>MVC Peer</b>! (${homeWins}x thuis, ${awayWins}x uit)`;
+
+        // Hoogste overwinning en zwaarste nederlaag
+        let maxWin = null, maxLoss = null;
+        // Gemiddeld aantal gescoorde sets per wedstrijd
+        let totalSets = 0, playedMatches = 0;
+        mockMatches.forEach(m => {
+            if (!m.UitslagHoofd || m.UitslagHoofd === "/" || m.UitslagHoofd === "undefined") return;
+            const [home, away] = m.UitslagHoofd.split("-").map(Number);
+            if (isNaN(home) || isNaN(away)) return;
+            let diff = 0, win = false, loss = false;
+            // Punten per set voor MVC Peer
+            let puntenTotaal = 0, setsTotaal = 0;
+            for (let i = 1; i <= 5; i++) {
+                const setScore = m[`UitslagHoofd_set${i}`];
+                if (!setScore || setScore === "/" || setScore === "undefined") continue;
+                const [setHome, setAway] = setScore.split("-").map(Number);
+                if (isNaN(setHome) || isNaN(setAway)) continue;
+                if (m.Thuis === teamName) {
+                    puntenTotaal += setHome;
+                } else if (m.Bezoekers === teamName) {
+                    puntenTotaal += setAway;
+                }
+                setsTotaal++;
+            }
+            if (setsTotaal > 0) {
+                if (!m._puntenTotaal) m._puntenTotaal = 0;
+                if (!m._setsTotaal) m._setsTotaal = 0;
+                m._puntenTotaal = puntenTotaal;
+                m._setsTotaal = setsTotaal;
+            }
+            if (m.Thuis === teamName) {
+                diff = home - away;
+                win = home > away;
+                loss = home < away;
+                totalSets += home;
+            } else if (m.Bezoekers === teamName) {
+                diff = away - home;
+                win = away > home;
+                loss = away < home;
+                totalSets += away;
+            }
+            if (win && (!maxWin || diff > maxWin.diff)) maxWin = { ...m, diff };
+            if (loss && (!maxLoss || diff < maxLoss.diff)) maxLoss = { ...m, diff };
+            playedMatches++;
+        });
+        let extraStats = "";
+        if (playedMatches > 0) {
+            const avgSets = (totalSets / playedMatches).toFixed(2);
+            // Gemiddeld aantal punten per set voor MVC Peer
+            let totaalPunten = 0, totaalSets = 0;
+            mockMatches.forEach(m => {
+                if (m._puntenTotaal && m._setsTotaal) {
+                    totaalPunten += m._puntenTotaal;
+                    totaalSets += m._setsTotaal;
+                }
+            });
+            let avgPuntenPerSet = totaalSets > 0 ? (totaalPunten / totaalSets).toFixed(2) : "-";
+            extraStats += `<br>📊 Gemiddeld aantal gescoorde sets per wedstrijd: <b>${avgSets}</b>`;
+            extraStats += `<br>🏐 Gemiddeld aantal punten per set (<b>MVC Peer</b>): <b>${avgPuntenPerSet}</b>`;
+        }
+        if (maxWin) {
+            extraStats += `<br>🏆 Grootste overwinning: <b>${maxWin.Thuis} - ${maxWin.Bezoekers}</b> (${maxWin.UitslagHoofd}, ${maxWin.t})`;
+        }
+        if (maxLoss) {
+            extraStats += `<br>😬 Zwaarste nederlaag: <b>${maxLoss.Thuis} - ${maxLoss.Bezoekers}</b> (${maxLoss.UitslagHoofd}, ${maxLoss.t})`;
+        }
+        statDiv.innerHTML = statText + extraStats;
+        tableDiv.appendChild(statDiv);
+    }
 });
 
 // Set the credentials
@@ -204,7 +356,7 @@ function getMatchesFunction() {
         )
         .then((matches) => {
             if (tableDiv) {
-                tableDiv.innerHTML = "";
+                tableDiv.innerHTML = ""; // Clear mock data
                 const table = document.createElement("table");
                 table.className = "min-w-full text-sm text-gray-800 dark:text-gray-100 border-separate border-spacing-y-2";
                 table.innerHTML =
@@ -253,7 +405,7 @@ function getMatchesFunction() {
                 });
                 tableDiv.appendChild(table);
 
-                // Statistiek toevoegen (op basis van API-data)
+                // Statistiek toevoegen
                 const statDiv = document.createElement("div");
                 statDiv.className = "mt-6 text-center text-base font-semibold text-blue-700 dark:text-blue-300";
                 // Simpele analyse: wie wint vaker, thuis of uit?
@@ -280,6 +432,26 @@ function getMatchesFunction() {
                     const [home, away] = m.UitslagHoofd.split("-").map(Number);
                     if (isNaN(home) || isNaN(away)) return;
                     let diff = 0, win = false, loss = false;
+                    // Punten per set voor MVC Peer
+                    let puntenTotaal = 0, setsTotaal = 0;
+                    for (let i = 1; i <= 5; i++) {
+                        const setScore = m[`UitslagHoofd_set${i}`];
+                        if (!setScore || setScore === "/" || setScore === "undefined") continue;
+                        const [setHome, setAway] = setScore.split("-").map(Number);
+                        if (isNaN(setHome) || isNaN(setAway)) continue;
+                        if (m.Thuis === teamName) {
+                            puntenTotaal += setHome;
+                        } else if (m.Bezoekers === teamName) {
+                            puntenTotaal += setAway;
+                        }
+                        setsTotaal++;
+                    }
+                    if (setsTotaal > 0) {
+                        if (!m._puntenTotaal) m._puntenTotaal = 0;
+                        if (!m._setsTotaal) m._setsTotaal = 0;
+                        m._puntenTotaal = puntenTotaal;
+                        m._setsTotaal = setsTotaal;
+                    }
                     if (m.Thuis === teamName) {
                         diff = home - away;
                         win = home > away;
@@ -298,7 +470,17 @@ function getMatchesFunction() {
                 let extraStats = "";
                 if (playedMatches > 0) {
                     const avgSets = (totalSets / playedMatches).toFixed(2);
+                    // Gemiddeld aantal punten per set voor MVC Peer
+                    let totaalPunten = 0, totaalSets = 0;
+                    matches.forEach(m => {
+                        if (m._puntenTotaal && m._setsTotaal) {
+                            totaalPunten += m._puntenTotaal;
+                            totaalSets += m._setsTotaal;
+                        }
+                    });
+                    let avgPuntenPerSet = totaalSets > 0 ? (totaalPunten / totaalSets).toFixed(2) : "-";
                     extraStats += `<br>📊 Gemiddeld aantal gescoorde sets per wedstrijd: <b>${avgSets}</b>`;
+                    extraStats += `<br>🏐 Gemiddeld aantal punten per set (<b>MVC Peer</b>): <b>${avgPuntenPerSet}</b>`;
                 }
                 if (maxWin) {
                     extraStats += `<br>🏆 Grootste overwinning: <b>${maxWin.Thuis} - ${maxWin.Bezoekers}</b> (${maxWin.UitslagHoofd}, ${maxWin.t})`;
@@ -317,12 +499,6 @@ function getMatchesFunction() {
             tableDiv.innerHTML = `<p>Error<p>`;
             console.error("Error:", error.message);
         });
-// Selectie van ploeg moet statistieken en tabel verversen
-if (select) {
-    select.addEventListener('change', function() {
-        getMatchesFunction();
-    });
-}
 }
 
 // Example: Get series
