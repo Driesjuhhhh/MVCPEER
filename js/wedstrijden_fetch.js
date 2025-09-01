@@ -166,17 +166,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let extraStats = "";
         if (playedMatches > 0) {
             const avgSets = (totalSets / playedMatches).toFixed(2);
-            // Gemiddeld aantal punten per set voor MVC Peer
-            let totaalPunten = 0, totaalSets = 0;
-            mockMatches.forEach(m => {
-                if (typeof m._puntenTotaal === "number" && typeof m._setsTotaal === "number") {
-                    totaalPunten += m._puntenTotaal;
-                    totaalSets += m._setsTotaal;
-                }
-            });
-            let avgPuntenPerSet = totaalSets > 0 ? (totaalPunten / totaalSets).toFixed(2) : "-";
             extraStats += `<br>📊 Gemiddeld aantal gescoorde sets per wedstrijd: <b>${avgSets}</b>`;
-            extraStats += `<br>🏐 Gemiddeld aantal punten per set (<b>MVC Peer</b>): <b>${avgPuntenPerSet}</b>`;
         }
         if (maxWin) {
             extraStats += `<br>🏆 Grootste overwinning: <b>${maxWin.Thuis} - ${maxWin.Bezoekers}</b> (${maxWin.UitslagHoofd}, ${maxWin.t})`;
@@ -470,17 +460,7 @@ function getMatchesFunction() {
                 let extraStats = "";
                 if (playedMatches > 0) {
                     const avgSets = (totalSets / playedMatches).toFixed(2);
-                    // Gemiddeld aantal punten per set voor MVC Peer
-                    let totaalPunten = 0, totaalSets = 0;
-                    matches.forEach(m => {
-                        if (typeof m._puntenTotaal === "number" && typeof m._setsTotaal === "number") {
-                            totaalPunten += m._puntenTotaal;
-                            totaalSets += m._setsTotaal;
-                        }
-                    });
-                    let avgPuntenPerSet = totaalSets > 0 ? (totaalPunten / totaalSets).toFixed(2) : "-";
                     extraStats += `<br>📊 Gemiddeld aantal gescoorde sets per wedstrijd: <b>${avgSets}</b>`;
-                    extraStats += `<br>🏐 Gemiddeld aantal punten per set (<b>MVC Peer</b>): <b>${avgPuntenPerSet}</b>`;
                 }
                 if (maxWin) {
                     extraStats += `<br>🏆 Grootste overwinning: <b>${maxWin.Thuis} - ${maxWin.Bezoekers}</b> (${maxWin.UitslagHoofd}, ${maxWin.t})`;
