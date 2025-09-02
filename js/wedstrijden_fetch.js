@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
         let extraStats = "";
         if (playedMatches > 0) {
-            const avgSets = (totalSets / playedMatches).toFixed(2);
+            const avgSets = (totalSets / playedMatches).toFixed(2).replace('.', ',');
             extraStats += `<br>📊 Gemiddeld aantal gescoorde sets per wedstrijd: <b>${avgSets}</b>`;
         }
         if (maxWin) {
@@ -459,7 +459,7 @@ function getMatchesFunction() {
                 });
                 let extraStats = "";
                 if (playedMatches > 0) {
-                    const avgSets = (totalSets / playedMatches).toFixed(2);
+                    const avgSets = (totalSets / playedMatches).toFixed(2).replace('.', ',');
                     extraStats += `<br>📊 Gemiddeld aantal gescoorde sets per wedstrijd: <b>${avgSets}</b>`;
                 }
                 if (maxWin) {
