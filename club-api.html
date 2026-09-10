@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8" />
+    <script src="js/theme.js"></script>
+    <link href="css/theme.css" rel="stylesheet" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="theme-color" content="#49739c" />
+
+    <!-- Title and Favicon -->
+    <title>MVC Peer | Grensoverschrijdend gedrag</title>
+    <meta name="description" content="Ervaar je grensoverschrijdend gedrag? Neem discreet contact op met onze Club-API Nele Hendrix." />
+    <link rel="canonical" href="https://www.mvcpeer.be/club-api.html" />
+    <link href="assets/logo.png?" rel="shortcut icon" />
+
+
+        <!-- Tailwind CSS CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = { darkMode: 'class' };
+        </script>
+        <script src="js/scripts.js" defer></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/c2e4631732.js" crossorigin="anonymous"></script>
+
+    <!-- Privacy-friendly analytics by Plausible -->
+    <script async src="https://plausible.driesbielen.be/js/pa--Yn1VOxI2G2qTGz6dsVL5.js"></script>
+    <script>
+        window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+        plausible.init()
+    </script>
+</head>
+
+
+<body>
+        <!-- Cookie Alert (Tailwind style) -->
+        <div id="cookiealert" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-blue-100 border border-blue-300 text-blue-900 px-6 py-4 rounded shadow flex items-center space-x-4" style="display:none;">
+            <span class="font-bold">Do you like cookies?</span> 🍪 We maken gebruik van cookies om het siteverkeer te analyseren.
+            <a href="https://cookiesandyou.com/" target="_blank" class="underline text-blue-700">Meer info</a>
+            <button id="acceptcookies" class="ml-4 px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700">Okay</button>
+        </div>
+        <!-- Header (Tailwind style, matches aansluiting.html) -->
+        <header>
+            <nav class="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 shadow z-40">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+                    <div class="flex items-center space-x-4">
+                        <a href="index.html" class="flex items-center">
+                            <img src="assets/logo.png" alt="Logo" class="w-10 h-9 mr-2 transition duration-300" id="header-logo" onerror="this.style.filter='none';this.style.background='#fff';" />
+                            <span class="text-xl font-bold text-blue-800 dark:text-blue-200">MVC Peer</span>
+                        </a>
+                    </div>
+                    <div class="flex items-center justify-end flex-1">
+                        <div class="hidden md:flex items-center space-x-6">
+                            <a href="index.html" class="text-gray-700 dark:text-gray-200 hover:text-blue-700 dark:hover:text-blue-400">Home</a>
+                            <a href="ploegen.html" class="text-gray-700 dark:text-gray-200 hover:text-blue-700 dark:hover:text-blue-400">Ploegen</a>
+                            <a href="wedstrijden.html" class="text-gray-700 dark:text-gray-200 hover:text-blue-700 dark:hover:text-blue-400">Wedstrijden</a>
+                            <div class="relative group">
+                                <div class="dropdown-hover-area">
+                                    <button class="text-gray-700 dark:text-gray-200 hover:text-blue-700 dark:hover:text-blue-400 focus:outline-none">
+                                        <span class="text-blue-700 dark:text-blue-400 font-semibold">Administratie</span>
+                                        <svg class="inline w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        </svg></button>
+                                    <div class="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible dropdown-menu z-50 transition-all duration-200">
+                                        <a href="aansluiting.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Aansluiting club</a>
+                                        <a href="wedstrijden.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Wedstrijden</a>
+                                        <a href="kantine_scheids_lijst.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Kantine & scheidsrechters</a>
+                                        <a href="privacyverklaring.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Privacy verklaring</a>
+                                        <a href="tegemoetkoming.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Tegemoetkoming</a>
+                                        <a href="https://volleyvlaanderen.be/Integriteit/Federatie/API" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Vertrouwenspersonen</a>
+                                        <a href="club-api.html" aria-current="page" class="block px-4 py-2 text-blue-700 dark:text-blue-400 font-semibold hover:bg-blue-100 dark:hover:bg-gray-700">Grensoverschrijdend gedrag</a>
+                                        <a href="gedragscode.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Gedragscode</a>
+                                        <a href="verzekering.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Verzekeringsformulier</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="steun.html" class="text-gray-700 dark:text-gray-200 hover:text-blue-700 dark:hover:text-blue-400">Steun</a>
+                            <a href="contact.html" class="text-gray-700 dark:text-gray-200 hover:text-blue-700 dark:hover:text-blue-400">Contact</a>
+                        </div>
+                        <button id="darkmode-button" class="ml-4 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-xl flex items-center justify-center w-10 h-10 rounded-full transition" aria-label="Toggle dark mode">
+                            <span id="theme-icon">
+                                <svg id="icon-sun" class="block dark:hidden w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="2" />
+                                    <path stroke="currentColor" stroke-width="2" d="M12 1v2m0 18v2m11-11h-2M3 12H1m16.95 7.07l-1.41-1.41M6.34 6.34L4.93 4.93m12.02 0l-1.41 1.41M6.34 17.66l-1.41 1.41" />
+                                </svg>
+                                <svg id="icon-moon" class="hidden dark:block w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="md:hidden flex items-center space-x-2">
+                        <!-- Mobile menu button -->
+                        <button id="mobile-menu-button" class="text-gray-700 dark:text-gray-200 focus:outline-none">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <!-- Mobile menu -->
+                <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+                    <a href="index.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Home</a>
+                    <a href="ploegen.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Ploegen</a>
+                    <a href="wedstrijden.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Wedstrijden</a>
+                    <div class="border-t border-gray-100 dark:border-gray-700"></div>
+                    <a href="aansluiting.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Aansluiting club</a>
+                    <a href="wedstrijden.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Wedstrijden</a>
+                    <a href="kantine_scheids_lijst.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Kantine & scheidsrechters</a>
+                    <a href="privacyverklaring.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Privacy verklaring</a>
+                    <a href="tegemoetkoming.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Tegemoetkoming</a>
+                    <a href="https://volleyvlaanderen.be/Integriteit/Federatie/API" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Vertrouwenspersonen</a>
+                    <a href="club-api.html" aria-current="page" class="block px-4 py-2 text-blue-700 dark:text-blue-400 font-semibold hover:bg-blue-100 dark:hover:bg-gray-700">Grensoverschrijdend gedrag</a>
+                    <a href="gedragscode.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Gedragscode</a>
+                    <a href="verzekering.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Verzekeringsformulier</a>
+                    <div class="border-t border-gray-100 dark:border-gray-700"></div>
+                    <a href="steun.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Steun</a>
+                    <a href="contact.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Contact</a>
+                </div>
+                <script>
+                    // Mobile menu toggle
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const btn = document.getElementById('mobile-menu-button');
+                        const menu = document.getElementById('mobile-menu');
+                        if (btn && menu) {
+                            btn.addEventListener('click', () => {
+                                menu.classList.toggle('hidden');
+                            });
+                        }
+                    });
+                </script>
+
+            </nav>
+        </header>
+
+        <main class="pt-24 pb-12 min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 font-sans">
+            <div class="max-w-3xl mx-auto px-4">
+                <h1 class="text-4xl font-extrabold tracking-tight text-blue-800 dark:text-blue-300 mb-4 text-center">Grensoverschrijdend gedrag</h1>
+                <p class="text-lg text-gray-700 dark:text-gray-200 text-center mb-8">Aanspreekpunt integriteit</p>
+                <section aria-labelledby="melding" class="bg-white/90 dark:bg-gray-800/90 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-xl p-6 md:p-10 text-gray-800 dark:text-gray-100 leading-relaxed">
+                    <h2 id="melding" class="text-2xl font-bold text-blue-800 dark:text-blue-300 mb-4">Grensoverschrijdend gedrag melden</h2>
+                    <p class="mb-4">Ervaar je een probleem of heb je een klacht over seksueel, psychisch of fysiek grensoverschrijdend gedrag? Meld het dan bij onze Club-API: <strong>Nele Hendrix</strong>.</p>
+                    <p class="mb-4">Dit kan via <a href="mailto:hendrix_nele@hotmail.com" class="text-blue-700 dark:text-blue-300 underline hover:text-blue-900 dark:hover:text-blue-200 break-words">hendrix_nele@hotmail.com</a> of spreek haar aan in de sporthal.</p>
+                    <p>Zij zal dit discreet en zo snel mogelijk opvolgen.</p>
+                </section>
+                <section aria-labelledby="federatie-api" class="mt-8 px-2 text-gray-700 dark:text-gray-200 leading-relaxed">
+                    <h2 id="federatie-api" class="text-xl font-bold text-blue-800 dark:text-blue-300 mb-3">Vertrouwenspersonen bij Volley Vlaanderen</h2>
+                    <p><a href="https://volleyvlaanderen.be/Integriteit/Federatie/API" class="text-blue-700 dark:text-blue-300 underline hover:text-blue-900 dark:hover:text-blue-200">Meer informatie over de Federatie-API van Volley Vlaanderen</a></p>
+                </section>
+            </div>
+        </main>
+
+        <style>
+            .animate-fadein {
+                animation: fadein 0.7s cubic-bezier(.4, 0, .2, 1);
+            }
+            @keyframes fadein {
+                from { opacity: 0; transform: translateY(30px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        </style>
+
+        <footer class="bg-white dark:bg-gray-900 border-t">
+            <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between">
+                <span class="text-gray-500 dark:text-gray-300 mb-2 md:mb-0" id="year"></span>
+                <a class="text-gray-500 dark:text-gray-300 hover:text-blue-700 dark:hover:text-blue-400 mb-2 md:mb-0" href="https://driesbielen.be">Design by Dries Bielen</a>
+                <div class="flex space-x-4">
+                    <a class="text-gray-500 dark:text-gray-300 hover:text-pink-600 dark:hover:text-pink-400" href="https://www.instagram.com/mvcpeer/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a class="text-gray-500 dark:text-gray-300 hover:text-blue-700 dark:hover:text-blue-400" href="https://www.facebook.com/mvcpeervolley/?locale=nl_NL" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </footer>
+        <script>
+            // Year in footer
+            document.getElementById('year').textContent = `© ${new Date().getFullYear()} MVC Peer`;
+        </script>
+</body>
+
+</html>

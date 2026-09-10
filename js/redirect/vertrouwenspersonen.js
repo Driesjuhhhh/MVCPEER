@@ -4,5 +4,5 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 function openSiteOnLoad() {
     window.location.href =
-        "https://volleyvlaanderen.be/Gezondheid-en-ethiek/Federatie-API";
+        "https://volleyvlaanderen.be/Integriteit/Federatie/API";
 }

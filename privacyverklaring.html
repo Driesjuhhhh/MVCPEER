@@ -4,6 +4,8 @@
 <head>
     <!-- Meta Tags -->
     <meta charset="UTF-8" />
+    <script src="js/theme.js"></script>
+    <link href="css/theme.css" rel="stylesheet" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="theme-color" content="#49739c" />
 
@@ -62,7 +64,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
                 <div class="flex items-center space-x-4">
                     <a href="index.html" class="flex items-center">
-                        <img src="assets/logo.png" alt="Logo"
+                        <img id="header-logo" src="assets/logo.png" alt="Logo"
                             class="w-10 h-9 mr-2 transition duration-300 dark:filter dark:invert dark:brightness-200" />
                         <span class="font-bold text-lg text-gray-800 dark:text-gray-100">MVC Peer</span>
                     </a>
@@ -99,8 +101,9 @@
                                       verklaring</a>
                                   <a href="tegemoetkoming.html"
                                       class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Tegemoetkoming</a>
-                                  <a href="https://volleyvlaanderen.be/Gezondheid-en-ethiek/Federatie-API"
+                                  <a href="https://volleyvlaanderen.be/Integriteit/Federatie/API"
                                       class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Vertrouwenspersonen</a>
+                                  <a href="club-api.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Grensoverschrijdend gedrag</a>
                                   <a href="gedragscode.html"
                                       class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Gedragscode</a>
                                   <a href="verzekering.html"
@@ -133,7 +136,7 @@
             </div>
             <div class="md:hidden flex items-center space-x-2">
                 <!-- Mobile menu button -->
-                <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                <button id="mobile-menu-button" class="text-gray-700 dark:text-gray-200 focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16"></path>
@@ -159,22 +162,23 @@
             </div>
             </div>
             <!-- Mobile menu -->
-            <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
-                <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Home</a>
-                <a href="ploegen.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Ploegen</a>
-                <a href="wedstrijden.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Wedstrijden</a>
-                <div class="border-t border-gray-100"></div>
-                <a href="aansluiting.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Aansluiting club</a>
-                <a href="wedstrijden.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Wedstrijden</a>
-                <a href="kantine_scheids_lijst.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Kantine & scheidsrechters</a>
+            <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+                <a href="index.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Home</a>
+                <a href="ploegen.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Ploegen</a>
+                <a href="wedstrijden.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Wedstrijden</a>
+                <div class="border-t border-gray-100 dark:border-gray-700"></div>
+                <a href="aansluiting.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Aansluiting club</a>
+                <a href="wedstrijden.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Wedstrijden</a>
+                <a href="kantine_scheids_lijst.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Kantine & scheidsrechters</a>
                 <a href="privacyverklaring.html" class="block px-4 py-2 text-blue-700 dark:text-blue-400 font-semibold">Privacy verklaring</a>
-                <a href="tegemoetkoming.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Tegemoetkoming</a>
-                <a href="https://volleyvlaanderen.be/Gezondheid-en-ethiek/Federatie-API" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Vertrouwenspersonen</a>
-                <a href="gedragscode.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Gedragscode</a>
-                <a href="verzekering.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Verzekeringsformulier</a>
-                <div class="border-t border-gray-100"></div>
-                <a href="steun.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Steun</a>
-                <a href="contact.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Contact</a>
+                <a href="tegemoetkoming.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Tegemoetkoming</a>
+                <a href="https://volleyvlaanderen.be/Integriteit/Federatie/API" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Vertrouwenspersonen</a>
+                <a href="club-api.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Grensoverschrijdend gedrag</a>
+                <a href="gedragscode.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Gedragscode</a>
+                <a href="verzekering.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Verzekeringsformulier</a>
+                <div class="border-t border-gray-100 dark:border-gray-700"></div>
+                <a href="steun.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Steun</a>
+                <a href="contact.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Contact</a>
             </div>
             <script>
                 // Mobile menu toggle
@@ -261,66 +265,7 @@
         </div>
     </footer>
 </html>
-<script>
-    // Dark mode toggle logic with icon switch (desktop and mobile)
-    document.addEventListener('DOMContentLoaded', function () {
-        const html = document.documentElement;
-        // Desktop
-        const darkBtn = document.getElementById('darkmode-button');
-        const iconSun = document.getElementById('icon-sun');
-        const iconMoon = document.getElementById('icon-moon');
-        // Mobile
-        const darkBtnMobile = document.getElementById('darkmode-button-mobile');
-        const iconSunMobile = document.getElementById('icon-sun-mobile');
-        const iconMoonMobile = document.getElementById('icon-moon-mobile');
 
-        function updateIcons() {
-            if (html.classList.contains('dark')) {
-                if (iconSun) iconSun.classList.add('hidden');
-                if (iconMoon) iconMoon.classList.remove('hidden');
-                if (iconSunMobile) iconSunMobile.classList.add('hidden');
-                if (iconMoonMobile) iconMoonMobile.classList.remove('hidden');
-            } else {
-                if (iconSun) iconSun.classList.remove('hidden');
-                if (iconMoon) iconMoon.classList.add('hidden');
-                if (iconSunMobile) iconSunMobile.classList.remove('hidden');
-                if (iconMoonMobile) iconMoonMobile.classList.add('hidden');
-            }
-        }
-
-        // Check localStorage for mode
-        if (localStorage.getItem('color-theme') === 'dark' ||
-            (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            html.classList.add('dark');
-        } else {
-            html.classList.remove('dark');
-        }
-        updateIcons();
-
-        if (darkBtn) {
-            darkBtn.addEventListener('click', function () {
-                html.classList.toggle('dark');
-                if (html.classList.contains('dark')) {
-                    localStorage.setItem('color-theme', 'dark');
-                } else {
-                    localStorage.setItem('color-theme', 'light');
-                }
-                updateIcons();
-            });
-        }
-        if (darkBtnMobile) {
-            darkBtnMobile.addEventListener('click', function () {
-                html.classList.toggle('dark');
-                if (html.classList.contains('dark')) {
-                    localStorage.setItem('color-theme', 'dark');
-                } else {
-                    localStorage.setItem('color-theme', 'light');
-                }
-                updateIcons();
-            });
-        }
-    });
-</script>
 
 </html>
 </body>

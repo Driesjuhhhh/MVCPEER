@@ -16,3 +16,4 @@ https://www.mvcpeer.be/vertrouwenspersoon.html
 https://www.mvcpeer.be/verzekering.html
 https://www.mvcpeer.be/webshop.html
 https://www.mvcpeer.be/wedstrijden.html
+https://www.mvcpeer.be/club-api.html

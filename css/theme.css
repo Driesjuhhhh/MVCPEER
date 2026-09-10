@@ -1,0 +1,9 @@
+/* Keep the page canvas and native controls consistent before Tailwind loads. */
+html, body { background-color: #fff; color: #1f2937; }
+html.dark, html.dark body { background-color: #111827; color: #e5e7eb; }
+#header-logo { filter: none; }
+html.dark #header-logo { filter: invert(1) brightness(2); }
+[id^="icon-sun"] { display: block; }
+[id^="icon-moon"] { display: none; }
+html.dark [id^="icon-sun"] { display: none; }
+html.dark [id^="icon-moon"] { display: block; }

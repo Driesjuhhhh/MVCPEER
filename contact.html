@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="utf-8" />
+    <script src="js/theme.js"></script>
+    <link href="css/theme.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#49739c" />
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
@@ -44,26 +46,11 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
                 <div class="flex items-center space-x-4">
                     <a href="index.html" class="flex items-center">
-                        <img id="header-logo" src="assets/logo.png" alt="Logo" class="w-10 h-9 mr-2 transition duration-300" style="filter: none;" onerror="this.style.filter='none';this.style.background='#fff';" />
+                        <img id="header-logo" src="assets/logo.png" alt="Logo" class="w-10 h-9 mr-2 transition duration-300" onerror="this.style.filter='none';this.style.background='#fff';" />
                         <span class="font-bold text-lg text-gray-800 dark:text-gray-100">MVC Peer</span>
                     </a>
                 </div>
-                <script>
-                    // Logo filter for dark mode
-                    function updateLogoFilter() {
-                        const logo = document.getElementById('header-logo');
-                        if (!logo) return;
-                        if (document.documentElement.classList.contains('dark')) {
-                            logo.style.filter = 'invert(1) brightness(2)';
-                        } else {
-                            logo.style.filter = 'none';
-                        }
-                    }
-                    document.addEventListener('DOMContentLoaded', updateLogoFilter);
-                    // Listen for theme changes
-                    const observer = new MutationObserver(updateLogoFilter);
-                    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-                </script>
+
                 <div class="flex items-center justify-end flex-1">
                     <div class="hidden md:flex items-center space-x-6">
                         <a href="index.html" class="text-gray-700 dark:text-gray-200 hover:text-blue-700 dark:hover:text-blue-400">Home</a>
@@ -82,7 +69,8 @@
                                   <a href="kantine_scheids_lijst.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Kantine & scheidsrechters</a>
                                   <a href="privacyverklaring.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Privacy verklaring</a>
                                   <a href="tegemoetkoming.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Tegemoetkoming</a>
-                                  <a href="https://volleyvlaanderen.be/Gezondheid-en-ethiek/Federatie-API" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Vertrouwenspersonen</a>
+                                  <a href="https://volleyvlaanderen.be/Integriteit/Federatie/API" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Vertrouwenspersonen</a>
+                                  <a href="club-api.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Grensoverschrijdend gedrag</a>
                                   <a href="gedragscode.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Gedragscode</a>
                                   <a href="verzekering.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Verzekeringsformulier</a>
                               </div>
@@ -99,29 +87,30 @@
                 </button>
             </div>
             <div class="md:hidden flex items-center space-x-2">
-                <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+                <button id="mobile-menu-button" class="text-gray-700 dark:text-gray-200 focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
             </div>
             </div>
-            <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
-                <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Home</a>
-                <a href="ploegen.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Ploegen</a>
-                <a href="wedstrijden.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Wedstrijden</a>
-                <div class="border-t border-gray-100"></div>
-                <a href="aansluiting.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Aansluiting club</a>
-                <a href="wedstrijden.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Wedstrijden</a>
-                <a href="kantine_scheids_lijst.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Kantine & scheidsrechters</a>
-                <a href="privacyverklaring.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Privacy verklaring</a>
-                <a href="tegemoetkoming.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Tegemoetkoming</a>
-                <a href="https://volleyvlaanderen.be/Gezondheid-en-ethiek/Federatie-API" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Vertrouwenspersonen</a>
-                <a href="gedragscode.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Gedragscode</a>
-                <a href="verzekering.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Verzekeringsformulier</a>
-                <div class="border-t border-gray-100"></div>
-                <a href="steun.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Steun</a>
-                <a href="contact.html" class="block px-4 py-2 text-blue-700 font-semibold">Contact</a>
+            <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+                <a href="index.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Home</a>
+                <a href="ploegen.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Ploegen</a>
+                <a href="wedstrijden.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Wedstrijden</a>
+                <div class="border-t border-gray-100 dark:border-gray-700"></div>
+                <a href="aansluiting.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Aansluiting club</a>
+                <a href="wedstrijden.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Wedstrijden</a>
+                <a href="kantine_scheids_lijst.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Kantine & scheidsrechters</a>
+                <a href="privacyverklaring.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Privacy verklaring</a>
+                <a href="tegemoetkoming.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Tegemoetkoming</a>
+                <a href="https://volleyvlaanderen.be/Integriteit/Federatie/API" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Vertrouwenspersonen</a>
+                <a href="club-api.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Grensoverschrijdend gedrag</a>
+                <a href="gedragscode.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Gedragscode</a>
+                <a href="verzekering.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Verzekeringsformulier</a>
+                <div class="border-t border-gray-100 dark:border-gray-700"></div>
+                <a href="steun.html" class="block px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-blue-100 dark:hover:bg-gray-700">Steun</a>
+                <a href="contact.html" class="block px-4 py-2 text-blue-700 dark:text-blue-400 font-semibold">Contact</a>
             </div>
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
@@ -177,34 +166,6 @@
     <script>
         // Year in footer
         document.getElementById('year').textContent = `© ${new Date().getFullYear()} MVC Peer`;
-
-        // Dark mode toggle logic with icon switch
-        document.addEventListener('DOMContentLoaded', function () {
-            const html = document.documentElement;
-            const darkBtn = document.getElementById('darkmode-button');
-            const iconSun = document.getElementById('icon-sun');
-            const iconMoon = document.getElementById('icon-moon');
-            function updateIcons() {
-                if (html.classList.contains('dark')) {
-                    if (iconSun) iconSun.classList.add('hidden');
-                    if (iconMoon) iconMoon.classList.remove('hidden');
-                } else {
-                    if (iconSun) iconSun.classList.remove('hidden');
-                    if (iconMoon) iconMoon.classList.add('hidden');
-                }
-            }
-            if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                html.classList.add('dark');
-            } else { html.classList.remove('dark'); }
-            updateIcons();
-            if (darkBtn) {
-                darkBtn.addEventListener('click', function () {
-                    html.classList.toggle('dark');
-                    if (html.classList.contains('dark')) { localStorage.setItem('color-theme','dark'); } else { localStorage.setItem('color-theme','light'); }
-                    updateIcons();
-                });
-            }
-        });
 
         // Cookie accept
         document.addEventListener('DOMContentLoaded', function(){
