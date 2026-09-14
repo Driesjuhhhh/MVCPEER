@@ -1,188 +1,82 @@
 const tableDiv = document.getElementById("table");
 const select = document.getElementById("ploegenSelect");
-const table = document.createElement("table");
 const button = document.getElementById("button");
+const rankingButton = document.getElementById("rankingButton");
+const resultsHeading = document.getElementById("resultsHeading");
+let activeView = 'matches';
+let demoMode = false;
+const demoButton = document.getElementById('demoButton');
+const demoNotice = document.getElementById('demoNotice');
 
-button.addEventListener("click", function () {
-    tableDiv.innerHTML = "";
-    getMatchesFunction();
+function refreshView() {
+    return activeView === 'ranking' ? getStandingsFunction() : getMatchesFunction();
+}
+
+demoButton.addEventListener('click', () => {
+    demoMode = !demoMode;
+    demoButton.setAttribute('aria-pressed', String(demoMode));
+    demoButton.textContent = demoMode ? 'Terug naar echte data ↗' : 'Bekijk demo ↗';
+    demoNotice.hidden = !demoMode;
+    return refreshView();
 });
 
-// Hardcoded lijst op basis van de data uit volleyscores HTML
+function setView(view, ploeg) {
+    activeView = view;
+    resultsHeading.textContent = `${view === 'ranking' ? 'Ranking' : 'Wedstrijden'} – ${ploeg.naam}`;
+    for (const [control, selected] of [[button, view === 'matches'], [rankingButton, view === 'ranking']]) {
+        control.setAttribute('aria-pressed', String(selected));
+    }
+}
+
+// Seizoen 2026–2027, gecontroleerd op https://www.volleyscores.be/direct/L-0923.
+// Een reeks kan meerdere clubploegen bevatten: bekerploegen hebben een eigen teamId.
+const ploegen = [
+    { naam: 'Promo 1', id: 'LDP1' },
+    { naam: 'Promo 3', id: 'LDP3-C' },
+    { naam: 'U19', id: 'LMU19N2R1' },
+    { naam: 'U17A', id: 'LMU17N1R1-D' },
+    { naam: 'U17C', id: 'LMU17N2R1-B' },
+    { naam: 'U17B', id: 'LMU17N2R1-C' },
+    { naam: 'U15', id: 'LMU15N2R1-B' },
+    { naam: 'U13A', id: 'LMU13N2R1-A' },
+    { naam: 'U13C', id: 'LMU13N2R1-D' },
+    { naam: 'U13B', id: 'LMU13N2R1-C' },
+    { naam: 'U11 3-3', id: 'LMU113-3N1R1-A' },
+    { naam: 'U11 2-2', id: 'LU112-2N2R1-C' },
+    { naam: 'Promo 1 Beker', id: 'BVLPD-F', teamId: '108676' },
+    { naam: 'Promo 3 Beker', id: 'BVLPD-F', teamId: '108677' }
+];
+
+function ploegKey(ploeg) {
+    return ploeg.teamId ? `${ploeg.id}:${ploeg.teamId}` : ploeg.id;
+}
+
+function isSelectedTeam(match, side, ploeg) {
+    return ploeg.teamId
+        ? String(match[`match_${side}_team_id`]) === ploeg.teamId
+        : match[`stnr_${side}`] === clubNumber;
+}
+
+function filterMatches(matches, ploeg) {
+    return matches.filter(match => match.Reeks === ploeg.id &&
+        (isSelectedTeam(match, 'home', ploeg) || isSelectedTeam(match, 'visitors', ploeg)));
+}
+
+button.addEventListener("click", getMatchesFunction);
+rankingButton.addEventListener("click", getStandingsFunction);
+select.addEventListener("change", refreshView);
+
 document.addEventListener("DOMContentLoaded", function() {
-    const ploegen = [
-        { naam: 'Promo 1 Dames', id: 'LDP1' },
-        { naam: 'Promo 3 Dames C', id: 'LDP3-C' },
-        { naam: 'U19 Meisjes Niveau 2 Ronde 1', id: 'LMU19N2R1' },
-        { naam: 'U15 Meisjes Niveau 1 Ronde 1 A', id: 'LMU15N1R1-A' },
-        { naam: 'U15 Meisjes Niveau 1 Ronde 1 B', id: 'LMU15N1R1-B' },
-        { naam: 'U15 Meisjes Niveau 3 Ronde 1 E', id: 'LMU15N3R1-E' },
-        { naam: 'U15 Meisjes Niveau 3 Ronde 1 G', id: 'LMU15N3R1-G' },
-        { naam: 'U13 Meisjes Niveau 1 Ronde 1 A', id: 'LMU13N1R1-A' },
-        { naam: 'U13 Meisjes Niveau 1 Ronde 1 D', id: 'LMU13N1R1-D' },
-        { naam: 'U13 Meisjes Niveau 3 Ronde 1 G', id: 'LMU13N3R1-G' },
-        { naam: 'U13 Meisjes Niveau 3 Ronde 1 H', id: 'LMU13N3R1-H' },
-        { naam: 'U11 Jongens-Meisjes 2 - 2 Niveau 2 Ronde 1 A', id: 'LJMU112-2N2R1-A' },
-        { naam: 'Beker van Limburg Promo Dames F', id: 'BVLPD F' },
-        { naam: 'Beker van Limburg Promo Dames L', id: 'BVLPD L' },
-        { naam: 'Beker van Limburg U19 Meisjes', id: 'BVLU19M' }
-    ];
-    if (select) {
-        select.innerHTML = ploegen.map(opt => `<option value="${opt.id}">${opt.naam}</option>`).join("\n");
-        select.selectedIndex = 0;
-        // Verwijder eventuele oude fallback-melding
-        const oldFallback = document.getElementById('ploegen-fallback');
-        if (oldFallback) oldFallback.remove();
-    }
-    // Show mock data table by default
-    if (tableDiv) {
-        const table = document.createElement("table");
-        table.className = "min-w-full text-sm text-gray-800 dark:text-gray-100 border-separate border-spacing-y-2";
-        table.innerHTML =
-            `<thead>
-                <tr class="bg-blue-100 dark:bg-gray-700 text-base">
-                    <th class="px-2 py-3 w-8"></th>
-                    <th class="px-4 py-3">Thuis</th>
-                    <th class="px-4 py-3">Bezoeker</th>
-                    <th class="px-4 py-3">Locatie</th>
-                    <th class="px-4 py-3">Wanneer</th>
-                    <th class="px-4 py-3">Score</th>
-                </tr>
-            </thead>`;
-        var tbody = table.createTBody();
-        mockMatches.forEach((element, idx) => {
-            var uitslag = (element.UitslagHoofd === "undefined") ? "/" : element.UitslagHoofd;
-            var aanvangsuur = element.Aanvangsuur;
-            const row = document.createElement("tr");
-            row.className = `bg-white dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-lg transition-all cursor-pointer group ${idx % 2 === 0 ? 'bg-opacity-90' : 'bg-opacity-100'}`;
-            // Open/dichtklap icoon SVG (chevron)
-            const iconTd = `<td class=\"px-2 py-3 align-middle w-8\">
-                <span class=\"inline-block transition-transform duration-300 group-[.open]:rotate-90\">
-                    <svg class=\"w-5 h-5 text-blue-500 dark:text-blue-300\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" d=\"M9 5l7 7-7 7\"/></svg>
-                </span>
-            </td>`;
-            row.innerHTML =
-                iconTd +
-                `<td class=\"px-4 py-3 font-semibold\">${element.Thuis}</td>
-                <td class=\"px-4 py-3\">${element.Bezoekers}</td>
-                <td class=\"px-4 py-3 text-sm\">${element.SporthalNaam}</td>
-                <td class=\"px-4 py-3 text-sm whitespace-nowrap\">${element.t} <span class=\"font-mono\">${aanvangsuur.substr(0,5)}</span></td>
-                <td class=\"px-4 py-3 text-center font-bold\">${uitslag}</td>
-            `;
-            tbody.appendChild(row);
-
-            // Uitklapbare details rij
-            const detailsRow = document.createElement("tr");
-            detailsRow.className = "hidden details-row";
-            detailsRow.innerHTML = `<td colspan="6" class="px-6 py-5 bg-gradient-to-br from-blue-100/80 to-blue-200/60 dark:from-gray-900/80 dark:to-gray-800/60 rounded-b-2xl border-t border-blue-200 dark:border-gray-700">
-                <div class="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
-                    <div class="flex-1">
-                        <div class="font-semibold text-blue-700 dark:text-blue-300 mb-2">Setstanden</div>
-                        <div class="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-1 text-sm">
-                            <div><span class="font-medium">Set 1:</span> ${element.UitslagHoofd_set1 || '/'} </div>
-                            <div><span class="font-medium">Set 2:</span> ${element.UitslagHoofd_set2 || '/'} </div>
-                            <div><span class="font-medium">Set 3:</span> ${element.UitslagHoofd_set3 || '/'} </div>
-                            <div><span class="font-medium">Set 4:</span> ${element.UitslagHoofd_set4 || '/'} </div>
-                            <div><span class="font-medium">Set 5:</span> ${element.UitslagHoofd_set5 || '/'} </div>
-                        </div>
-                    </div>
-                    <div class="flex-1 mt-4 md:mt-0">
-                        <div class="font-semibold text-blue-700 dark:text-blue-300 mb-2">Eindstand</div>
-                        <div class="text-lg font-bold">${element.UitslagHoofd || '/'} </div>
-                    </div>
-                </div>
-            </td>`;
-            tbody.appendChild(detailsRow);
-
-            row.addEventListener('click', function() {
-                detailsRow.classList.toggle('hidden');
-            });
-        });
-    tableDiv.innerHTML = "";
-    tableDiv.appendChild(table);
-
-        // Statistiek toevoegen
-        const statDiv = document.createElement("div");
-        statDiv.className = "mt-6 text-center text-base font-semibold text-blue-700 dark:text-blue-300";
-        // Simpele analyse: wie wint vaker, thuis of uit?
-        let homeWins = 0, awayWins = 0, teamName = "MVC Peer";
-        mockMatches.forEach(m => {
-            if (!m.UitslagHoofd || m.UitslagHoofd === "/" || m.UitslagHoofd === "undefined") return;
-            const [home, away] = m.UitslagHoofd.split("-").map(Number);
-            if (isNaN(home) || isNaN(away)) return;
-            if (m.Thuis === teamName && home > away) homeWins++;
-            if (m.Bezoekers === teamName && away > home) awayWins++;
-        });
-        let statText = "";
-        if (homeWins > awayWins) statText = `🏠 <b>MVC Peer</b> wint vaker thuis! (${homeWins}x thuis vs ${awayWins}x uit)`;
-        else if (awayWins > homeWins) statText = `🚌 <b>MVC Peer</b> wint vaker uit! (${awayWins}x uit vs ${homeWins}x thuis)`;
-        else if (homeWins === 0 && awayWins === 0) statText = `Nog geen overwinningen voor <b>MVC Peer</b>.`;
-        else statText = `Evenveel thuis- als uitoverwinningen voor <b>MVC Peer</b>! (${homeWins}x thuis, ${awayWins}x uit)`;
-
-        // Hoogste overwinning en zwaarste nederlaag
-        let maxWin = null, maxLoss = null;
-        // Gemiddeld aantal gescoorde sets per wedstrijd
-        let totalSets = 0, playedMatches = 0;
-        mockMatches.forEach(m => {
-            if (!m.UitslagHoofd || m.UitslagHoofd === "/" || m.UitslagHoofd === "undefined") return;
-            const [home, away] = m.UitslagHoofd.split("-").map(Number);
-            if (isNaN(home) || isNaN(away)) return;
-            let diff = 0, win = false, loss = false;
-            // Punten per set voor MVC Peer
-            let puntenTotaal = 0, setsTotaal = 0;
-            for (let i = 1; i <= 5; i++) {
-                const setScore = m[`UitslagHoofd_set${i}`];
-                if (!setScore || setScore === "/" || setScore === "undefined") continue;
-                const [setHome, setAway] = setScore.split("-").map(Number);
-                if (isNaN(setHome) || isNaN(setAway)) continue;
-                // Alleen daadwerkelijk gespeelde sets tellen, en juiste score pakken
-                if (m.Thuis === teamName) {
-                    puntenTotaal += setHome;
-                    setsTotaal++;
-                } else if (m.Bezoekers === teamName) {
-                    puntenTotaal += setAway;
-                    setsTotaal++;
-                }
-            }
-            if (setsTotaal > 0) {
-                m._puntenTotaal = puntenTotaal;
-                m._setsTotaal = setsTotaal;
-            }
-            if (m.Thuis === teamName) {
-                diff = home - away;
-                win = home > away;
-                loss = home < away;
-                totalSets += home;
-            } else if (m.Bezoekers === teamName) {
-                diff = away - home;
-                win = away > home;
-                loss = away < home;
-                totalSets += away;
-            }
-            if (win && (!maxWin || diff > maxWin.diff)) maxWin = { ...m, diff };
-            if (loss && (!maxLoss || diff < maxLoss.diff)) maxLoss = { ...m, diff };
-            playedMatches++;
-        });
-        let extraStats = "";
-        if (playedMatches > 0) {
-            const avgSets = Math.round(totalSets / playedMatches);
-            extraStats += `<br>📊 Gemiddeld aantal gescoorde sets per wedstrijd: <b>${avgSets}</b>`;
-        }
-        if (maxWin) {
-            extraStats += `<br>🏆 Grootste overwinning: <b>${maxWin.Thuis} - ${maxWin.Bezoekers}</b> (${maxWin.UitslagHoofd}, ${maxWin.t})`;
-        }
-        if (maxLoss) {
-            extraStats += `<br>😬 Zwaarste nederlaag: <b>${maxLoss.Thuis} - ${maxLoss.Bezoekers}</b> (${maxLoss.UitslagHoofd}, ${maxLoss.t})`;
-        }
-        statDiv.innerHTML = statText + extraStats;
-        tableDiv.appendChild(statDiv);
-    }
+    select.innerHTML = ploegen.map(ploeg =>
+        `<option value="${ploegKey(ploeg)}">${ploeg.naam}</option>`).join("\n");
+    select.selectedIndex = 0;
+    getMatchesFunction();
 });
 
 // Set the credentials
 const clubNumber = "L-0923";
 const provinceId = 4;
-const seriesId = select.value;
+
 
 class VolleyAdmin2 {
     static API_URL = "https://www.volleyadmin2.be/services";
@@ -337,146 +231,29 @@ class VolleyAdmin2 {
 const volleyAdmin = new VolleyAdmin2();
 
 // Example: Get matches
+let latestRequest = 0;
+
 function getMatchesFunction() {
-    volleyAdmin
-        .getMatches(
-            document.getElementById("ploegenSelect").value,
-            provinceId,
-            clubNumber
-        )
-        .then((matches) => {
-            if (tableDiv) {
-                tableDiv.innerHTML = ""; // Clear mock data
-                const table = document.createElement("table");
-                table.className = "min-w-full text-sm text-gray-800 dark:text-gray-100 border-separate border-spacing-y-2";
-                table.innerHTML =
-                    `<thead>
-                        <tr class="bg-blue-100 dark:bg-gray-700 text-base">
-                            <th class="px-4 py-3 rounded-l-xl">Thuis</th>
-                            <th class="px-4 py-3">Bezoeker</th>
-                            <th class="px-4 py-3">Locatie</th>
-                            <th class="px-4 py-3">Wanneer</th>
-                            <th class="px-4 py-3 rounded-r-xl">Score</th>
-                        </tr>
-                    </thead>`;
-                var tbody = table.createTBody();
-                matches.forEach((element, idx) => {
-                    var uitslag = (element.UitslagHoofd === "undefined") ? "/" : element.UitslagHoofd;
-                    var aanvangsuur = element.Aanvangsuur;
-                    const row = document.createElement("tr");
-                    row.className = `bg-white dark:bg-gray-800/80 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-lg transition-all cursor-pointer ${idx % 2 === 0 ? 'bg-opacity-90' : 'bg-opacity-100'}`;
-                    row.innerHTML = `
-                        <td class="px-4 py-3 font-semibold">${element.Thuis}</td>
-                        <td class="px-4 py-3">${element.Bezoekers}</td>
-                        <td class="px-4 py-3 text-sm">${element.SporthalNaam}</td>
-                        <td class="px-4 py-3 text-sm whitespace-nowrap">${element.t} <span class="font-mono">${aanvangsuur.substr(0,5)}</span></td>
-                        <td class="px-4 py-3 text-center font-bold">${uitslag}</td>
-                    `;
-                    tbody.appendChild(row);
-
-                    // Uitklapbare details rij
-                    const detailsRow = document.createElement("tr");
-                    detailsRow.className = "hidden details-row";
-                    detailsRow.innerHTML = `<td colspan="5" class="px-6 py-4 bg-blue-50 dark:bg-gray-900/70 text-left rounded-b-xl">
-                        <div class="text-sm">
-                            <b>UitslagHoofd:</b> ${element.UitslagHoofd || '/'}<br>
-                            <b>Set 1:</b> ${element.UitslagHoofd_set1 || '/'}<br>
-                            <b>Set 2:</b> ${element.UitslagHoofd_set2 || '/'}<br>
-                            <b>Set 3:</b> ${element.UitslagHoofd_set3 || '/'}<br>
-                            <b>Set 4:</b> ${element.UitslagHoofd_set4 || '/'}<br>
-                            <b>Set 5:</b> ${element.UitslagHoofd_set5 || '/'}
-                        </div>
-                    </td>`;
-                    tbody.appendChild(detailsRow);
-
-                    row.addEventListener('click', function() {
-                        detailsRow.classList.toggle('hidden');
-                    });
-                });
-                tableDiv.appendChild(table);
-
-                // Statistiek toevoegen
-                const statDiv = document.createElement("div");
-                statDiv.className = "mt-6 text-center text-base font-semibold text-blue-700 dark:text-blue-300";
-                // Simpele analyse: wie wint vaker, thuis of uit?
-                let homeWins = 0, awayWins = 0, teamName = "MVC Peer";
-                matches.forEach(m => {
-                    if (!m.UitslagHoofd || m.UitslagHoofd === "/" || m.UitslagHoofd === "undefined") return;
-                    const [home, away] = m.UitslagHoofd.split("-").map(Number);
-                    if (isNaN(home) || isNaN(away)) return;
-                    if (m.Thuis === teamName && home > away) homeWins++;
-                    if (m.Bezoekers === teamName && away > home) awayWins++;
-                });
-                let statText = "";
-                if (homeWins > awayWins) statText = `🏠 <b>MVC Peer</b> wint vaker thuis! (${homeWins}x thuis vs ${awayWins}x uit)`;
-                else if (awayWins > homeWins) statText = `🚌 <b>MVC Peer</b> wint vaker uit! (${awayWins}x uit vs ${homeWins}x thuis)`;
-                else if (homeWins === 0 && awayWins === 0) statText = `Nog geen overwinningen voor <b>MVC Peer</b>.`;
-                else statText = `Evenveel thuis- als uitoverwinningen voor <b>MVC Peer</b>! (${homeWins}x thuis, ${awayWins}x uit)`;
-
-                // Hoogste overwinning en zwaarste nederlaag
-                let maxWin = null, maxLoss = null;
-                // Gemiddeld aantal gescoorde sets per wedstrijd
-                let totalSets = 0, playedMatches = 0;
-                matches.forEach(m => {
-                    if (!m.UitslagHoofd || m.UitslagHoofd === "/" || m.UitslagHoofd === "undefined") return;
-                    const [home, away] = m.UitslagHoofd.split("-").map(Number);
-                    if (isNaN(home) || isNaN(away)) return;
-                    let diff = 0, win = false, loss = false;
-                    // Punten per set voor MVC Peer
-                    let puntenTotaal = 0, setsTotaal = 0;
-                    for (let i = 1; i <= 5; i++) {
-                        const setScore = m[`UitslagHoofd_set${i}`];
-                        if (!setScore || setScore === "/" || setScore === "undefined") continue;
-                        const [setHome, setAway] = setScore.split("-").map(Number);
-                        if (isNaN(setHome) || isNaN(setAway)) continue;
-                        // Alleen daadwerkelijk gespeelde sets tellen, en juiste score pakken
-                        if (m.Thuis === teamName) {
-                            puntenTotaal += setHome;
-                            setsTotaal++;
-                        } else if (m.Bezoekers === teamName) {
-                            puntenTotaal += setAway;
-                            setsTotaal++;
-                        }
-                    }
-                    if (setsTotaal > 0) {
-                        m._puntenTotaal = puntenTotaal;
-                        m._setsTotaal = setsTotaal;
-                    }
-                    if (m.Thuis === teamName) {
-                        diff = home - away;
-                        win = home > away;
-                        loss = home < away;
-                        totalSets += home;
-                    } else if (m.Bezoekers === teamName) {
-                        diff = away - home;
-                        win = away > home;
-                        loss = away < home;
-                        totalSets += away;
-                    }
-                    if (win && (!maxWin || diff > maxWin.diff)) maxWin = { ...m, diff };
-                    if (loss && (!maxLoss || diff < maxLoss.diff)) maxLoss = { ...m, diff };
-                    playedMatches++;
-                });
-                let extraStats = "";
-                if (playedMatches > 0) {
-                    const avgSets = Math.round(totalSets / playedMatches);
-                    extraStats += `<br>📊 Gemiddeld aantal gescoorde sets per wedstrijd: <b>${avgSets}</b>`;
-                }
-                if (maxWin) {
-                    extraStats += `<br>🏆 Grootste overwinning: <b>${maxWin.Thuis} - ${maxWin.Bezoekers}</b> (${maxWin.UitslagHoofd}, ${maxWin.t})`;
-                }
-                if (maxLoss) {
-                    extraStats += `<br>😬 Zwaarste nederlaag: <b>${maxLoss.Thuis} - ${maxLoss.Bezoekers}</b> (${maxLoss.UitslagHoofd}, ${maxLoss.t})`;
-                }
-
-                statDiv.innerHTML = statText + extraStats;
-                tableDiv.appendChild(statDiv);
-            } else {
-                console.error("Error");
+    const ploeg = ploegen.find(item => ploegKey(item) === select.value);
+    if (!ploeg) return;
+    const request = ++latestRequest;
+    setView('matches', ploeg);
+    tableDiv.textContent = "Wedstrijden laden…";
+    return (demoMode ? Promise.resolve(createDemoData(ploeg).matches) :
+        volleyAdmin.getMatches(ploeg.id, provinceId, clubNumber))
+        .then((response) => {
+            if (request !== latestRequest) return;
+            if (!Array.isArray(response)) throw new Error("Ongeldig antwoord van VolleyAdmin2");
+            const matches = filterMatches(response, ploeg);
+            if (matches.length === 0) {
+                tableDiv.textContent = "Geen wedstrijden gevonden voor deze ploeg.";
+                return;
             }
+            renderMatches(matches, ploeg);
         })
         .catch((error) => {
-            tableDiv.innerHTML = `<p>Error<p>`;
+            if (request !== latestRequest) return;
+            tableDiv.textContent = "Wedstrijden konden niet worden geladen. Probeer opnieuw.";
             console.error("Error:", error.message);
         });
 }
@@ -494,15 +271,176 @@ function getSeriesFunction() {
         });
 }
 
+function renderStandings(standings) {
+    const table = document.createElement('table');
+    table.className = 'ranking-table';
+    const head = table.createTHead();
+    const header = head.insertRow();
+    header.className = 'ranking-header';
+    const columns = [
+        ['Positie', 'Volgorde'], ['Ploeg', 'Ploegnaam'], ['Gespeeld', 'AantalWedstrijden'],
+        ['Gewonnen', 'AantalWedstrijdenGewonnen'], ['Verloren', 'AantalWedstrijdenVerloren'],
+        ['Sets voor', 'AantalSetsGewonnen'], ['Sets tegen', 'AantalSetsVerloren'], ['Punten', 'AantalPunten']
+    ];
+    for (const [label] of columns) {
+        const cell = document.createElement('th');
+        cell.scope = 'col';
+        cell.className = 'ranking-label';
+        cell.textContent = label;
+        header.appendChild(cell);
+    }
+    const body = table.createTBody();
+    // Behoud de officiële volgorde en gedeelde posities van VolleyAdmin2.
+    for (const standing of standings) {
+        const row = body.insertRow();
+        const isPeer = /^MVC Peer(?:\s|$)/i.test(standing.Ploegnaam || '');
+        row.className = isPeer
+            ? 'peer-row font-bold'
+            : 'ranking-row';
+        for (const [, field] of columns) {
+            const cell = row.insertCell();
+            cell.className = field === 'Ploegnaam' ? 'ranking-team' : 'ranking-number';
+            cell.textContent = standing[field] ?? '–';
+        }
+    }
+    tableDiv.textContent = '';
+    const scroll = document.createElement('div');
+    scroll.className = 'ranking-scroll';
+    scroll.appendChild(table);
+    tableDiv.appendChild(scroll);
+}
+
 function getStandingsFunction() {
-    // Example: Get standings
-    volleyAdmin
-        .getStandings(seriesId, provinceId)
-        .then((standings) => {
-            // console.log('Standings:', standings);
+    const ploeg = ploegen.find(item => ploegKey(item) === select.value);
+    if (!ploeg) return;
+    const request = ++latestRequest;
+    setView('ranking', ploeg);
+    tableDiv.textContent = 'Ranking laden…';
+    // Geen club- of ploegfilter: toon de volledige poule, ook voor beide bekerploegen.
+    return (demoMode ? Promise.resolve(createDemoData(ploeg).standings) : volleyAdmin.getStandings(ploeg.id, provinceId))
+        .then(response => {
+            if (request !== latestRequest) return;
+            if (!Array.isArray(response)) throw new Error('Ongeldig antwoord van VolleyAdmin2');
+            const standings = response.filter(row => row.Reeks === ploeg.id && row.Wedstrijd === 'Hoofd');
+            if (!standings.length) {
+                tableDiv.textContent = 'Nog geen ranking beschikbaar voor deze poule.';
+                return;
+            }
+            renderStandings(standings);
         })
-        .catch((error) => {
-            // table.innerHTML = `<p>Error<p>`;
-            // console.log(error)
+        .catch(error => {
+            if (request !== latestRequest) return;
+            tableDiv.textContent = 'Ranking kon niet worden geladen. Probeer opnieuw.';
+            console.error('Error:', error.message);
         });
+}
+
+function escapeHtml(value) {
+    return String(value ?? '').replace(/[&<>"']/g, char => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[char]);
+}
+
+function matchDate(match) {
+    const [day, month, year] = (match.t || '').split('/').map(Number);
+    return new Date(year, month - 1, day, 12);
+}
+
+function renderMatches(matches, ploeg) {
+    const played = match => Boolean(match.UitslagHoofd && match.UitslagHoofd !== 'undefined');
+    const upcoming = matches.filter(match => !played(match)).sort((a, b) => matchDate(a) - matchDate(b));
+    const results = matches.filter(played).sort((a, b) => matchDate(b) - matchDate(a));
+    let wins = 0;
+    for (const match of results) {
+        const score = match.UitslagHoofd.split('-').map(Number);
+        if (score.length === 2 && (isSelectedTeam(match, 'home', ploeg) ? score[0] > score[1] : score[1] > score[0])) wins++;
+    }
+    tableDiv.innerHTML = `<div class="match-summary">
+        <div><span class="summary-number">${results.length}</span><span>Gespeeld</span></div>
+        <div><span class="summary-number">${wins}</span><span>Gewonnen</span></div>
+        <div><span class="summary-number">${upcoming.length}</span><span>Op de kalender</span></div>
+    </div>`;
+    for (const [title, list] of [['Op de kalender', upcoming], ['Laatste resultaten', results]]) {
+        if (!list.length) continue;
+        const section = document.createElement('section');
+        section.className = 'fixture-section';
+        const heading = document.createElement('h3');
+        heading.className = 'fixture-heading';
+        heading.textContent = `${title} / ${String(list.length).padStart(2, '0')}`;
+        section.appendChild(heading);
+        for (const [index, match] of list.entries()) {
+            const finished = played(match);
+            const card = document.createElement('article');
+            card.className = `fixture-card ${!finished && index === 0 ? 'next-fixture' : ''}`;
+            const date = matchDate(match);
+            const validDate = !Number.isNaN(date.getTime());
+            const day = validDate ? String(date.getDate()).padStart(2, '0') : '–';
+            const month = validDate ? date.toLocaleDateString('nl-BE', { month: 'short' }) : '';
+            const score = finished ? match.UitslagHoofd.split('-').map(value => value.trim()) : [];
+            const status = match.postponed === '1' ? 'Uitgesteld' : finished ? 'Afgelopen' : index === 0 ? 'Eerstvolgende' : 'Gepland';
+            const home = isSelectedTeam(match, 'home', ploeg);
+            card.innerHTML = `<div class="fixture-topline"><span>${status}</span><span>${home ? 'THUIS' : 'UIT'} · ${escapeHtml(match.Aanvangsuur?.slice(0, 5) || '–')}</span></div>
+                <div class="fixture-body"><div class="fixture-date"><strong>${day}</strong><span>${escapeHtml(month)}</span><small>${validDate ? date.getFullYear() : ''}</small></div>
+                <div class="fixture-teams"><div class="${home ? 'our-team' : ''}">${escapeHtml(match.Thuis)}<span>${escapeHtml(score[0] || '–')}</span></div>
+                <div class="${isSelectedTeam(match, 'visitors', ploeg) ? 'our-team' : ''}">${escapeHtml(match.Bezoekers)}<span>${escapeHtml(score[1] || '–')}</span></div></div></div>
+                <div class="fixture-venue">↗ ${escapeHtml(match.SporthalNaam || 'Locatie nog niet bekend')}</div>`;
+            const sets = [1, 2, 3, 4, 5].map(n => ({ n, score: match[`UitslagHoofd_set${n}`] }))
+                .filter(set => set.score && set.score !== 'undefined');
+            if (sets.length) {
+                const details = document.createElement('details');
+                details.className = 'fixture-details';
+                details.innerHTML = `<summary>Setstanden <span aria-hidden="true">＋</span></summary><div class="set-list">${sets.map(set =>
+                    `<div><span>SET ${set.n}</span><strong>${escapeHtml(set.score)}</strong></div>`).join('')}</div>`;
+                card.appendChild(details);
+            }
+            section.appendChild(card);
+        }
+        tableDiv.appendChild(section);
+    }
+}
+
+// Uitsluitend lokale voorbeeldgegevens: nooit vermengd met de officiële antwoorden.
+function createDemoData(ploeg) {
+    const peerName = ploeg.teamId === '108676' ? 'MVC Peer A (P1)' : ploeg.teamId === '108677' ? 'MVC Peer B (P3)' : `MVC Peer · ${ploeg.naam}`;
+    const teams = [peerName, 'Volley Noord', 'VC Bosrand', 'Sporting Heuvel'];
+    const standings = teams.map((Ploegnaam, i) => ({
+        Reeks: ploeg.id, Wedstrijd: 'Hoofd', Ploegnaam, RangschikkingID: i === 0 ? ploeg.teamId || 'demo-peer' : `demo-${i}`,
+        AantalWedstrijden: 0, AantalWedstrijdenGewonnen: 0, AantalWedstrijdenVerloren: 0,
+        AantalSetsGewonnen: 0, AantalSetsVerloren: 0, AantalPunten: 0
+    }));
+    const matches = [];
+    const fixtures = [[0, 1, 3, 1], [2, 0, 2, 3], [0, 3, 1, 3], [1, 2, 3, 0], [3, 1, 3, 2], [2, 3, 0, 3], [0, 2], [1, 0], [3, 0]];
+    fixtures.forEach(([home, away, h, a], index) => {
+        const date = new Date();
+        date.setDate(date.getDate() + (h === undefined ? (index - 5) * 7 : -(6 - index) * 7));
+        const match = {
+            Reeks: ploeg.id, Thuis: teams[home], Bezoekers: teams[away],
+            match_home_team_id: standings[home].RangschikkingID, match_visitors_team_id: standings[away].RangschikkingID,
+            stnr_home: home === 0 ? clubNumber : 'DEMO', stnr_visitors: away === 0 ? clubNumber : 'DEMO',
+            t: `${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth() + 1).padStart(2, '0')}/${date.getFullYear()}`,
+            Aanvangsuur: '20:00:00', SporthalNaam: home === 0 ? 'Peer, Sporthal de Deuster' : 'Sporthal Horizon (demo)',
+            UitslagHoofd: h === undefined ? '' : `${h} - ${a}`
+        };
+        if (h !== undefined) {
+            const winningSide = h > a ? home : away;
+            for (const [team, won, lost] of [[home, h, a], [away, a, h]]) {
+                const row = standings[team];
+                row.AantalWedstrijden++;
+                row.AantalSetsGewonnen += won;
+                row.AantalSetsVerloren += lost;
+                row[team === winningSide ? 'AantalWedstrijdenGewonnen' : 'AantalWedstrijdenVerloren']++;
+                row.AantalPunten += won === 3 ? lost === 2 ? 2 : 3 : won === 2 ? 1 : 0;
+            }
+            const homeWins = h > a ? [true, false, true, true, true] : [false, true, false, false, false];
+            if (h + a === 3) homeWins.fill(h > a);
+            if (h + a === 5) homeWins.splice(0, 5, true, false, true, false, h > a);
+            for (let set = 1; set <= h + a; set++) {
+                match[`UitslagHoofd_set${set}`] = homeWins[set - 1] ? (set === 5 ? '15/11' : '25/19') : (set === 5 ? '11/15' : '19/25');
+            }
+        }
+        matches.push(match);
+    });
+    standings.sort((a, b) => b.AantalPunten - a.AantalPunten || b.AantalSetsGewonnen - a.AantalSetsGewonnen);
+    standings.forEach((row, index) => { row.Volgorde = `${String(index + 1).padStart(2, '0')}.`; });
+    return { matches, standings };
 }

@@ -23,6 +23,7 @@
             darkMode: 'class',
         };
     </script>
+    <link href="css/wedstrijden.css" rel="stylesheet" />
     <script src="js/wedstrijden_fetch.js" defer></script>
     <script src="js/scripts.js" defer></script>
 
@@ -183,50 +184,39 @@
             </script>
         </nav>
     </header>
-    <main
-        class="pt-24 pb-0 min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 font-sans">
-        <div class="max-w-2xl mx-auto px-4">
-            <div class="flex justify-center">
-                <h1 id="welcomeText"
-                    class="text-4xl font-extrabold tracking-tight text-blue-800 dark:text-blue-300 mb-8 drop-shadow-lg">
-                    Wedstrijden</h1>
-            </div>
-            <div
-                class="relative animate-fadein bg-white/70 dark:bg-gray-800/80 backdrop-blur-md border border-gray-200 dark:border-gray-700 rounded-3xl shadow-2xl p-8 mb-0 transition-all duration-300">
-                <div class="mb-6">
-                    <label for="ploegenSelect"
-                        class="block text-lg font-semibold text-gray-700 dark:text-gray-200 mb-3">Kies een ploeg</label>
-                    <select id="ploegenSelect"
-                        class="block w-full rounded-xl border-2 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:ring-opacity-50 text-base py-3 px-4 shadow-sm transition-all">
-                        <!-- options injected by JS -->
-                    </select>
+    <main class="match-center">
+        <div class="match-shell">
+            <div class="match-masthead">
+                <div><p class="match-eyebrow">MVC PEER / MATCHCENTER</p>
+                    <h1>Elke set telt<span>.</span></h1>
+                    <p class="match-intro">Van de eerste opslag tot het laatste punt. Volg jouw ploeg.</p>
                 </div>
-                <button
-                    class="w-full bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all text-lg mb-6"
-                    id="button">Kies ploeg</button>
-                <p class="text-center text-gray-700 dark:text-gray-200 font-semibold mb-4 text-lg tracking-wide">
-                    <strong>Wedstrijden</strong></p>
-                <div id="table" class="overflow-x-auto"></div>
+                <button type="button" id="demoButton" class="demo-button" aria-pressed="false">Bekijk demo <span aria-hidden="true">↗</span></button>
             </div>
+            <div id="demoNotice" class="demo-notice" hidden>
+                <strong>DEMO</strong> Je bekijkt fictieve wedstrijden en standen. Klik op ‘Terug naar echte data’ om de officiële gegevens te zien.
+            </div>
+            <section class="match-workspace" aria-label="Wedstrijden en ranking">
+                <div class="match-toolbar">
+                    <div class="team-picker">
+                        <label for="ploegenSelect">Kies jouw ploeg</label>
+                        <div class="team-select-wrap">
+                            <span class="team-select-icon" aria-hidden="true">●</span>
+                            <select id="ploegenSelect" aria-describedby="teamSelectHint"></select>
+                            <span class="team-select-arrow" aria-hidden="true"></span>
+                        </div>
+                        <span id="teamSelectHint" class="team-select-hint">Klik om een andere ploeg te kiezen</span>
+                    </div>
+                    <div class="view-switch" role="group" aria-label="Weergave">
+                        <button type="button" id="button" aria-pressed="true" aria-controls="table">Wedstrijden</button>
+                        <button type="button" id="rankingButton" aria-pressed="false" aria-controls="table">Ranking</button>
+                    </div>
+                </div>
+                <div class="results-bar"><h2 id="resultsHeading">Wedstrijden</h2></div>
+                <div id="table" class="match-results" aria-live="polite"></div>
+            </section>
         </div>
     </main>
-    <style>
-        .animate-fadein {
-            animation: fadein 0.7s cubic-bezier(.4, 0, .2, 1);
-        }
-
-        @keyframes fadein {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
     <footer class="bg-white dark:bg-gray-900 border-t">
         <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between">
             <span class="text-gray-500 dark:text-gray-300 mb-2 md:mb-0" id="year"></span>
