@@ -83,7 +83,7 @@ test('late requests cannot overwrite the current team and errors are visible', a
 });
 
 
-test('ranking renders the full cup pool, preserves official positions and marks both Peer teams', async () => {
+test('ranking renders the full cup pool with sequential positions and marks both Peer teams', async () => {
     const urls = [];
     const rows = ['Other club', 'MVC Peer A (P1)', 'MVC Peer B (P3)'].map((Ploegnaam, i) => ({
         Reeks: 'BVLPD-F', Wedstrijd: 'Hoofd', Ploegnaam, Volgorde: ['01a.', '01b.', '03.'][i], AantalPunten: 0
@@ -95,7 +95,7 @@ test('ranking renders the full cup pool, preserves official positions and marks 
     assert.equal(urls[0].searchParams.has('stamnummer'), false);
     const body = s.elements.table.children[0].children[0].children[1];
     assert.equal(body.children.length, 3);
-    assert.equal(body.children[1].children[0].textContent, '01b.');
+    assert.deepEqual(body.children.map(row => row.children[0].textContent), ['1', '2', '3']);
     assert.equal(body.children[1].children[7].textContent, 0);
     assert.match(body.children[1].className, /font-bold/);
     assert.match(body.children[2].className, /font-bold/);
@@ -140,7 +140,8 @@ test('demo works in both views without network requests and exits back to offici
     await s.elements.demoButton.click();
     assert.equal(requests, 0);
     assert.equal(s.elements.demoNotice.hidden, false);
-    assert.match(s.elements.table.innerHTML, /Op de kalender/);
+    assert.equal(s.elements.table.children[0].children[0].textContent, 'Eerstvolgende wedstrijd');
+    assert.equal(s.elements.table.children[2].children[0].textContent, 'Volledige kalender / 06');
     assert.equal(s.run('filterMatches(createDemoData(ploegen[12]).matches, ploegen[12]).length'), 6);
     await s.elements.rankingButton.click();
     assert.equal(requests, 0);
@@ -175,8 +176,52 @@ test('demo scores, set counts and standings agree and live responses cannot repl
     delayed.elements.ploegenSelect.value = 'LDP1';
     const live = delayed.elements.button.click();
     await delayed.elements.demoButton.click();
-    const demo = delayed.elements.table.innerHTML;
+    const demo = delayed.elements.table.children[0];
     resolve({ ok: true, json: async () => [] });
     await live;
-    assert.equal(delayed.elements.table.innerHTML, demo);
+    assert.equal(delayed.elements.table.children[0], demo);
+});
+
+test('next match skips past, completed, postponed and undated matches, respecting kickoff time', () => {
+    const s = setup();
+    s.context.now = new Date(2026, 8, 14, 16, 0);
+    s.context.fixtures = [
+        { t: '13/09/2026', Aanvangsuur: '20:00:00' },
+        { t: '14/09/2026', Aanvangsuur: '15:00:00' },
+        { t: '14/09/2026', Aanvangsuur: '17:00:00', postponed: '1' },
+        { t: '14/09/2026', Aanvangsuur: '17:30:00', UitslagHoofd: '3 - 0' },
+        { t: '', Aanvangsuur: '18:00:00' },
+        { t: '20/09/2026', Aanvangsuur: '18:00:00' },
+        { t: '14/09/2026', Aanvangsuur: '19:00:00' },
+        { t: '14/09/2026', Aanvangsuur: '18:00:00' }
+    ];
+    assert.equal(s.run('nextScheduledMatch(fixtures, now)'), s.context.fixtures[7]);
+    assert.equal(s.run('nextScheduledMatch(fixtures.slice(0, 5), now)'), undefined);
+});
+
+test('full calendar keeps every match in chronological order with results and set details', () => {
+    const s = setup();
+    s.context.fixtures = [
+        { t: '20/09/2026', Thuis: 'MVC Peer', Bezoekers: 'Later', stnr_home: 'L-0923' },
+        { t: '01/09/2026', Thuis: 'MVC Peer', Bezoekers: 'Played', UitslagHoofd: '3 - 0', UitslagHoofd_set1: '25/18', stnr_home: 'L-0923' },
+        { t: '15/09/2026', Thuis: 'MVC Peer', Bezoekers: 'Next', stnr_home: 'L-0923' }
+    ];
+    s.context.now = new Date(2026, 8, 14);
+    s.run('renderMatches(fixtures, ploegen[0], now)');
+    const featured = s.elements.table.children[0];
+    const calendar = s.elements.table.children[2];
+    assert.match(featured.children[1].innerHTML, /Next/);
+    assert.equal(calendar.children[0].textContent, 'Volledige kalender / 03');
+    assert.equal(calendar.children.length, 4);
+    assert.match(calendar.children[1].innerHTML, /Played<span>0<\/span>/);
+    assert.match(calendar.children[1].children[0].innerHTML, /25\/18/);
+    assert.match(calendar.children[2].innerHTML, /Next/);
+    assert.match(calendar.children[3].innerHTML, /Later/);
+
+    const ended = setup();
+    ended.context.fixtures = s.context.fixtures.slice(1, 2);
+    ended.context.now = s.context.now;
+    ended.run('renderMatches(fixtures, ploegen[0], now)');
+    assert.match(ended.elements.table.children[0].children[1].textContent, /geen volgende wedstrijd/);
+    assert.equal(ended.elements.table.children[2].children.length, 2);
 });

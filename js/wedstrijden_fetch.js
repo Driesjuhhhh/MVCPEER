@@ -290,8 +290,8 @@ function renderStandings(standings) {
         header.appendChild(cell);
     }
     const body = table.createTBody();
-    // Behoud de officiële volgorde en gedeelde posities van VolleyAdmin2.
-    for (const standing of standings) {
+    // Behoud de officiële volgorde en nummer de rijen eenvoudig vanaf 1.
+    for (const [index, standing] of standings.entries()) {
         const row = body.insertRow();
         const isPeer = /^MVC Peer(?:\s|$)/i.test(standing.Ploegnaam || '');
         row.className = isPeer
@@ -300,7 +300,7 @@ function renderStandings(standings) {
         for (const [, field] of columns) {
             const cell = row.insertCell();
             cell.className = field === 'Ploegnaam' ? 'ranking-team' : 'ranking-number';
-            cell.textContent = standing[field] ?? '–';
+            cell.textContent = field === 'Volgorde' ? String(index + 1) : standing[field] ?? '–';
         }
     }
     tableDiv.textContent = '';
@@ -343,62 +343,92 @@ function escapeHtml(value) {
 
 function matchDate(match) {
     const [day, month, year] = (match.t || '').split('/').map(Number);
-    return new Date(year, month - 1, day, 12);
+    const [hour, minute] = (match.Aanvangsuur || '23:59').split(':').map(Number);
+    return new Date(year, month - 1, day, hour, minute);
 }
 
-function renderMatches(matches, ploeg) {
-    const played = match => Boolean(match.UitslagHoofd && match.UitslagHoofd !== 'undefined');
-    const upcoming = matches.filter(match => !played(match)).sort((a, b) => matchDate(a) - matchDate(b));
-    const results = matches.filter(played).sort((a, b) => matchDate(b) - matchDate(a));
+function hasMatchResult(match) {
+    return Boolean(match.UitslagHoofd && match.UitslagHoofd !== 'undefined');
+}
+
+function nextScheduledMatch(matches, now = new Date()) {
+    return matches.filter(match => !hasMatchResult(match) && String(match.postponed) !== '1' && matchDate(match) >= now)
+        .sort((a, b) => matchDate(a) - matchDate(b))[0];
+}
+
+function renderMatches(matches, ploeg, now = new Date()) {
+    const calendar = [...matches].sort((a, b) =>
+        (Number.isNaN(matchDate(a).getTime()) ? Infinity : matchDate(a).getTime()) -
+        (Number.isNaN(matchDate(b).getTime()) ? Infinity : matchDate(b).getTime()));
+    const nextMatch = nextScheduledMatch(calendar, now);
+    const results = calendar.filter(hasMatchResult);
     let wins = 0;
     for (const match of results) {
         const score = match.UitslagHoofd.split('-').map(Number);
         if (score.length === 2 && (isSelectedTeam(match, 'home', ploeg) ? score[0] > score[1] : score[1] > score[0])) wins++;
     }
-    tableDiv.innerHTML = `<div class="match-summary">
+    tableDiv.textContent = '';
+    const featured = document.createElement('section');
+    featured.className = 'next-match-section';
+    const nextHeading = document.createElement('h3');
+    nextHeading.className = 'fixture-heading';
+    nextHeading.textContent = 'Eerstvolgende wedstrijd';
+    featured.appendChild(nextHeading);
+    if (nextMatch) {
+        featured.appendChild(createMatchCard(nextMatch, ploeg, true));
+    } else {
+        const empty = document.createElement('p');
+        empty.className = 'next-match-empty';
+        empty.textContent = 'Er staat momenteel geen volgende wedstrijd gepland.';
+        featured.appendChild(empty);
+    }
+    tableDiv.appendChild(featured);
+
+    const summary = document.createElement('div');
+    summary.className = 'match-summary';
+    summary.innerHTML = `
         <div><span class="summary-number">${results.length}</span><span>Gespeeld</span></div>
         <div><span class="summary-number">${wins}</span><span>Gewonnen</span></div>
-        <div><span class="summary-number">${upcoming.length}</span><span>Op de kalender</span></div>
-    </div>`;
-    for (const [title, list] of [['Op de kalender', upcoming], ['Laatste resultaten', results]]) {
-        if (!list.length) continue;
-        const section = document.createElement('section');
-        section.className = 'fixture-section';
-        const heading = document.createElement('h3');
-        heading.className = 'fixture-heading';
-        heading.textContent = `${title} / ${String(list.length).padStart(2, '0')}`;
-        section.appendChild(heading);
-        for (const [index, match] of list.entries()) {
-            const finished = played(match);
-            const card = document.createElement('article');
-            card.className = `fixture-card ${!finished && index === 0 ? 'next-fixture' : ''}`;
-            const date = matchDate(match);
-            const validDate = !Number.isNaN(date.getTime());
-            const day = validDate ? String(date.getDate()).padStart(2, '0') : '–';
-            const month = validDate ? date.toLocaleDateString('nl-BE', { month: 'short' }) : '';
-            const score = finished ? match.UitslagHoofd.split('-').map(value => value.trim()) : [];
-            const status = match.postponed === '1' ? 'Uitgesteld' : finished ? 'Afgelopen' : index === 0 ? 'Eerstvolgende' : 'Gepland';
-            const home = isSelectedTeam(match, 'home', ploeg);
-            card.innerHTML = `<div class="fixture-topline"><span>${status}</span><span>${home ? 'THUIS' : 'UIT'} · ${escapeHtml(match.Aanvangsuur?.slice(0, 5) || '–')}</span></div>
-                <div class="fixture-body"><div class="fixture-date"><strong>${day}</strong><span>${escapeHtml(month)}</span><small>${validDate ? date.getFullYear() : ''}</small></div>
-                <div class="fixture-teams"><div class="${home ? 'our-team' : ''}">${escapeHtml(match.Thuis)}<span>${escapeHtml(score[0] || '–')}</span></div>
-                <div class="${isSelectedTeam(match, 'visitors', ploeg) ? 'our-team' : ''}">${escapeHtml(match.Bezoekers)}<span>${escapeHtml(score[1] || '–')}</span></div></div></div>
-                <div class="fixture-venue">↗ ${escapeHtml(match.SporthalNaam || 'Locatie nog niet bekend')}</div>`;
-            const sets = [1, 2, 3, 4, 5].map(n => ({ n, score: match[`UitslagHoofd_set${n}`] }))
-                .filter(set => set.score && set.score !== 'undefined');
-            if (sets.length) {
-                const details = document.createElement('details');
-                details.className = 'fixture-details';
-                details.innerHTML = `<summary>Setstanden <span aria-hidden="true">＋</span></summary><div class="set-list">${sets.map(set =>
-                    `<div><span>SET ${set.n}</span><strong>${escapeHtml(set.score)}</strong></div>`).join('')}</div>`;
-                card.appendChild(details);
-            }
-            section.appendChild(card);
-        }
-        tableDiv.appendChild(section);
+        <div><span class="summary-number">${calendar.length}</span><span>Totaal wedstrijden</span></div>`;
+    tableDiv.appendChild(summary);
+
+    const section = document.createElement('section');
+    section.className = 'fixture-section';
+    const heading = document.createElement('h3');
+    heading.className = 'fixture-heading';
+    heading.textContent = `Volledige kalender / ${String(calendar.length).padStart(2, '0')}`;
+    section.appendChild(heading);
+    for (const match of calendar) {
+        section.appendChild(createMatchCard(match, ploeg, match === nextMatch));
     }
+    tableDiv.appendChild(section);
 }
 
+    const finished = hasMatchResult(match);
+    const card = document.createElement('article');
+    card.className = `fixture-card ${isNext ? 'next-fixture' : ''}`;
+    const date = matchDate(match);
+    const validDate = !Number.isNaN(date.getTime());
+    const day = validDate ? String(date.getDate()).padStart(2, '0') : '–';
+    const month = validDate ? date.toLocaleDateString('nl-BE', { month: 'short' }) : '';
+    const score = finished ? match.UitslagHoofd.split('-').map(value => value.trim()) : [];
+    const status = String(match.postponed) === '1' ? 'Uitgesteld' : finished ? 'Afgelopen' : isNext ? 'Eerstvolgende' : 'Gepland';
+    const home = isSelectedTeam(match, 'home', ploeg);
+    card.innerHTML = `<div class="fixture-topline"><span>${status}</span><span>${home ? 'THUIS' : 'UIT'} · ${escapeHtml(match.Aanvangsuur?.slice(0, 5) || '–')}</span></div>
+        <div class="fixture-body"><div class="fixture-date"><strong>${day}</strong><span>${escapeHtml(month)}</span><small>${validDate ? date.getFullYear() : ''}</small></div>
+        <div class="fixture-teams"><div class="${home ? 'our-team' : ''}">${escapeHtml(match.Thuis)}<span>${escapeHtml(score[0] || '–')}</span></div>
+        <div class="${isSelectedTeam(match, 'visitors', ploeg) ? 'our-team' : ''}">${escapeHtml(match.Bezoekers)}<span>${escapeHtml(score[1] || '–')}</span></div></div></div>
+        <div class="fixture-venue">↗ ${escapeHtml(match.SporthalNaam || 'Locatie nog niet bekend')}</div>`;
+    const sets = [1, 2, 3, 4, 5].map(n => ({ n, score: match[`UitslagHoofd_set${n}`] }))
+        .filter(set => set.score && set.score !== 'undefined');
+    if (sets.length) {
+        const details = document.createElement('details');
+        details.className = 'fixture-details';
+        details.innerHTML = `<summary>Setstanden <span aria-hidden="true">＋</span></summary><div class="set-list">${sets.map(set =>
+            `<div><span>SET ${set.n}</span><strong>${escapeHtml(set.score)}</strong></div>`).join('')}</div>`;
+        card.appendChild(details);
+    }
+    return card;
 // Uitsluitend lokale voorbeeldgegevens: nooit vermengd met de officiële antwoorden.
 function createDemoData(ploeg) {
     const peerName = ploeg.teamId === '108676' ? 'MVC Peer A (P1)' : ploeg.teamId === '108677' ? 'MVC Peer B (P3)' : `MVC Peer · ${ploeg.naam}`;

@@ -274,8 +274,16 @@
     letter-spacing:-.06em;
 }
 
-.fixture-section+.fixture-section {
-    margin-top:32px;
+.next-match-section {
+    margin-bottom:28px;
+}
+
+.next-match-empty {
+    padding:20px;
+    border:1px solid var(--mc-line);
+    border-radius:10px;
+    color:var(--mc-muted);
+    font-size:14px;
 }
 
 .fixture-heading {
