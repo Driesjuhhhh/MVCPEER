@@ -12,7 +12,7 @@ function refreshView() {
     return activeView === 'ranking' ? getStandingsFunction() : getMatchesFunction();
 }
 
-demoButton.addEventListener('click', () => {
+demoButton?.addEventListener('click', () => {
     demoMode = !demoMode;
     demoButton.setAttribute('aria-pressed', String(demoMode));
     demoButton.textContent = demoMode ? 'Terug naar echte data ↗' : 'Bekijk demo ↗';
@@ -404,6 +404,7 @@ function renderMatches(matches, ploeg, now = new Date()) {
     tableDiv.appendChild(section);
 }
 
+function createMatchCard(match, ploeg, isNext = false) {
     const finished = hasMatchResult(match);
     const card = document.createElement('article');
     card.className = `fixture-card ${isNext ? 'next-fixture' : ''}`;
@@ -429,6 +430,7 @@ function renderMatches(matches, ploeg, now = new Date()) {
         card.appendChild(details);
     }
     return card;
+}
 // Uitsluitend lokale voorbeeldgegevens: nooit vermengd met de officiële antwoorden.
 function createDemoData(ploeg) {
     const peerName = ploeg.teamId === '108676' ? 'MVC Peer A (P1)' : ploeg.teamId === '108677' ? 'MVC Peer B (P3)' : `MVC Peer · ${ploeg.naam}`;
